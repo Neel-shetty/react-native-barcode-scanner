@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React, { useCallback } from "react";
 import { colors } from "../../constants/colors";
 import { useFonts } from "expo-font";
@@ -31,8 +37,13 @@ const SignInScreen = () => {
   }
 
   return (
-    <View style={styles.root} onLayout={onLayoutRootView}>
-      <View style={styles.headerContainer}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 50 : 70}
+      enabled={false}
+      style={styles.root}
+    >
+      <View style={styles.headerContainer} onLayout={onLayoutRootView}>
         <Header />
       </View>
       <View style={styles.popupContainer}>
@@ -45,8 +56,9 @@ const SignInScreen = () => {
         <View style={styles.bottomContainer}>
           <BottomText />
         </View>
+        <View style={styles.empty} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -75,13 +87,22 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: layout.width,
+    flex: 1,
+    // backgroundColor: "pink",
   },
   inputContainer: {
     alignItems: "center",
     justifyContent: "center",
+    flex: 3,
+    // backgroundColor: "violet",
   },
-  bottomContainer:{
-    alignItems:'center',
-    justifyContent:'center'
-  }
+  bottomContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    flex: 1,
+    // backgroundColor: "coral",
+  },
+  empty: {
+    flex: 4,
+  },
 });
