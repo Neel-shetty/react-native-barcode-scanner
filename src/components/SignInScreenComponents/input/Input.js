@@ -6,11 +6,13 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { layout } from "../../../constants/layout";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../constants/colors";
 import { Formik } from "formik";
+import { useSelector, useDispatch } from "react-redux";
+import { setError } from "../../../store/slice/formErrorSlice";
 
 const Input = ({
   placeholder,
@@ -22,15 +24,29 @@ const Input = ({
   secureTextEntry = false,
 }) => {
   const [showPasswordtoggle, setShowPasswordToggle] = useState(false);
-  if(secureTextEntry===true && showPasswordtoggle===true){
-    secureTextEntry=false
+
+  const formError = useSelector((state) => state.error.error);
+  console.log("🚀 ~ file: Input.js:34 ~ formError", formError.email);
+  if (secureTextEntry === true && showPasswordtoggle === true) {
+    secureTextEntry = false;
   }
+
   return (
     <View style={styles.root}>
       <View style={styles.headerContainer}>
         <Text style={styles.infoText}>{title}</Text>
       </View>
-      <View style={styles.inputRow}>
+      <View
+        style={
+          fieldType !== "password" //if the field is normal
+            ? formError.email == "error" //if the normal field has errors
+              ? [styles.inputRow, { borderBottomColor: colors.gray }]
+              : styles.inputRow
+            : formError.password === "error" //if the field is password
+            ? [styles.inputRow, { borderBottomColor: colors.gray }] // if the field has errors
+            : styles.inputRow
+        }
+      >
         <TextInput
           placeholder={placeholder}
           style={styles.input}
@@ -43,7 +59,7 @@ const Input = ({
           <Ionicons
             name="ios-checkmark-circle"
             size={22}
-            color={colors.green}
+            color={formError.email === "error" ? colors.gray : colors.green}
           />
         )}
         <TouchableOpacity
@@ -53,9 +69,13 @@ const Input = ({
         >
           {fieldType === "password" &&
             (showPasswordtoggle ? (
-              <Ionicons name="eye" size={22} color={colors.green} />
+              <Ionicons
+                name="eye"
+                size={22}
+                color={formError.password === "error" ? colors.gray : colors.green}
+              />
             ) : (
-              <Ionicons name="eye-off" size={22} color={colors.green} />
+              <Ionicons name="eye-off" size={22} color={colors.gray} />
             ))}
         </TouchableOpacity>
       </View>
