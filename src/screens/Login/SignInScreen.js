@@ -13,6 +13,7 @@ const SignInScreen = () => {
     "poppins-medium": require("../../../assets/fonts/Poppins/Poppins-Medium.ttf"),
     "poppins-light": require("../../../assets/fonts/Poppins/Poppins-Light.ttf"),
     "poppins-semibold": require("../../../assets/fonts/Poppins/Poppins-SemiBold.ttf"),
+    "inter-regular": require('../../../assets/fonts/inter/Inter-Regular.ttf'),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -33,6 +34,9 @@ const SignInScreen = () => {
       <View style={styles.popupContainer}>
         <View style={styles.titleContainer}>
           <Title />
+        </View>
+        <View style={styles.inputContainer}>
+          
         </View>
       </View>
     </View>
