@@ -1,18 +1,63 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
-import React from "react";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import React, { useState } from "react";
 import { layout } from "../../../constants/layout";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../../../constants/colors";
+import { Formik } from "formik";
 
-const Input = ({placeholder, title, type}) => {
+const Input = ({
+  placeholder,
+  title,
+  onChangeText,
+  onBlur,
+  value,
+  fieldType,
+  secureTextEntry = false,
+}) => {
+  const [showPasswordtoggle, setShowPasswordToggle] = useState(false);
+  if(secureTextEntry===true && showPasswordtoggle===true){
+    secureTextEntry=false
+  }
   return (
     <View style={styles.root}>
       <View style={styles.headerContainer}>
-        <Text style={styles.infoText}>Your Email/Username</Text>
+        <Text style={styles.infoText}>{title}</Text>
       </View>
       <View style={styles.inputRow}>
-        <TextInput placeholder="Email/Username" style={styles.input} />
-        <Ionicons name="ios-checkmark-circle" size={22} color={colors.green} />
+        <TextInput
+          placeholder={placeholder}
+          style={styles.input}
+          onChangeText={onChangeText}
+          onBlur={onBlur}
+          value={value}
+          secureTextEntry={secureTextEntry}
+        />
+        {fieldType !== "password" && (
+          <Ionicons
+            name="ios-checkmark-circle"
+            size={22}
+            color={colors.green}
+          />
+        )}
+        <TouchableOpacity
+          onPress={() => {
+            setShowPasswordToggle(!showPasswordtoggle);
+          }}
+        >
+          {fieldType === "password" &&
+            (showPasswordtoggle ? (
+              <Ionicons name="eye" size={22} color={colors.green} />
+            ) : (
+              <Ionicons name="eye-off" size={22} color={colors.green} />
+            ))}
+        </TouchableOpacity>
       </View>
     </View>
   );
