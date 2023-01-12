@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "react-query";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import Navigator from "./src/navigation/Navigator";
@@ -7,7 +8,9 @@ import { Provider } from "react-redux";
 export default function App() {
   return (
     <Provider store={store}>
-      <Navigator />
+      <QueryClientProvider client={QueryClient}>
+        <Navigator />
+      </QueryClientProvider>
     </Provider>
   );
 }

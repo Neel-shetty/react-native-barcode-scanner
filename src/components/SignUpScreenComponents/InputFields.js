@@ -8,6 +8,7 @@ import CustomButton from "../CustomButton";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 const InputFields = () => {
   const formScheme = yup.object({
@@ -20,15 +21,32 @@ const InputFields = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
+  function Login(values) {
+    const { isLoading, error, data } = useQuery("login", () =>
+      axios
+        .post("https://codelumina.com/project/scanme/api/user/login", values)
+        .then((res) => {
+          res.json();
+          console.log(res);
+        })
+    );
+    console.log("🚀 ~ file: InputFields.js:26 ~ Login ~ data", data);
+  }
+
   function ForgotPasswordButton() {
     navigation.navigate("");
   }
+
+  // useEffect(() => {}, [data]);
 
   return (
     <View style={styles.root}>
       <Formik
         initialValues={{ email: "", password: "", name: "", phoneNumber: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => {
+          console.log(values);
+          Login(values);
+        }}
         validationSchema={formScheme}
       >
         {({
