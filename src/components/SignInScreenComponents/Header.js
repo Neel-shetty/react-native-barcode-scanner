@@ -3,10 +3,10 @@ import React from "react";
 import BackButton from "../BackButton";
 import { layout } from "../../constants/layout";
 
-const Header = () => {
+const Header = ({ back }) => {
   return (
     <View style={styles.root}>
-      <BackButton />
+      <BackButton onPress={back} />
       <Text style={styles.title}>App Name</Text>
       <View style={{ height: 35, width: 35 }} />
     </View>

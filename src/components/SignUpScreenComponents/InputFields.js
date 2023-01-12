@@ -1,18 +1,20 @@
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect } from "react";
-import Input from "./Input";
+import Input from "../Input";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { colors } from "../../../constants/colors";
-import CustomButton from "../../CustomButton";
+import { colors } from "../../constants/colors";
+import CustomButton from "../CustomButton";
 import { useDispatch, useSelector } from "react-redux";
-import { setError } from "../../../store/slice/formErrorSlice";
+import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
 
 const InputFields = () => {
   const formScheme = yup.object({
     email: yup.string().email("error").required("error"),
     password: yup.string().min(8, "error").required("error"),
+    name: yup.string().required("error"),
+    phoneNumber: yup.string().length(10, "error").required("error"),
   });
 
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const InputFields = () => {
   return (
     <View style={styles.root}>
       <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{ email: "", password: "", name: "", phoneNumber: "" }}
         onSubmit={(values) => console.log(values)}
         validationSchema={formScheme}
       >
@@ -41,6 +43,23 @@ const InputFields = () => {
             {useEffect(() => {
               dispatch(setError(errors));
             }, [errors])}
+            <Input
+              placeholder={"Name"}
+              title={"Your Name"}
+              onChangeText={handleChange("name")}
+              handleBlur={handleBlur("name")}
+              value={values.name}
+              fieldType={"name"}
+            />
+            <Input
+              placeholder={"Phone Number"}
+              title={"Your Phone Number"}
+              onChangeText={handleChange("phoneNumber")}
+              handleBlur={handleBlur("phoneNumber")}
+              value={values.phoneNumber}
+              fieldType={"phoneNumber"}
+              error={errors}
+            />
             <Input
               placeholder={"Email/Username"}
               title={"Your Email/Username"}
@@ -60,12 +79,9 @@ const InputFields = () => {
               secureTextEntry={true}
               errpr={errors}
             />
-            <View style={styles.forgotPasswordContainer}>
-              <TouchableOpacity onPress={ForgotPasswordButton}>
-                <Text style={styles.forgotText}>Forgot Password?</Text>
-              </TouchableOpacity>
+            <View style={{ paddingTop: 40 }}>
+              <CustomButton title={"Sign Up"} onPress={handleSubmit} />
             </View>
-            <CustomButton title={"Sign In"} onPress={handleSubmit} />
           </View>
         )}
       </Formik>

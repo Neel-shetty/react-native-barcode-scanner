@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 
-const BackButton = () => {
+const BackButton = ({ onPress }) => {
   return (
     <View style={styles.root}>
-      <Ionicons name="ios-arrow-back" size={24} color="#230B34" />
+      <TouchableOpacity onPress={onPress}>
+        <Ionicons name="ios-arrow-back" size={24} color="#230B34" />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: 35,
     height: 35,
-    alignItems:'center',
-    justifyContent:'center'
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

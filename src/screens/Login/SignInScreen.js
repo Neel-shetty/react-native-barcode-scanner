@@ -12,7 +12,7 @@ import * as SplashScreen from "expo-splash-screen";
 import Header from "../../components/SignInScreenComponents/Header";
 import { layout } from "../../constants/layout";
 import Title from "../../components/SignInScreenComponents/Title";
-import InputFields from "../../components/SignInScreenComponents/input/InputFields";
+import InputFields from "../../components/SignInScreenComponents/InputFields";
 import BottomText from "../../components/SignInScreenComponents/BottomText";
 
 const SignInScreen = () => {
@@ -22,6 +22,7 @@ const SignInScreen = () => {
     "poppins-light": require("../../../assets/fonts/Poppins/Poppins-Light.ttf"),
     "poppins-semibold": require("../../../assets/fonts/Poppins/Poppins-SemiBold.ttf"),
     "inter-regular": require("../../../assets/fonts/inter/Inter-Regular.ttf"),
+    "inter-medium": require("../../../assets/fonts/inter/Inter-Medium.ttf"),
     "inter-semibold": require("../../../assets/fonts/inter/Inter-SemiBold.ttf"),
     "inter-bold": require("../../../assets/fonts/inter/Inter-Bold.ttf"),
   });
