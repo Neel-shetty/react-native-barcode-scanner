@@ -7,6 +7,7 @@ import Header from "../../components/SignInScreenComponents/Header";
 import { layout } from "../../constants/layout";
 import Title from "../../components/SignInScreenComponents/Title";
 import InputFields from "../../components/SignInScreenComponents/input/InputFields";
+import BottomText from "../../components/SignInScreenComponents/BottomText";
 
 const SignInScreen = () => {
   const [fontsLoaded] = useFonts({
@@ -41,6 +42,9 @@ const SignInScreen = () => {
         <View style={styles.inputContainer}>
           <InputFields />
         </View>
+        <View style={styles.bottomContainer}>
+          <BottomText />
+        </View>
       </View>
     </View>
   );
@@ -72,7 +76,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: layout.width,
   },
-  inputContainer:{
+  inputContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bottomContainer:{
     alignItems:'center',
     justifyContent:'center'
   }

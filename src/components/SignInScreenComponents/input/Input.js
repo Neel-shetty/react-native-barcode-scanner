@@ -72,10 +72,18 @@ const Input = ({
               <Ionicons
                 name="eye"
                 size={22}
-                color={formError.password === "error" ? colors.gray : colors.green}
+                color={
+                  formError.password === "error" ? colors.gray : colors.green
+                }
               />
             ) : (
-              <Ionicons name="eye-off" size={22} color={colors.gray} />
+              <Ionicons
+                name="eye-off"
+                size={22}
+                color={
+                  formError.password === "error" ? colors.gray : colors.green
+                }
+              />
             ))}
         </TouchableOpacity>
       </View>

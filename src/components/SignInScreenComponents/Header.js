@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <View style={styles.root}>
       <BackButton />
-      <Text style={styles.title}>Nutrizy</Text>
+      <Text style={styles.title}>App Name</Text>
       <View style={{ height: 35, width: 35 }} />
     </View>
   );
