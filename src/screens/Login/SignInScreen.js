@@ -16,6 +16,7 @@ const SignInScreen = () => {
     "poppins-semibold": require("../../../assets/fonts/Poppins/Poppins-SemiBold.ttf"),
     "inter-regular": require("../../../assets/fonts/inter/Inter-Regular.ttf"),
     "inter-semibold": require("../../../assets/fonts/inter/Inter-SemiBold.ttf"),
+    "inter-bold": require("../../../assets/fonts/inter/Inter-Bold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
