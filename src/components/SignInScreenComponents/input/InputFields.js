@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect } from "react";
 import Input from "./Input";
 import { Formik } from "formik";
@@ -7,16 +7,20 @@ import { colors } from "../../../constants/colors";
 import CustomButton from "../../CustomButton";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "../../../store/slice/formErrorSlice";
+import { useNavigation } from "@react-navigation/native";
 
 const InputFields = () => {
   const formScheme = yup.object({
     email: yup.string().email("error").required("error"),
     password: yup.string().min(8, "error").required("error"),
   });
-  // const setError = useSelector((state)=>{state.error.error})
-  const count = useSelector((state) => state.error.error);
-  console.log("🚀 ~ file: InputFields.js:17 ~ InputFields ~ setError", count);
+
   const dispatch = useDispatch();
+  const navigation = useNavigation();
+
+  function ForgotPasswordButton() {
+    navigation.navigate("");
+  }
 
   return (
     <View style={styles.root}>
@@ -57,7 +61,9 @@ const InputFields = () => {
               errpr={errors}
             />
             <View style={styles.forgotPasswordContainer}>
-              <Text style={styles.forgotText}>Forgot Password?</Text>
+              <TouchableOpacity onPress={ForgotPasswordButton}>
+                <Text style={styles.forgotText}>Forgot Password?</Text>
+              </TouchableOpacity>
             </View>
             <CustomButton title={"Sign In"} onPress={handleSubmit} />
           </View>
@@ -74,6 +80,8 @@ const styles = StyleSheet.create({
   forgotPasswordContainer: {
     alignItems: "flex-end",
     paddingRight: 15,
+    height: 50,
+    justifyContent: "center",
   },
   forgotText: {
     fontFamily: "inter-regular",

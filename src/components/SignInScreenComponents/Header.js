@@ -17,7 +17,7 @@ export default Header;
 
 const styles = StyleSheet.create({
   root: {
-    justifyContent: "flex-start",
+    justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     width: layout.widthp,
