@@ -29,7 +29,7 @@ const InputFields = () => {
     console.log("🚀 ~ file: InputFields.js:29 ~ Login ~ values", {
       values,
     });
-    const { isLoading, error, data } = useQuery("login", () => {
+    // const { isLoading, error, data } = useQuery("login", () => {
     try {
       axios
         .post("https://codelumina.com/project/scanme/api/user/login", {
@@ -44,7 +44,7 @@ const InputFields = () => {
     } catch (e) {
       console.log("🚀 ~ file: InputFields.js:38 ~ Login ~ e", e);
     }
-    });
+    // });
     // console.log("🚀 ~ file: InputFields.js:26 ~ Login ~ data", data);
   }
 
