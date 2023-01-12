@@ -6,6 +6,7 @@ import * as SplashScreen from "expo-splash-screen";
 import Header from "../../components/SignInScreenComponents/Header";
 import { layout } from "../../constants/layout";
 import Title from "../../components/SignInScreenComponents/Title";
+import InputFields from "../../components/SignInScreenComponents/input/InputFields";
 
 const SignInScreen = () => {
   const [fontsLoaded] = useFonts({
@@ -13,7 +14,8 @@ const SignInScreen = () => {
     "poppins-medium": require("../../../assets/fonts/Poppins/Poppins-Medium.ttf"),
     "poppins-light": require("../../../assets/fonts/Poppins/Poppins-Light.ttf"),
     "poppins-semibold": require("../../../assets/fonts/Poppins/Poppins-SemiBold.ttf"),
-    "inter-regular": require('../../../assets/fonts/inter/Inter-Regular.ttf'),
+    "inter-regular": require("../../../assets/fonts/inter/Inter-Regular.ttf"),
+    "inter-semibold": require("../../../assets/fonts/inter/Inter-SemiBold.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
@@ -36,7 +38,7 @@ const SignInScreen = () => {
           <Title />
         </View>
         <View style={styles.inputContainer}>
-          
+          <InputFields />
         </View>
       </View>
     </View>
@@ -65,8 +67,12 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
   },
   titleContainer: {
-    alignItems:'center',
-    justifyContent:'center',
-    width:layout.width,
+    alignItems: "center",
+    justifyContent: "center",
+    width: layout.width,
   },
+  inputContainer:{
+    alignItems:'center',
+    justifyContent:'center'
+  }
 });

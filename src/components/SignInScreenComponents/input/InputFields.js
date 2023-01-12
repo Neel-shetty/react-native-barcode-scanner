@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import Input from "./Input";
 
 const InputFields = () => {
   return (
-    <View>
-      <Text>InputFields</Text>
+    <View style={styles.root}>
+      <Input />
     </View>
-  )
-}
+  );
+};
 
-export default InputFields
+export default InputFields;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  root: {},
+});
