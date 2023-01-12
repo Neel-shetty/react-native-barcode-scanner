@@ -1,3 +1,4 @@
 export const colors = {
-  rootBgColor: '#f6f7fd'
+  rootBgColor: '#f6f7fd',
+  whiteBg: 'white'
 }
