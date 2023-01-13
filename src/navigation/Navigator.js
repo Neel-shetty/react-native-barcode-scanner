@@ -18,14 +18,15 @@ const Navigator = () => {
   const dispatch = useDispatch();
   async function getValueFor(key) {
     let result = await SecureStore.getItemAsync(key);
-    console.log("🚀 ~ file: Navigator.js:21 ~ getValueFor ~ result", result) 
-    if (result === "true") {
+    console.log("🚀 ~ file: Navigator.js:21 ~ getValueFor ~ result", result);
+    if (result !== "false") {
       dispatch(setLoggedIn(true));
     }
   }
   const loggedIn = useSelector((state) => state.user.loggedIn);
   useEffect(() => {
     getValueFor("loggedIn");
+    getValueFor("token");
   }, [loggedIn]);
 
   return (
