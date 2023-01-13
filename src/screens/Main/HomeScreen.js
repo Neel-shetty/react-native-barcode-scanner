@@ -11,7 +11,6 @@ const HomeScreen = () => {
   }
 
   function Logout() {
-    save("loggedIn", "false");
     save("token", "false");
     dispatch(setLoggedIn(false));
   }

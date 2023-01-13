@@ -10,6 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import * as SecureStore from "expo-secure-store";
 import { setLoggedIn } from "../store/slice/userSlice";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import ProfileScreen from "../screens/Main/ProfileScreen";
+import ChatScreen from "../screens/Main/ChatScreen";
+import ScanScreen from "../screens/Main/ScanScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -25,7 +28,6 @@ const Navigator = () => {
   }
   const loggedIn = useSelector((state) => state.user.loggedIn);
   useEffect(() => {
-    getValueFor("loggedIn");
     getValueFor("token");
   }, [loggedIn]);
 
@@ -33,12 +35,14 @@ const Navigator = () => {
     return (
       <Tab.Navigator>
         <Tab.Screen name="HomeScreen" component={HomeScreen} />
+        <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Tab.Screen name="ChatScreen" component={ChatScreen} />
+        <Tab.Screen name="ScanScreen" component={ScanScreen} />
       </Tab.Navigator>
     );
   };
 
   return (
-    // <QueryClientProvider client={QueryClient}>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!loggedIn ? (
@@ -61,7 +65,6 @@ const Navigator = () => {
         )}
       </Stack.Navigator>
     </NavigationContainer>
-    // </QueryClientProvider>
   );
 };
 
