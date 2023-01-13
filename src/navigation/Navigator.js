@@ -10,8 +10,8 @@ import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
-const loggedIn = useSelector((state)=>state.user.loggedIn)
-//const loggedIn  = true
+//const loggedIn = useSelector((state)=>state.user.loggedIn)
+const loggedIn  = true
 
 const Navigator = () => {
   return (
