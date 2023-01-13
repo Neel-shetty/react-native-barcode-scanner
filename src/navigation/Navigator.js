@@ -13,6 +13,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileScreen from "../screens/Main/ProfileScreen";
 import ChatScreen from "../screens/Main/ChatScreen";
 import ScanScreen from "../screens/Main/ScanScreen";
+import { Ionicons } from "@expo/vector-icons";
+import { colors } from "../constants/colors";
+import { AntDesign } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -33,11 +38,68 @@ const Navigator = () => {
 
   const BottomTab = () => {
     return (
-      <Tab.Navigator>
-        <Tab.Screen name="HomeScreen" component={HomeScreen} />
-        <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
-        <Tab.Screen name="ChatScreen" component={ChatScreen} />
-        <Tab.Screen name="ScanScreen" component={ScanScreen} />
+      <Tab.Navigator
+        screenOptions={{
+          tabBarStyle: { borderTopRightRadius: 12, borderTopLeftRadius: 12 },
+          tabBarShowLabel: false,
+        }}
+      >
+        <Tab.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            tabBarIcon: (props) => (
+              <AntDesign
+                name="home"
+                size={24}
+                color={props.focused ? colors.green : "gray"}
+              />
+            ),
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{
+            tabBarIcon: (props) => (
+              <MaterialIcons
+                name="person-outline"
+                size={24}
+                color={props.focused ? colors.green : "gray"}
+              />
+            ),
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen
+          name="ChatScreen"
+          component={ChatScreen}
+          options={{
+            tabBarIcon: (props) => (
+              <MaterialCommunityIcons
+                name="message-outline"
+                size={24}
+                color={props.focused ? colors.green : "gray"}
+              />
+            ),
+            headerShown: false,
+          }}
+        />
+        <Tab.Screen
+          name="ScanScreen"
+          component={ScanScreen}
+          options={{
+            tabBarIcon: (props) => (
+              <Ionicons
+                name="scan-sharp"
+                size={24}
+                color={props.focused ? colors.green : "gray"}
+              />
+            ),
+            headerShown: false,
+          }}
+        />
       </Tab.Navigator>
     );
   };
@@ -60,7 +122,7 @@ const Navigator = () => {
           </>
         ) : (
           <>
-            <Stack.Screen name="Bottomtab" component={BottomTab} />
+            <Stack.Screen name="BottomTab" component={BottomTab} />
           </>
         )}
       </Stack.Navigator>
