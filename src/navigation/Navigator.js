@@ -14,6 +14,7 @@ const Navigator = () => {
     // <QueryClientProvider client={QueryClient}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {user ? (<>
           <Stack.Screen
             name="SignInScreen"
             component={SignInScreen}
@@ -24,8 +25,12 @@ const Navigator = () => {
             component={SignUpScreen}
             options={{ headershown: false }}
           />
+          </>
+      ):(
+
+           <>
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        </Stack.Navigator>
+          </>) } </Stack.Navigator>
       </NavigationContainer>
     // </QueryClientProvider>
   );
