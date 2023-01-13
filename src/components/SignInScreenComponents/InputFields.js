@@ -42,6 +42,7 @@ const InputFields = () => {
         console.log(res.data.message);
         dispatch(setLoggedIn(true));
         save("token", JSON.stringify(res.data.data.token));
+        save("id", JSON.stringify(res.data.data.id));
         navigation.navigate("BottomTab", { screen: "HomeScreen" });
       })
       .catch((e) => console.log(e));
