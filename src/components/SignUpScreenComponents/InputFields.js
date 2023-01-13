@@ -1,11 +1,11 @@
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React, { useEffect, useState } from "react";
+import { StyleSheet, View } from "react-native";
+import React, { useEffect } from "react";
 import Input from "../Input";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { colors } from "../../constants/colors";
 import CustomButton from "../CustomButton";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
@@ -13,7 +13,6 @@ import * as SecureStore from "expo-secure-store";
 import { setLoggedIn } from "../../store/slice/userSlice";
 
 const InputFields = () => {
-  const [temp, setTemp] = useState();
   const formScheme = yup.object({
     email: yup.string().email("error").required("error"),
     password: yup.string().min(8, "error").required("error"),
@@ -28,23 +27,6 @@ const InputFields = () => {
     await SecureStore.setItemAsync(key, value);
   }
 
-  const log = {
-    data: {
-      email: "test8@test.com",
-      id: 13,
-      name: "test8",
-      phone: "1234567898",
-      role: 3,
-      token: "QrK3DILYZ8",
-    },
-    message: "User successfully Login",
-    status: 1,
-  };
-  console.log(
-    "🚀 ~ file: InputFields.js:43 ~ InputFields ~ log",
-    JSON.stringify(log.data.token)
-  );
-
   function SignUp(values) {
     axios
       .post("http://codelumina.com/project/scanme/api/user/register", {
@@ -58,16 +40,10 @@ const InputFields = () => {
         console.log(res.data);
         save("token", JSON.stringify(res.data.data.token));
         dispatch(setLoggedIn(true));
-        navigation.navigate("HomeScreen");
+        navigation.navigate("BottomTab", { screen: "HomeScreen" });
       })
       .catch((e) => console.log(e));
   }
-
-  function ForgotPasswordButton() {
-    navigation.navigate("");
-  }
-
-  // useEffect(() => {}, [data]);
 
   return (
     <View style={styles.root}>

@@ -41,8 +41,8 @@ const InputFields = () => {
         res.data;
         console.log(res.data.message);
         dispatch(setLoggedIn(true));
-        navigation.navigate("HomeScreen");
-        save("loggedIn", "true");
+        navigation.navigate("BottomTab", { screen: "HomeScreen" });
+        save("loggedIn", JSON.stringify(res.data.data.token));
       })
       .catch((e) => console.log(e));
   }

@@ -9,10 +9,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import * as SecureStore from "expo-secure-store";
 import { setLoggedIn } from "../store/slice/userSlice";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
-
-// const loggedIn  = false
 
 const Navigator = () => {
   const dispatch = useDispatch();
@@ -28,6 +28,14 @@ const Navigator = () => {
     getValueFor("loggedIn");
     getValueFor("token");
   }, [loggedIn]);
+
+  const BottomTab = () => {
+    return (
+      <Tab.Navigator>
+        <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      </Tab.Navigator>
+    );
+  };
 
   return (
     // <QueryClientProvider client={QueryClient}>
@@ -48,7 +56,7 @@ const Navigator = () => {
           </>
         ) : (
           <>
-            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="Bottomtab" component={BottomTab} />
           </>
         )}
       </Stack.Navigator>
