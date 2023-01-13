@@ -40,6 +40,7 @@ const InputFields = () => {
           // res.json();
           res.data
           console.log(res.data.message);
+          dispatch(setLoggedIn(true))
         });
     } catch (e) {
       console.log("🚀 ~ file: InputFields.js:38 ~ Login ~ e", e);

@@ -6,15 +6,19 @@ import HomeScreen from "../screens/Main/HomeScreen";
 import SignInScreen from "../screens/Login/SignInScreen";
 import SignUpScreen from "../screens/Login/SignUpScreen";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
+
+const loggedIn = useSelector((state)=>state.user.loggedIn)
+//const loggedIn  = true
 
 const Navigator = () => {
   return (
     // <QueryClientProvider client={QueryClient}>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {user ? (<>
+      {!loggedIn? (<>
           <Stack.Screen
             name="SignInScreen"
             component={SignInScreen}
@@ -27,10 +31,10 @@ const Navigator = () => {
           />
           </>
       ):(
-
-           <>
+          <>
           <Stack.Screen name="HomeScreen" component={HomeScreen} />
-          </>) } </Stack.Navigator>
+          </>) }
+      </Stack.Navigator>
       </NavigationContainer>
     // </QueryClientProvider>
   );

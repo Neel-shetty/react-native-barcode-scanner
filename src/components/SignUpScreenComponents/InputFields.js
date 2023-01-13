@@ -78,7 +78,7 @@ const InputFields = () => {
                         <Input
                             placeholder={"Email/Username"}
                             title={"Your Email/Username"}
- }                           onChangeText={handleChange("email")}
+                            onChangeText={handleChange("email")}
                             handleBlur={handleBlur("email")}
                             value={values.email}
                             fieldType={"email"}

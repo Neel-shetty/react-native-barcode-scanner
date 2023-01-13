@@ -26,6 +26,8 @@ const Input = ({
   const [showPasswordtoggle, setShowPasswordToggle] = useState(false);
 
   const formError = useSelector((state) => state.error.error);
+  const user = useSelector((state)=> state.user.loggedIn)
+    console.log(user,"user...")
   console.log("🚀 ~ file: Input.js:34 ~ formError", formError);
   if (secureTextEntry === true && showPasswordtoggle === true) {
     secureTextEntry = false;
