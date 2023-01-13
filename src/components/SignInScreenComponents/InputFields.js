@@ -10,6 +10,7 @@ import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
 import { useQuery } from "react-query";
 import axios from "axios";
+import { setLoggedIn } from "../../store/slice/userSlice";
 
 const InputFields = () => {
   const formScheme = yup.object({
@@ -26,11 +27,11 @@ const InputFields = () => {
   }
 
   function Login(values) {
-    console.log("🚀 ~ file: InputFields.js:29 ~ Login ~ values", {
-      values,
-    });
+    // console.log("🚀 ~ file: InputFields.js:29 ~ Login ~ values", {
+    //   values,
+    // });
     // const { isLoading, error, data } = useQuery("login", () => {
-    try {
+    // try {
       axios
         .post("https://codelumina.com/project/scanme/api/user/login", {
           phone: values.phoneNumber,
@@ -38,13 +39,14 @@ const InputFields = () => {
         })
         .then((res) => {
           // res.json();
-          res.data
-          console.log(res.data.message);
-          dispatch(setLoggedIn(true))
-        });
-    } catch (e) {
-      console.log("🚀 ~ file: InputFields.js:38 ~ Login ~ e", e);
-    }
+          res.data;
+          console.log(res.data, "response data ---------");
+          dispatch(setLoggedIn(true));
+        })
+        .catch((error) => console.log(error));
+    // } catch (e) {
+      // console.log("🚀 ~ file: InputFields.js:38 ~ Login ~ e", e);
+    // }
     // });
     // console.log("🚀 ~ file: InputFields.js:26 ~ Login ~ data", data);
   }

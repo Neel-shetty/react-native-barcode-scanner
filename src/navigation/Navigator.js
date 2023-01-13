@@ -10,32 +10,35 @@ import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
-//const loggedIn = useSelector((state)=>state.user.loggedIn)
-const loggedIn  = true
+// const loggedIn  = false
 
 const Navigator = () => {
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+  console.log("🚀 ~ file: Navigator.js:17 ~ Navigator ~ loggedIn", loggedIn);
   return (
     // <QueryClientProvider client={QueryClient}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {!loggedIn? (<>
-          <Stack.Screen
-            name="SignInScreen"
-            component={SignInScreen}
-            options={{ headershown: false }}
-          />
-          <Stack.Screen
-            name="SignUpScreen"
-            component={SignUpScreen}
-            options={{ headershown: false }}
-          />
-          </>
-      ):(
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {!loggedIn ? (
           <>
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
-          </>) }
+            <Stack.Screen
+              name="SignInScreen"
+              component={SignInScreen}
+              options={{ headershown: false }}
+            />
+            <Stack.Screen
+              name="SignUpScreen"
+              component={SignUpScreen}
+              options={{ headershown: false }}
+            />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          </>
+        )}
       </Stack.Navigator>
-      </NavigationContainer>
+    </NavigationContainer>
     // </QueryClientProvider>
   );
 };
