@@ -44,6 +44,7 @@ const InputFields = () => {
           dispatch(setLoggedIn(true));
         })
         .catch((error) => console.log(error));
+        
     // } catch (e) {
       // console.log("🚀 ~ file: InputFields.js:38 ~ Login ~ e", e);
     // }
