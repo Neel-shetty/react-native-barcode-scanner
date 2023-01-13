@@ -14,10 +14,6 @@ const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
-<<<<<<< HEAD
-  console.log("🚀 ~ file: Navigator.js:17 ~ Navigator ~ loggedIn", loggedIn);
-=======
->>>>>>> fix
   return (
     // <QueryClientProvider client={QueryClient}>
     <NavigationContainer>
