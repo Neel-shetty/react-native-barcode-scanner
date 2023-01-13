@@ -24,9 +24,17 @@ const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
   const dispatch = useDispatch();
+
+  async function save(key, value) {
+    await SecureStore.setItemAsync(key, value);
+  }
+
   async function getValueFor(key) {
     let result = await SecureStore.getItemAsync(key);
     console.log("🚀 ~ file: Navigator.js:21 ~ getValueFor ~ result", result);
+    if (result === null) {
+      save("token", "false");
+    }
     if (result !== "false") {
       dispatch(setLoggedIn(true));
     }
@@ -65,7 +73,7 @@ const Navigator = () => {
             tabBarIcon: (props) => (
               <MaterialIcons
                 name="person-outline"
-                size={24}
+                size={27}
                 color={props.focused ? colors.green : "gray"}
               />
             ),
