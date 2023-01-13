@@ -27,6 +27,10 @@ const InputFields = () => {
     navigation.navigate("");
   }
 
+  async function save(key, value) {
+    await SecureStore.setItemAsync(key, value);
+  }
+
   function Login(values) {
     axios
       .post("http://codelumina.com/project/scanme/api/user/login", {
@@ -38,16 +42,10 @@ const InputFields = () => {
         console.log(res.data.message);
         dispatch(setLoggedIn(true));
         navigation.navigate("HomeScreen");
-        let result = await SecureStore.getItemAsync();
-        if (result) {
-          alert("🔐 Here's your value 🔐 \n" + result);
-        } else {
-          alert("No values stored under that key.");
-        }
+        save("loggedIn", "true");
       })
       .catch((e) => console.log(e));
   }
-  
 
   return (
     <View style={styles.root}>
