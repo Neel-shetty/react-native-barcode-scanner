@@ -10,6 +10,8 @@ import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
 import { useQuery } from "react-query";
 import axios from "axios";
+import { setLoggedIn } from "../../store/slice/userSlice";
+import * as SecureStore from "expo-secure-store";
 
 const InputFields = () => {
   const formScheme = yup.object({
@@ -26,27 +28,24 @@ const InputFields = () => {
   }
 
   function Login(values) {
-    console.log("🚀 ~ file: InputFields.js:29 ~ Login ~ values", {
-      values,
-    });
-    // const { isLoading, error, data } = useQuery("login", () => {
-    try {
-      axios
-        .post("https://codelumina.com/project/scanme/api/user/login", {
-          phone: values.phoneNumber,
-          password: values.password,
-        })
-        .then((res) => {
-          // res.json();
-          res.data
-          console.log(res.data.message);
-          dispatch(setLoggedIn(true))
-        });
-    } catch (e) {
-      console.log("🚀 ~ file: InputFields.js:38 ~ Login ~ e", e);
-    }
-    // });
-    // console.log("🚀 ~ file: InputFields.js:26 ~ Login ~ data", data);
+    axios
+      .post("http://codelumina.com/project/scanme/api/user/login", {
+        phone: values.phoneNumber,
+        password: values.password,
+      })
+      .then(async (res) => {
+        res.data;
+        console.log(res.data.message);
+        dispatch(setLoggedIn(true));
+        navigation.navigate("HomeScreen");
+        let result = await SecureStore.getItemAsync();
+        if (result) {
+          alert("🔐 Here's your value 🔐 \n" + result);
+        } else {
+          alert("No values stored under that key.");
+        }
+      })
+      .catch((e) => console.log(e));
   }
 
   return (
