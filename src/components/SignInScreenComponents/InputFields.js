@@ -1,4 +1,11 @@
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect } from "react";
 import Input from "../Input";
 import { Formik } from "formik";
@@ -40,12 +47,32 @@ const InputFields = () => {
       .then(async (res) => {
         res.data;
         console.log(res.data.message);
+        console.log(res, "if error-----------");
         dispatch(setLoggedIn(true));
         save("token", JSON.stringify(res.data.data.token));
         save("id", JSON.stringify(res.data.data.id));
         navigation.navigate("BottomTab", { screen: "HomeScreen" });
       })
-      .catch((e) => console.log(e));
+      .catch((error) => {
+        // console.log(e.toJSON());
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          Alert.alert("SignIn failed", JSON.stringify(error.response.data.message));
+          // console.log(error.response.status);
+          // console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
   }
 
   return (

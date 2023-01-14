@@ -2,13 +2,21 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import BackButton from "../BackButton";
 import { layout } from "../../constants/layout";
+import { colors } from "../../constants/colors";
 
-const Header = ({ back }) => {
+const Header = ({ back, loc }) => {
   return (
-    <View style={styles.root}>
-      <BackButton onPress={back} />
-      <Text style={styles.title}>App Name</Text>
-      <View style={{ height: 35, width: 35 }} />
+    <View
+      style={[
+        styles.root,
+        loc == "signIn" ? { justifyContent: "center" } : null,
+      ]}
+    >
+      {loc !== "signIn" ? <BackButton onPress={back} /> : null}
+      <Text style={styles.title}>
+        Scan<Text style={{ color: colors.green }}>Me</Text>
+      </Text>
+      {loc !== "signIn" ? <View style={{ height: 35, width: 35 }} /> : null}
     </View>
   );
 };
@@ -27,5 +35,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28.33,
     fontFamily: "poppins-semibold",
+    textAlign: "center",
+    // backgroundColor: "pink",
   },
 });

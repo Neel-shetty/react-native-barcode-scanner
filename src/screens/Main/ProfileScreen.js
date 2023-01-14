@@ -35,7 +35,7 @@ const ProfileScreen = () => {
   return (
     <View style={styles.root}>
       <Text>ProfileScreen</Text>
-      <Button title="Fetch" onPress={getProfile} />
+      {/* <Button title="Fetch" onPress={getProfile} /> */}
     </View>
   );
 };

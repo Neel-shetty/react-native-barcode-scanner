@@ -45,7 +45,7 @@ const SignInScreen = () => {
       style={styles.root}
     >
       <View style={styles.headerContainer} onLayout={onLayoutRootView}>
-        <Header />
+        <Header loc="signIn" />
       </View>
       <View style={styles.popupContainer}>
         <View style={styles.titleContainer}>
