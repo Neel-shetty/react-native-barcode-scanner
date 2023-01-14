@@ -34,7 +34,7 @@ const HomeScreen = () => {
   }
 
   function Logout() {
-    save("token", "false");
+    save("isLoggedIn", "false");
     dispatch(setLoggedIn(false));
   }
   return (

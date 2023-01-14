@@ -49,6 +49,7 @@ const InputFields = () => {
         console.log(res.data.message);
         console.log(res, "if error-----------");
         dispatch(setLoggedIn(true));
+        save("isLoggedIn", "true");
         save("token", JSON.stringify(res.data.data.token));
         save("id", JSON.stringify(res.data.data.id));
         navigation.navigate("BottomTab", { screen: "HomeScreen" });
@@ -59,7 +60,10 @@ const InputFields = () => {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
           console.log(error.response.data);
-          Alert.alert("SignIn failed", JSON.stringify(error.response.data.message));
+          Alert.alert(
+            "SignIn failed",
+            JSON.stringify(error.response.data.message)
+          );
           // console.log(error.response.status);
           // console.log(error.response.headers);
         } else if (error.request) {

@@ -32,16 +32,23 @@ const Navigator = () => {
   async function getValueFor(key) {
     let result = await SecureStore.getItemAsync(key);
     console.log("🚀 ~ file: Navigator.js:21 ~ getValueFor ~ result", result);
-    if (result === null) {
-      save("token", "false");
-    }
-    if (result !== "false") {
+
+    // if (result === null) {
+    //   save("isLoggedIn", "false");
+    //   // save("token", "false");
+    //   dispatch(setLoggedIn(false));
+    // }
+    if (result === "true") {
       dispatch(setLoggedIn(true));
     }
   }
   const loggedIn = useSelector((state) => state.user.loggedIn);
   useEffect(() => {
-    getValueFor("token");
+    // getValueFor("token");
+    // if (loggedIn === false) {
+    //   save("isLoggedIn", "false");
+    // }
+    getValueFor("isLoggedIn");
   }, [loggedIn]);
 
   const BottomTab = () => {

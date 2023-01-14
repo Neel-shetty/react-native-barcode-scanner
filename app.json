@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "barcode-scanner",
-    "slug": "barcode-scanner",
+    "name": "scan-me",
+    "slug": "scan-me",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,10 +25,18 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions": ["CAMERA"]
+      "permissions": [
+        "CAMERA"
+      ],
+      "package": "com.scanme.scanme"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f5ab88c1-b362-4fc5-abca-4c276d089aca"
+      }
     }
   }
 }
