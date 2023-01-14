@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "scan-me",
-    "slug": "scan-me",
+    "name": "barcode-scanner",
+    "slug": "barcode-scanner",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
