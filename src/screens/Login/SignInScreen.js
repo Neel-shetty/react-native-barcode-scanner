@@ -14,8 +14,10 @@ import InputFields from "../../components/SignInScreenComponents/InputFields";
 import BottomText from "../../components/SignInScreenComponents/BottomText";
 import { StatusBar } from "expo-status-bar";
 
-const SignInScreen = () => {
-
+const SignInScreen = ({ navigation }) => {
+  function backButton() {
+    navigation.goBack();
+  }
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -24,8 +26,8 @@ const SignInScreen = () => {
       style={styles.root}
     >
       <StatusBar style="dark" />
-      <View style={styles.headerContainer} onLayout={onLayoutRootView}>
-        <Header loc="signIn" />
+      <View style={styles.headerContainer}>
+        <Header loc="signIn" back={backButton} />
       </View>
       <View style={styles.popupContainer}>
         <View style={styles.titleContainer}>

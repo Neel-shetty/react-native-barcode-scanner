@@ -9,14 +9,17 @@ const Header = ({ back, loc }) => {
     <View
       style={[
         styles.root,
-        loc == "signIn" ? { justifyContent: "center" } : null,
+        // loc == "signIn" ? { justifyContent: "center" } : null,
       ]}
     >
-      {loc !== "signIn" ? <BackButton onPress={back} /> : null}
+      {/* {loc !== "signIn" ?  */}
+      <BackButton onPress={back} />
       <Text style={styles.title}>
         Scan<Text style={{ color: colors.green }}>Me</Text>
       </Text>
-      {loc !== "signIn" ? <View style={{ height: 35, width: 35 }} /> : null}
+      {/* {loc !== "signIn" ?  */}
+      <View style={{ height: 35, width: 35 }} />
+      {/* // : null} */}
     </View>
   );
 };

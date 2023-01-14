@@ -13,7 +13,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { colors } from "../../constants/colors";
 
-const OnboardingScreen = () => {
+const OnboardingScreen = ({ navigation }) => {
   const { fontScale } = useWindowDimensions(); // import useWindowDimensions()
   const styles = makeStyles(fontScale);
   const [fontsLoaded] = useFonts({
@@ -37,6 +37,14 @@ const OnboardingScreen = () => {
   if (!fontsLoaded) {
     return null;
   }
+
+  function SignInButton() {
+    navigation.navigate("SignInScreen");
+  }
+  function SignUpButton() {
+    navigation.navigate("SignUpScreen");
+  }
+
   return (
     <View style={styles.root} onLayout={onLayoutRootView}>
       <ImageBackground
@@ -48,6 +56,7 @@ const OnboardingScreen = () => {
           width: layout.width,
           height: layout.height,
           position: "absolute",
+          top: 0,
         }}
       />
       <View style={styles.imageContainer}>
@@ -61,19 +70,21 @@ const OnboardingScreen = () => {
         <Text style={styles.title2}>ME</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={SignInButton}>
           <View style={styles.buttonView1}>
             <Text style={styles.buttonText1}>Sign In</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={SignUpButton}>
           <View style={styles.buttonView2}>
             <Text style={styles.buttonText2}>Sign Up</Text>
           </View>
         </TouchableOpacity>
       </View>
-      <View>
-        <Text style={styles.help}>Need help?</Text>
+      <View style={{ paddingBottom: 30 }}>
+        <TouchableOpacity>
+          <Text style={styles.help}>Need help?</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -143,9 +154,10 @@ const makeStyles = (fontScale) =>
       borderRadius: 60,
       alignItems: "center",
       justifyContent: "center",
-      // shadowColor: "rgba(0,0,0,0.7)",
-      shadowOffset: { width: 5, height: 3 },
-      shadowRadius: 40,
+      shadowColor: "rgba(0,0,0,1)",
+      // shadowOffset: { width: 1, height: 3 },
+      shadowRadius: 400,
+      shadowOpacity: 1,
     },
     buttonText1: {
       fontFamily: "poppins-semibold",
