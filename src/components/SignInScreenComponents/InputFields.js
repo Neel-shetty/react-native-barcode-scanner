@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   Alert,
   Button,
   StyleSheet,
@@ -6,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../Input";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -21,6 +22,8 @@ import { setLoggedIn } from "../../store/slice/userSlice";
 import * as SecureStore from "expo-secure-store";
 
 const InputFields = () => {
+  const [loading, setLoading] = useState(false);
+  console.log("🚀 ~ file: InputFields.js:26 ~ InputFields ~ loading", loading);
   const formScheme = yup.object({
     // phoneNumber: yup.string().phoneNumber("error").required("error"),
     password: yup.string().min(8, "error").required("error"),
@@ -39,6 +42,7 @@ const InputFields = () => {
   }
 
   function Login(values) {
+    setLoading(true);
     axios
       .post("http://codelumina.com/project/scanme/api/user/login", {
         phone: values.phoneNumber,
@@ -77,6 +81,7 @@ const InputFields = () => {
         }
         console.log(error.config);
       });
+    setLoading(false);
   }
 
   return (
@@ -125,7 +130,10 @@ const InputFields = () => {
                 <Text style={styles.forgotText}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
-            <CustomButton title={"Sign In"} onPress={handleSubmit} />
+            <CustomButton
+              title={loading ? "Loading.." : "Sign In"}
+              onPress={handleSubmit}
+            />
           </View>
         )}
       </Formik>

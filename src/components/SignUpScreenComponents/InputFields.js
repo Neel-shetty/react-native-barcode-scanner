@@ -1,5 +1,5 @@
 import { Alert, StyleSheet, View } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../Input";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -13,6 +13,8 @@ import * as SecureStore from "expo-secure-store";
 import { setLoggedIn } from "../../store/slice/userSlice";
 
 const InputFields = () => {
+  const [loading, setLoading] = useState(false);
+
   const formScheme = yup.object({
     email: yup.string().email("error").required("error"),
     password: yup.string().min(8, "error").required("error"),
@@ -28,6 +30,7 @@ const InputFields = () => {
   }
 
   function SignUp(values) {
+    setLoading(true);
     axios
       .post("http://codelumina.com/project/scanme/api/user/register", {
         phone: values.phoneNumber,
@@ -67,6 +70,7 @@ const InputFields = () => {
         }
         console.log(error.config);
       });
+    setLoading(false);
   }
 
   return (
@@ -128,7 +132,10 @@ const InputFields = () => {
               errpr={errors}
             />
             <View style={{ paddingTop: 40 }}>
-              <CustomButton title={"Sign Up"} onPress={handleSubmit} />
+              <CustomButton
+                title={loading ? "Loading.." : "Sign In"}
+                onPress={handleSubmit}
+              />
             </View>
           </View>
         )}
