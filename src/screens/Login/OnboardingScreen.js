@@ -44,15 +44,18 @@ const OnboardingScreen = () => {
         resizeMode="cover"
         style={{
           flex: 1,
-          justifyContent: "center",
+          // justifyContent: "center",
           width: layout.width,
           height: layout.height,
+          position: "absolute",
         }}
       />
-      <Image
-        source={require("../../../assets/images/logoBig.png")}
-        style={styles.image}
-      />
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../../../assets/images/logoBig.png")}
+          style={styles.image}
+        />
+      </View>
       <View style={styles.titleContainer}>
         <Text style={styles.title1}>SCAN</Text>
         <Text style={styles.title2}>ME</Text>
@@ -69,6 +72,9 @@ const OnboardingScreen = () => {
           </View>
         </TouchableOpacity>
       </View>
+      <View>
+        <Text style={styles.help}>Need help?</Text>
+      </View>
     </View>
   );
 };
@@ -81,10 +87,16 @@ const makeStyles = (fontScale) =>
       backgroundColor: "white",
       alignItems: "center",
       justifyContent: "center",
+      flex: 1,
     },
     image: {
       height: 180,
       width: 180,
+    },
+    imageContainer: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
     },
     title1: {
       fontFamily: "poppins-bold",
@@ -111,6 +123,7 @@ const makeStyles = (fontScale) =>
       height: 150,
       alignItems: "center",
       justifyContent: "flex-start",
+      flex: 1,
     },
     buttonView1: {
       height: 60,
@@ -143,5 +156,15 @@ const makeStyles = (fontScale) =>
       fontFamily: "poppins-semibold",
       fontSize: 25,
       color: "black",
+    },
+    help: {
+      fontFamily: "poppins-medium",
+      fontSize: 16,
+      color: "#3e3e3d",
+    },
+    buttonContainer: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
     },
   });
