@@ -18,6 +18,7 @@ import { colors } from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import OnboardingScreen from "../screens/Login/OnboardingScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -124,6 +125,10 @@ const Navigator = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {!loggedIn ? (
           <>
+            <Stack.Screen
+              name="OnboardingScreen"
+              component={(OnboardingScreen)}
+            />
             <Stack.Screen
               name="SignInScreen"
               component={SignInScreen}
