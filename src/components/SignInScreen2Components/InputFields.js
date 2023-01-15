@@ -36,10 +36,10 @@ const InputFields = () => {
     setLoading(true);
     axios
       .post("http://codelumina.com/project/scanme/api/user/login", {
-        // phone: values.phoneNumber,
-        // password: values.password,
-        phone: "1234567890",
-        password: "12345678",
+        phone: values.phoneNumber,
+        password: values.password,
+        // phone: "1234567890",
+        // password: "12345678",
       })
       .then(async (res) => {
         res.data;
