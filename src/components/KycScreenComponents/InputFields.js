@@ -11,6 +11,7 @@ import { setLoggedIn } from "../../store/slice/userSlice";
 import * as SecureStore from "expo-secure-store";
 import Input from "./Input";
 import CustomButton from "../SignInScreen2Components/common/CustomButton";
+import UploadButton from "./UploadButton";
 
 const InputFields = () => {
   const [loading, setLoading] = useState(false);
@@ -146,9 +147,10 @@ const InputFields = () => {
                 fieldType={"address"}
                 error={errors}
               />
+              <UploadButton />
             </View>
             <View style={styles.buttonContainer}>
-              <CustomButton title={"Sign In"} onPress={handleSubmit} />
+              <CustomButton title={"Next"} onPress={handleSubmit} />
             </View>
           </View>
         )}
