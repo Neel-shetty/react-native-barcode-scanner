@@ -12,6 +12,7 @@ import { layout } from "../../constants/layout";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { colors } from "../../constants/colors";
+import { StatusBar } from "expo-status-bar";
 
 const OnboardingScreen = ({ navigation }) => {
   const { fontScale } = useWindowDimensions(); // import useWindowDimensions()
@@ -47,6 +48,7 @@ const OnboardingScreen = ({ navigation }) => {
 
   return (
     <View style={styles.root} onLayout={onLayoutRootView}>
+      <StatusBar style="dark" />
       <ImageBackground
         source={require("../../../assets/images/loginBg.png")}
         resizeMode="cover"
