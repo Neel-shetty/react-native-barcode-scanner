@@ -28,15 +28,13 @@ const SignInScreen2 = () => {
       <View style={styles.inputContainer}>
         <InputFields />
       </View>
-      <View style={styles.buttonContainer}>
-        <CustomButton title={"Sign In"} />
-      </View>
 
       <View
         style={{
           paddingBottom: 30,
           alignItems: "center",
           justifyContent: "center",
+          flex: 1,
         }}
       >
         <TouchableOpacity>
@@ -70,15 +68,14 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: "center",
     justifyContent: "center",
+    // flex: 1,
   },
   inputContainer: {
     alignItems: "center",
     justifyContent: "center",
+    flex: 1,
   },
-  buttonContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
+
   help: {
     fontFamily: "poppins-medium",
     fontSize: 16,

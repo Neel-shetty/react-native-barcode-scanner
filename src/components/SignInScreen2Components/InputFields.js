@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { colors } from "../../constants/colors";
-import CustomButton from "../CustomButton";
 import { useDispatch } from "react-redux";
 import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
@@ -11,6 +10,7 @@ import axios from "axios";
 import { setLoggedIn } from "../../store/slice/userSlice";
 import * as SecureStore from "expo-secure-store";
 import Input from "./common/Input";
+import CustomButton from "./common/CustomButton";
 
 const InputFields = () => {
   const [loading, setLoading] = useState(false);
@@ -36,8 +36,10 @@ const InputFields = () => {
     setLoading(true);
     axios
       .post("http://codelumina.com/project/scanme/api/user/login", {
-        phone: values.phoneNumber,
-        password: values.password,
+        // phone: values.phoneNumber,
+        // password: values.password,
+        phone: "1234567890",
+        password: "12345678",
       })
       .then(async (res) => {
         res.data;
@@ -65,12 +67,12 @@ const InputFields = () => {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
           // http.ClientRequest in node.js
-          console.log(error.request);
+          console.log("error request", error.request);
         } else {
           // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
         }
-        console.log(error.config);
+        console.log("error config", error.config);
       });
     setLoading(false);
   }
@@ -93,7 +95,7 @@ const InputFields = () => {
           touched,
           errors = false,
         }) => (
-          <View>
+          <View style={styles.inputConatiner}>
             {useEffect(() => {
               dispatch(setError(errors));
             }, [errors])}
@@ -125,6 +127,9 @@ const InputFields = () => {
               title={loading ? "Loading.." : "Sign In"}
               onPress={handleSubmit}
             /> */}
+            <View style={styles.buttonContainer}>
+              <CustomButton title={"Sign In"} onPress={handleSubmit} />
+            </View>
           </View>
         )}
       </Formik>
@@ -135,6 +140,7 @@ const InputFields = () => {
 export default InputFields;
 
 const styles = StyleSheet.create({
+  inputConatiner: {},
   forgotPasswordContainer: {
     alignItems: "center",
     justifyContent: "center",
@@ -142,5 +148,12 @@ const styles = StyleSheet.create({
   forgotText: {
     fontFamily: "poppins-medium",
     color: "white",
+  },
+  buttonContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  root: {
+    flex: 1,
   },
 });
