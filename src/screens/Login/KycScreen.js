@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     alignItems: "center",
     justifyContent: "center",
-    flex: 10,
+    flex: 15,
   },
   headerContainer: {
     flex: 1,

@@ -4,6 +4,9 @@ const initialState = {
   loggedIn: false,
   user: null,
   userToken: null,
+  adhaarFront: null,
+  adhaarBack: null,
+  panCard: null,
 };
 
 export const userSlice = createSlice({
@@ -19,9 +22,25 @@ export const userSlice = createSlice({
     setUserToken: (state, action) => {
       state.userToken = action.payload;
     },
+    setAdhaarFront: (state, action) => {
+      state.adhaarFront = action.payload;
+    },
+    setAdhaarBack: (state, action) => {
+      state.adhaarFront = action.payload;
+    },
+    setPanCard: (state, action) => {
+      state.adhaarFront = action.payload;
+    },
   },
 });
 
-export const { setLoggedIn, setUser, setUserToken } = userSlice.actions;
+export const {
+  setLoggedIn,
+  setUser,
+  setUserToken,
+  setAdhaarFront,
+  setAdhaarBack,
+  setPanCard,
+} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import { setLoggedIn } from "../../store/slice/userSlice";
+import { setAdhaarFront, setLoggedIn } from "../../store/slice/userSlice";
 import * as SecureStore from "expo-secure-store";
 import Input from "./Input";
 import CustomButton from "../SignInScreen2Components/common/CustomButton";
@@ -15,19 +15,21 @@ import UploadButton from "./UploadButton";
 
 const InputFields = () => {
   const [loading, setLoading] = useState(false);
+  const [uploadFiles, setUploadFiles] = useState(false);
+  const [fromData, setFormData] = useState({});
+  const [image, setImage] = useState(null);
+
   console.log("🚀 ~ file: InputFields.js:26 ~ InputFields ~ loading", loading);
   const formScheme = yup.object({
-    // phoneNumber: yup.string().phoneNumber("error").required("error"),
-    password: yup.string().min(8, "error").required("error"),
+    name: yup.string().required("error"),
     phoneNumber: yup.string().length(10, "error").required("error"),
+    phoneNumber2: yup.string().length(10, "error"),
+    email: yup.string().email("error").required("error"),
+    address: yup.string().required("error"),
   });
 
   const dispatch = useDispatch();
   const navigation = useNavigation();
-
-  function ForgotPasswordButton() {
-    navigation.navigate("");
-  }
 
   async function save(key, value) {
     await SecureStore.setItemAsync(key, value);
@@ -39,8 +41,6 @@ const InputFields = () => {
       .post("http://codelumina.com/project/scanme/api/user/login", {
         phone: values.phoneNumber,
         password: values.password,
-        // phone: "1234567890",
-        // password: "12345678",
       })
       .then(async (res) => {
         res.data;
@@ -91,6 +91,8 @@ const InputFields = () => {
         onSubmit={(values) => {
           console.log(values);
           Login(values);
+          setFormData(values);
+          // pickImage()
         }}
         validationSchema={formScheme}
       >
@@ -106,48 +108,74 @@ const InputFields = () => {
             {useEffect(() => {
               dispatch(setError(errors));
             }, [errors])}
+
             <View style={styles.inputContainer}>
-              <Input
-                placeholder={"Name"}
-                onChangeText={handleChange("name")}
-                handleBlur={handleBlur("name")}
-                value={values.name}
-                fieldType={"name"}
-                error={errors}
-              />
-              <Input
-                placeholder={"Phone Number"}
-                onChangeText={handleChange("phone")}
-                handleBlur={handleBlur("phone")}
-                value={values.phone}
-                fieldType={"phone"}
-                error={errors}
-              />
-              <Input
-                placeholder={"Phone Number 2"}
-                onChangeText={handleChange("phone2")}
-                handleBlur={handleBlur("phone2")}
-                value={values.phone2}
-                fieldType={"phone"}
-                error={errors}
-              />
-              <Input
-                placeholder={"Email"}
-                onChangeText={handleChange("email")}
-                handleBlur={handleBlur("email")}
-                value={values.email}
-                fieldType={"email"}
-                error={errors}
-              />
-              <Input
-                placeholder={"Address"}
-                onChangeText={handleChange("address")}
-                handleBlur={handleBlur("address")}
-                value={values.address}
-                fieldType={"address"}
-                error={errors}
-              />
-              <UploadButton />
+              {!uploadFiles ? (
+                <>
+                  <Input
+                    placeholder={"Name"}
+                    onChangeText={handleChange("name")}
+                    handleBlur={handleBlur("name")}
+                    value={values.name}
+                    fieldType={"name"}
+                    error={errors}
+                  />
+                  <Input
+                    placeholder={"Phone Number"}
+                    onChangeText={handleChange("phone")}
+                    handleBlur={handleBlur("phone")}
+                    value={values.phone}
+                    fieldType={"phone"}
+                    error={errors}
+                  />
+                  <Input
+                    placeholder={"Phone Number 2"}
+                    onChangeText={handleChange("phone2")}
+                    handleBlur={handleBlur("phone2")}
+                    value={values.phone2}
+                    fieldType={"phone"}
+                    error={errors}
+                  />
+                  <Input
+                    placeholder={"Email"}
+                    onChangeText={handleChange("email")}
+                    handleBlur={handleBlur("email")}
+                    value={values.email}
+                    fieldType={"email"}
+                    error={errors}
+                  />
+                  <Input
+                    placeholder={"Address"}
+                    onChangeText={handleChange("address")}
+                    handleBlur={handleBlur("address")}
+                    value={values.address}
+                    fieldType={"address"}
+                    error={errors}
+                  />
+                  <UploadButton
+                    // onPress={pickImage}
+                    title={"Adhaar Card Front"}
+                    type={"adhaarFront"}
+                  />
+                  <UploadButton
+                    // onPress={pickImage}
+                    title={"Adhaar Card Back"}
+                    type={"adhaarBack"}
+                  />
+                  <UploadButton
+                    //  onPress={pickImage}
+                    title={"Pan Card"}
+                    type={"panCard"}
+                  />
+                </>
+              ) : (
+                <>
+                  <UploadButton
+                    // onPress={pickImage}
+                    title={"Adhaar Card Front"}
+                  />
+                </>
+              )}
             </View>
             <View style={styles.buttonContainer}>
               <CustomButton title={"Next"} onPress={handleSubmit} />
@@ -178,7 +206,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: "center",
     justifyContent: "flex-end",
-    flex: 2,
+    flex: 1,
     // backgroundColor: "violet",
   },
   root: {
@@ -186,7 +214,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "coral",
   },
   inputContainer: {
-    flex: 7,
+    flex: 8,
     // backgroundColor: "pink",
     alignItems: "center",
     justifyContent: "flex-start",
