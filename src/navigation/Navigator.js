@@ -21,6 +21,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import OnboardingScreen from "../screens/Login/OnboardingScreen";
 import SignInScreen2 from "../screens/Login/SignInScreen2";
 import SignUpScreen2 from "../screens/Login/SignUpScreen2";
+import KycScreen from "../screens/Login/KycScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -132,23 +133,18 @@ const Navigator = () => {
               component={OnboardingScreen}
             />
             <Stack.Screen
-              name="SignInScreen"
-              component={SignInScreen}
-              options={{ headershown: false }}
-            />
-            <Stack.Screen
               name="SignInScreen2"
               component={SignInScreen2}
               options={{ headershown: false }}
             />
             <Stack.Screen
-              name="SignUpScreen"
-              component={SignUpScreen}
+              name="SignUpScreen2"
+              component={SignUpScreen2}
               options={{ headershown: false }}
             />
             <Stack.Screen
-              name="SignUpScreen2"
-              component={SignUpScreen2}
+              name="KycScreen"
+              component={KycScreen}
               options={{ headershown: false }}
             />
           </>

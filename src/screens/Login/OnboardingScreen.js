@@ -40,7 +40,7 @@ const OnboardingScreen = ({ navigation }) => {
   }
 
   function SignInButton() {
-    navigation.navigate("SignInScreen2");
+    navigation.navigate("KycScreen");
   }
   function SignUpButton() {
     navigation.navigate("SignUpScreen2");
