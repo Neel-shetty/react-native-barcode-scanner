@@ -9,10 +9,10 @@ import {
 import React from "react";
 import { layout } from "../../constants/layout";
 import Header from "../../components/SignInScreen2Components/Header";
-import InputFields from "../../components/SignInScreen2Components/InputFields";
+import InputFields from "../../components/SignUpScreen2Components/InputFields";
 import CustomButton from "../../components/SignInScreen2Components/common/CustomButton";
 
-const SignInScreen2 = () => {
+const SignUpScreen2 = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -29,7 +29,7 @@ const SignInScreen2 = () => {
         <Header />
       </View>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Sign In</Text>
+        <Text style={styles.title}>Register</Text>
       </View>
       <View style={styles.inputContainer}>
         <InputFields />
@@ -51,7 +51,7 @@ const SignInScreen2 = () => {
   );
 };
 
-export default SignInScreen2;
+export default SignUpScreen2;
 
 const styles = StyleSheet.create({
   root: {

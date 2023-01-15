@@ -42,7 +42,7 @@ const OnboardingScreen = ({ navigation }) => {
     navigation.navigate("SignInScreen2");
   }
   function SignUpButton() {
-    navigation.navigate("SignUpScreen");
+    navigation.navigate("SignUpScreen2");
   }
 
   return (

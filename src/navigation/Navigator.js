@@ -20,6 +20,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import OnboardingScreen from "../screens/Login/OnboardingScreen";
 import SignInScreen2 from "../screens/Login/SignInScreen2";
+import SignUpScreen2 from "../screens/Login/SignUpScreen2";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -143,6 +144,11 @@ const Navigator = () => {
             <Stack.Screen
               name="SignUpScreen"
               component={SignUpScreen}
+              options={{ headershown: false }}
+            />
+            <Stack.Screen
+              name="SignUpScreen2"
+              component={SignUpScreen2}
               options={{ headershown: false }}
             />
           </>

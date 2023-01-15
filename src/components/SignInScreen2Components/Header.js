@@ -1,12 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { layout } from "../../constants/layout";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
+  const navigation = useNavigation();
+  function onPress() {
+    navigation.goBack();
+  }
   return (
     <View style={styles.root}>
-      <Ionicons name="chevron-back" size={30} color="black" />
+      <TouchableOpacity onPress={onPress}>
+        <Ionicons name="chevron-back" size={30} color="black" />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -18,6 +25,6 @@ const styles = StyleSheet.create({
     width: layout.widthp,
     alignSelf: "center",
     justifyContent: "center",
-    marginTop:15
+    marginTop: 15,
   },
 });
