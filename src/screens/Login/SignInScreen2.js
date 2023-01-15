@@ -13,7 +13,7 @@ import CustomButton from "../../components/SignInScreen2Components/common/Custom
 
 const SignInScreen2 = () => {
   return (
-    <View>
+    <View style={styles.root}>
       <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   root: {
     alignItems: "center",
     justifyContent: "center",
+    flex: 1,
   },
   bgImage: {
     flex: 1,
@@ -68,14 +69,17 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: "center",
     justifyContent: "center",
-    // flex: 1,
+    // backgroundColor:'pink',
+    flex: 2,
   },
   inputContainer: {
     alignItems: "center",
     justifyContent: "center",
+    flex: 8,
+  },
+  headerContainer: {
     flex: 1,
   },
-
   help: {
     fontFamily: "poppins-medium",
     fontSize: 16,

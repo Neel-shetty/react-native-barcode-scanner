@@ -95,29 +95,31 @@ const InputFields = () => {
           touched,
           errors = false,
         }) => (
-          <View style={styles.inputConatiner}>
+          <View style={styles.formikConatiner}>
             {useEffect(() => {
               dispatch(setError(errors));
             }, [errors])}
-            <Input
-              placeholder={"Phone Number"}
-              title={"Your Phone Number"}
-              onChangeText={handleChange("phoneNumber")}
-              handleBlur={handleBlur("phoneNumber")}
-              value={values.phoneNumber}
-              fieldType={"phoneNumber"}
-              error={errors}
-            />
-            <Input
-              placeholder={"Password"}
-              title={"Your Password"}
-              onChangeText={handleChange("password")}
-              handleBlur={handleBlur("password")}
-              value={values.password}
-              fieldType={"password"}
-              secureTextEntry={true}
-              errpr={errors}
-            />
+            <View style={styles.inputContainer}>
+              <Input
+                placeholder={"Phone Number"}
+                title={"Your Phone Number"}
+                onChangeText={handleChange("phoneNumber")}
+                handleBlur={handleBlur("phoneNumber")}
+                value={values.phoneNumber}
+                fieldType={"phoneNumber"}
+                error={errors}
+              />
+              <Input
+                placeholder={"Password"}
+                title={"Your Password"}
+                onChangeText={handleChange("password")}
+                handleBlur={handleBlur("password")}
+                value={values.password}
+                fieldType={"password"}
+                secureTextEntry={true}
+                errpr={errors}
+              />
+            </View>
             <View style={styles.forgotPasswordContainer}>
               <TouchableOpacity onPress={ForgotPasswordButton}>
                 <Text style={styles.forgotText}>Forgot Password?</Text>
@@ -140,10 +142,14 @@ const InputFields = () => {
 export default InputFields;
 
 const styles = StyleSheet.create({
-  inputConatiner: {},
+  formikConatiner: {
+    flex: 1,
+    // backgroundColor: "pink",
+  },
   forgotPasswordContainer: {
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    flex: 1,
   },
   forgotText: {
     fontFamily: "poppins-medium",
@@ -151,9 +157,18 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
+    flex: 5,
+    // backgroundColor: "violet",
   },
   root: {
     flex: 1,
+    // backgroundColor: "coral",
+  },
+  inputContainer: {
+    flex: 3,
+    // backgroundColor: "pink",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
