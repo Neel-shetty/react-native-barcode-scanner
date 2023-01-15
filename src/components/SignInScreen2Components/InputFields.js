@@ -1,6 +1,5 @@
 import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useState } from "react";
-import Input from "../Input";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { colors } from "../../constants/colors";
@@ -11,6 +10,7 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { setLoggedIn } from "../../store/slice/userSlice";
 import * as SecureStore from "expo-secure-store";
+import Input from "./common/Input";
 
 const InputFields = () => {
   const [loading, setLoading] = useState(false);
@@ -121,10 +121,10 @@ const InputFields = () => {
                 <Text style={styles.forgotText}>Forgot Password?</Text>
               </TouchableOpacity>
             </View>
-            <CustomButton
+            {/* <CustomButton
               title={loading ? "Loading.." : "Sign In"}
               onPress={handleSubmit}
-            />
+            /> */}
           </View>
         )}
       </Formik>
@@ -135,16 +135,12 @@ const InputFields = () => {
 export default InputFields;
 
 const styles = StyleSheet.create({
-  root: {},
   forgotPasswordContainer: {
-    alignItems: "flex-end",
-    paddingRight: 15,
-    height: 50,
+    alignItems: "center",
     justifyContent: "center",
   },
   forgotText: {
-    fontFamily: "inter-regular",
-    fontSize: 16,
-    color: colors.black,
+    fontFamily: "poppins-medium",
+    color: "white",
   },
 });

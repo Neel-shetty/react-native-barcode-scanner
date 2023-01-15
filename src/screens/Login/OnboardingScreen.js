@@ -39,7 +39,7 @@ const OnboardingScreen = ({ navigation }) => {
   }
 
   function SignInButton() {
-    navigation.navigate("SignInScreen");
+    navigation.navigate("SignInScreen2");
   }
   function SignUpButton() {
     navigation.navigate("SignUpScreen");
@@ -115,9 +115,9 @@ const makeStyles = (fontScale) =>
       fontSize: 45 / fontScale,
       includeFontPadding: false,
       lineHeight: 60,
-      textShadowColor: "rgba(255,255,255,1)",
-      // textShadowOffset: { width: 5, height: 3 },
-      textShadowRadius: 30,
+      textShadowColor: "rgba(0,0,0,0.3)",
+      textShadowOffset: { width: 5, height: 3 },
+      textShadowRadius: 10,
     },
     title2: {
       fontFamily: "poppins-bold",

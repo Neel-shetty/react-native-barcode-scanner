@@ -19,6 +19,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import OnboardingScreen from "../screens/Login/OnboardingScreen";
+import SignInScreen2 from "../screens/Login/SignInScreen2";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -127,11 +128,16 @@ const Navigator = () => {
           <>
             <Stack.Screen
               name="OnboardingScreen"
-              component={(OnboardingScreen)}
+              component={OnboardingScreen}
             />
             <Stack.Screen
               name="SignInScreen"
               component={SignInScreen}
+              options={{ headershown: false }}
+            />
+            <Stack.Screen
+              name="SignInScreen2"
+              component={SignInScreen2}
               options={{ headershown: false }}
             />
             <Stack.Screen
