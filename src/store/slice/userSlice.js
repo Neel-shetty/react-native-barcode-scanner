@@ -26,10 +26,10 @@ export const userSlice = createSlice({
       state.adhaarFront = action.payload;
     },
     setAdhaarBack: (state, action) => {
-      state.adhaarFront = action.payload;
+      state.adhaarBack = action.payload;
     },
     setPanCard: (state, action) => {
-      state.adhaarFront = action.payload;
+      state.panCard = action.payload;
     },
   },
 });

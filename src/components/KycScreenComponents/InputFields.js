@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { colors } from "../../constants/colors";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
@@ -34,13 +34,22 @@ const InputFields = () => {
   async function save(key, value) {
     await SecureStore.setItemAsync(key, value);
   }
+  const af = useSelector((state) => state.user.adhaarFront);
+  const ab = useSelector((state) => state.user.adhaarBack);
+  const pc = useSelector((state) => state.user.panCard);
 
-  function Login(values) {
+  function sendKyc(values) {
     setLoading(true);
     axios
-      .post("http://codelumina.com/project/scanme/api/user/login", {
+      .post("http://codelumina.com/project/scanme/api/user/kyc/insert", {
         phone: values.phoneNumber,
         password: values.password,
+        phone2: values.phone2,
+        email: values.email,
+        address: values.address,
+        adhar_front: af,
+        adhaarBack: ab,
+        pancard: pc,
       })
       .then(async (res) => {
         res.data;
@@ -90,9 +99,6 @@ const InputFields = () => {
         }}
         onSubmit={(values) => {
           console.log(values);
-          Login(values);
-          setFormData(values);
-          // pickImage()
         }}
         validationSchema={formScheme}
       >

@@ -13,7 +13,7 @@ import {
 
 const UploadButton = ({ onPress, title, type }) => {
   const af = useSelector((state) => state.user.adhaarFront);
-  const ab = useSelector((state) => state.user.adhaarFront);
+  const ab = useSelector((state) => state.user.adhaarBack);
   const pc = useSelector((state) => state.user.panCard);
   const dispatch = useDispatch();
 
@@ -42,7 +42,7 @@ const UploadButton = ({ onPress, title, type }) => {
     }
   }
 
-  if (type === "adhaarFront" || af!==null) {
+  if (type === "adhaarFront") {
     return (
       <View style={styles.root}>
         <TouchableOpacity onPress={pickImage}>
@@ -61,7 +61,7 @@ const UploadButton = ({ onPress, title, type }) => {
     );
   }
 
-  if (type === "adhaarBack" || ab) {
+  if (type === "adhaarBack") {
     return (
       <View style={styles.root}>
         <TouchableOpacity onPress={pickImage}>
@@ -79,14 +79,14 @@ const UploadButton = ({ onPress, title, type }) => {
       </View>
     );
   }
-  if (type === "panCard" || pc) {
+  if (type === "panCard") {
     return (
       <View style={styles.root}>
         <TouchableOpacity onPress={pickImage}>
           <View style={styles.bg}>
             <View>
               <Text numberOfLines={1} style={styles.title}>
-                {ab ? `${title} uploaded` : title}
+                {pc ? `${title} uploaded` : title}
               </Text>
             </View>
             <View>
