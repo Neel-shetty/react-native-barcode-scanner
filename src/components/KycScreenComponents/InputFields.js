@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import { setAdhaarFront, setLoggedIn } from "../../store/slice/userSlice";
+import {
+  setAdhaarFront,
+  setFormSubmitted,
+  setLoggedIn,
+} from "../../store/slice/userSlice";
 import * as SecureStore from "expo-secure-store";
 import Input from "./Input";
 import CustomButton from "../SignInScreen2Components/common/CustomButton";
@@ -132,7 +136,8 @@ const InputFields = () => {
         // save("id", JSON.stringify(res.data.data.id));
         setLoading(false);
         Alert.alert("KYC information submitted", res.data.message);
-        navigation.navigate("BottomTab", { screen: "HomeScreen" });
+        
+        navigation.navigate("WaitScreen");
       })
       .catch((error) => {
         // console.log(e.toJSON());
@@ -140,8 +145,12 @@ const InputFields = () => {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
           console.log(error.response.data);
+          if (error.response.data.message === "Form Already Submitted") {
+            save("formSubmitted", "true");
+            dispatch(setFormSubmitted(true));
+          }
           Alert.alert(
-            "KYC failed",
+            "KYC submission failed",
             JSON.stringify(error.response.data.message)
           );
           setLoading(false);

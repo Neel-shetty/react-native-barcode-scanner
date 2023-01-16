@@ -8,7 +8,11 @@ import SignUpScreen from "../screens/Login/SignUpScreen";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import * as SecureStore from "expo-secure-store";
-import { setLoggedIn } from "../store/slice/userSlice";
+import {
+  setFormSubmitted,
+  setKycStatus,
+  setLoggedIn,
+} from "../store/slice/userSlice";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileScreen from "../screens/Main/ProfileScreen";
 import ChatScreen from "../screens/Main/ChatScreen";
@@ -47,14 +51,30 @@ const Navigator = () => {
       dispatch(setLoggedIn(true));
     }
   }
+
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const kycDone = useSelector((state) => state.user.kycStatus);
+
+  async function checkFormSubmitted() {
+    let result = await SecureStore.getItemAsync("formSubmitted");
+    if (result === "true") {
+      dispatch(setFormSubmitted(true));
+    }
+  }
+  async function checkKycStatus() {
+    let result = await SecureStore.getItemAsync("kyc_status");
+    if (result === "true") {
+      dispatch(setKycStatus(true));
+    }
+  }
   useEffect(() => {
     // getValueFor("token");
     // if (loggedIn === false) {
     //   save("isLoggedIn", "false");
     // }
     getValueFor("isLoggedIn");
+    checkKycStatus();
+    checkFormSubmitted();
   }, [loggedIn]);
 
   const BottomTab = () => {

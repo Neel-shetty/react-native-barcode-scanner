@@ -10,6 +10,7 @@ const initialState = {
   email: null,
   phone: null,
   kycStatus: false,
+  formSubmitted: false,
 };
 
 export const userSlice = createSlice({
@@ -43,6 +44,9 @@ export const userSlice = createSlice({
     setKycStatus: (state, action) => {
       state.kycStatus = action.payload;
     },
+    setFormSubmitted: (state, action) => {
+      state.formSubmitted = action.payload;
+    },
   },
 });
 
@@ -54,6 +58,7 @@ export const {
   setAdhaarBack,
   setPanCard,
   setKycStatus,
+  setFormSubmitted
 } = userSlice.actions;
 
 export default userSlice.reducer;
