@@ -12,6 +12,7 @@ import * as SecureStore from "expo-secure-store";
 import Input from "./Input";
 import CustomButton from "../SignInScreen2Components/common/CustomButton";
 import UploadButton from "./UploadButton";
+// import FormData from "form-data";
 
 const InputFields = () => {
   const [loading, setLoading] = useState(false);
@@ -22,8 +23,8 @@ const InputFields = () => {
   console.log("🚀 ~ file: InputFields.js:26 ~ InputFields ~ loading", loading);
   const formScheme = yup.object({
     name: yup.string().required("error"),
-    phoneNumber: yup.string().length(10, "error").required("error"),
-    phoneNumber2: yup.string().length(10, "error"),
+    phone: yup.string().length(10, "error").required("error"),
+    phone2: yup.string().length(10, "error").notRequired(),
     email: yup.string().email("error").required("error"),
     address: yup.string().required("error"),
   });
@@ -40,26 +41,58 @@ const InputFields = () => {
 
   function sendKyc(values) {
     setLoading(true);
+
+    let filename1 = af.uri.split("/").pop();
+    let filename2 = ab.uri.split("/").pop();
+    let filename3 = pc.uri.split("/").pop();
+
+    // Infer the type of the image
+    let match1 = /\.(\w+)$/.exec(filename1);
+    let type1 = match1 ? `image/${match1[1]}` : `image`;
+    let match2 = /\.(\w+)$/.exec(filename2);
+    let type2 = match2 ? `image/${match2[1]}` : `image`;
+    let match3 = /\.(\w+)$/.exec(filename3);
+    let type3 = match3 ? `image/${match3[1]}` : `image`;
+
+    let formData = new FormData();
+    formData.append("phone", values.phone);
+    formData.append("phone2", values.phone2);
+    formData.append("email", values.email);
+    formData.append("name", values.name);
+    formData.append("address", values.address);
+    formData.append("adhar_front", {
+      uri: af.uri,
+      name: filename1,
+      type: type1,
+    });
+    formData.append("adhar_back", {
+      uri: ab.uri,
+      name: filename2,
+      type: type2,
+    });
+    formData.append("pancard", { uri: pc.uri, name: filename3, type: type3 });
+    formData.append("userid", "22");
+    console.log("🚀 ~ file: InputFields.js:47 ~ sendKyc ~ formData", formData);
     axios
-      .post("http://codelumina.com/project/scanme/api/user/kyc/insert", {
-        phone: values.phoneNumber,
-        password: values.password,
-        phone2: values.phone2,
-        email: values.email,
-        address: values.address,
-        adhar_front: af,
-        adhaarBack: ab,
-        pancard: pc,
-      })
+      .post(
+        "http://codelumina.com/project/scanme/api/user/kyc/insert",
+        formData,
+        {
+          headers: {
+            // accept: "application/json",
+            accept: "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then(async (res) => {
         res.data;
-        console.log(res.data.message);
-        console.log(res, "if error-----------");
-        dispatch(setLoggedIn(true));
-        save("isLoggedIn", "true");
-        save("token", JSON.stringify(res.data.data.token));
-        save("id", JSON.stringify(res.data.data.id));
-        navigation.navigate("BottomTab", { screen: "HomeScreen" });
+        console.log(res.data);
+        // dispatch(setLoggedIn(true));
+        // save("isLoggedIn", "true");
+        // save("token", JSON.stringify(res.data.data.token));
+        // save("id", JSON.stringify(res.data.data.id));
+        // navigation.navigate("BottomTab", { screen: "HomeScreen" });
       })
       .catch((error) => {
         // console.log(e.toJSON());
@@ -99,6 +132,7 @@ const InputFields = () => {
         }}
         onSubmit={(values) => {
           console.log(values);
+          sendKyc(values);
         }}
         validationSchema={formScheme}
       >

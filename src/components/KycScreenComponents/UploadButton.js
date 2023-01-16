@@ -13,8 +13,11 @@ import {
 
 const UploadButton = ({ onPress, title, type }) => {
   const af = useSelector((state) => state.user.adhaarFront);
+  // console.log("🚀 ~ file: UploadButton.js:16 ~ UploadButton ~ af", af)
   const ab = useSelector((state) => state.user.adhaarBack);
+  // console.log("🚀 ~ file: UploadButton.js:18 ~ UploadButton ~ ab", ab)
   const pc = useSelector((state) => state.user.panCard);
+  // console.log("🚀 ~ file: UploadButton.js:20 ~ UploadButton ~ pc", pc)
   const dispatch = useDispatch();
 
   async function pickImage() {
