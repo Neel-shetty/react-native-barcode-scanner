@@ -12,6 +12,7 @@ import * as SecureStore from "expo-secure-store";
 import Input from "./Input";
 import CustomButton from "../SignInScreen2Components/common/CustomButton";
 import UploadButton from "./UploadButton";
+import InputView from "./InputView";
 // import FormData from "form-data";
 
 const InputFields = () => {
@@ -19,13 +20,15 @@ const InputFields = () => {
   const [uploadFiles, setUploadFiles] = useState(false);
   const [fromData, setFormData] = useState({});
   const [image, setImage] = useState(null);
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
 
   console.log("🚀 ~ file: InputFields.js:26 ~ InputFields ~ loading", loading);
   const formScheme = yup.object({
     name: yup.string().required("error"),
-    phone: yup.string().length(10, "error").required("error"),
+    // phone: yup.string().length(10, "error").required("error"),
     phone2: yup.string().length(10, "error").notRequired(),
-    email: yup.string().email("error").required("error"),
+    // email: yup.string().email("error").required("error"),
     address: yup.string().required("error"),
   });
 
@@ -39,8 +42,43 @@ const InputFields = () => {
   const ab = useSelector((state) => state.user.adhaarBack);
   const pc = useSelector((state) => state.user.panCard);
 
-  function sendKyc(values) {
+  async function getValuefor(key) {
+    let result = await SecureStore.getItemAsync(key);
+    // console.log(result);
+    return result;
+  }
+
+  async function getDetails() {
+    let id = await getValuefor("id");
+    console.log("🚀 ~ file: InputFields.js:53 ~ getDetails ~ id", id);
+    let token = await getValuefor("token");
+    token = token.replace(/^"(.+(?="$))"$/, "$1");
+    console.log("🚀 ~ file: InputFields.js:55 ~ getDetails ~ token", token);
+    axios
+      .post("http://codelumina.com/project/scanme/api/user/profile", {
+        userid: id,
+        token: token,
+      })
+      .then((res) => {
+        // console.log(res.data.data.email);
+        setPhone(res.data.data.phone);
+        setEmail(res.data.data.email);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log(error.message);
+        }
+      });
+  }
+
+  async function sendKyc(values) {
     setLoading(true);
+    let id = await getValuefor("id");
+    // id = JSON.stringify(id);
 
     let filename1 = af.uri.split("/").pop();
     let filename2 = ab.uri.split("/").pop();
@@ -55,9 +93,9 @@ const InputFields = () => {
     let type3 = match3 ? `image/${match3[1]}` : `image`;
 
     let formData = new FormData();
-    formData.append("phone", values.phone);
+    formData.append("phone", phone);
     formData.append("phone2", values.phone2);
-    formData.append("email", values.email);
+    formData.append("email", email);
     formData.append("name", values.name);
     formData.append("address", values.address);
     formData.append("adhar_front", {
@@ -71,7 +109,7 @@ const InputFields = () => {
       type: type2,
     });
     formData.append("pancard", { uri: pc.uri, name: filename3, type: type3 });
-    formData.append("userid", "22");
+    formData.append("userid", id);
     console.log("🚀 ~ file: InputFields.js:47 ~ sendKyc ~ formData", formData);
     axios
       .post(
@@ -92,7 +130,9 @@ const InputFields = () => {
         // save("isLoggedIn", "true");
         // save("token", JSON.stringify(res.data.data.token));
         // save("id", JSON.stringify(res.data.data.id));
-        // navigation.navigate("BottomTab", { screen: "HomeScreen" });
+        setLoading(false);
+        Alert.alert("KYC information submitted", res.data.message);
+        navigation.navigate("BottomTab", { screen: "HomeScreen" });
       })
       .catch((error) => {
         // console.log(e.toJSON());
@@ -101,9 +141,10 @@ const InputFields = () => {
           // that falls out of the range of 2xx
           console.log(error.response.data);
           Alert.alert(
-            "SignIn failed",
+            "KYC failed",
             JSON.stringify(error.response.data.message)
           );
+          setLoading(false);
           // console.log(error.response.status);
           // console.log(error.response.headers);
         } else if (error.request) {
@@ -111,23 +152,29 @@ const InputFields = () => {
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
           // http.ClientRequest in node.js
           console.log("error request", error.request);
+          setLoading(false);
         } else {
           // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
+          setLoading(false);
         }
+        // setLoading(false);
         console.log("error config", error.config);
       });
-    setLoading(false);
   }
+
+  useEffect(() => {
+    getDetails();
+  }, []);
 
   return (
     <View style={styles.root}>
       <Formik
         initialValues={{
           name: "",
-          phone: "",
+          phone: phone,
           phone2: "",
-          email: "",
+          email: email,
           address: "",
         }}
         onSubmit={(values) => {
@@ -160,14 +207,15 @@ const InputFields = () => {
                     fieldType={"name"}
                     error={errors}
                   />
-                  <Input
+                  {/* <Input
                     placeholder={"Phone Number"}
                     onChangeText={handleChange("phone")}
                     handleBlur={handleBlur("phone")}
                     value={values.phone}
                     fieldType={"phone"}
                     error={errors}
-                  />
+                  /> */}
+                  <InputView title={phone} />
                   <Input
                     placeholder={"Phone Number 2"}
                     onChangeText={handleChange("phone2")}
@@ -176,14 +224,15 @@ const InputFields = () => {
                     fieldType={"phone"}
                     error={errors}
                   />
-                  <Input
+                  {/* <Input
                     placeholder={"Email"}
                     onChangeText={handleChange("email")}
                     handleBlur={handleBlur("email")}
                     value={values.email}
                     fieldType={"email"}
                     error={errors}
-                  />
+                  /> */}
+                  <InputView title={email} />
                   <Input
                     placeholder={"Address"}
                     onChangeText={handleChange("address")}
@@ -218,7 +267,10 @@ const InputFields = () => {
               )}
             </View>
             <View style={styles.buttonContainer}>
-              <CustomButton title={"Next"} onPress={handleSubmit} />
+              <CustomButton
+                title={loading ? "Loading..." : "Next"}
+                onPress={handleSubmit}
+              />
             </View>
           </View>
         )}

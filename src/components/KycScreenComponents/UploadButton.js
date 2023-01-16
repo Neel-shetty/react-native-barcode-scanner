@@ -51,7 +51,10 @@ const UploadButton = ({ onPress, title, type }) => {
         <TouchableOpacity onPress={pickImage}>
           <View style={styles.bg}>
             <View>
-              <Text numberOfLines={1} style={styles.title}>
+              <Text
+                numberOfLines={1}
+                style={af ? [styles.title, { color: "black" }] : styles.title}
+              >
                 {af ? `${title} uploaded` : title}
               </Text>
             </View>
@@ -70,7 +73,10 @@ const UploadButton = ({ onPress, title, type }) => {
         <TouchableOpacity onPress={pickImage}>
           <View style={styles.bg}>
             <View>
-              <Text numberOfLines={1} style={styles.title}>
+              <Text
+                numberOfLines={1}
+                style={ab ? [styles.title, { color: "black" }] : styles.title}
+              >
                 {ab ? `${title} uploaded` : title}
               </Text>
             </View>
@@ -88,7 +94,10 @@ const UploadButton = ({ onPress, title, type }) => {
         <TouchableOpacity onPress={pickImage}>
           <View style={styles.bg}>
             <View>
-              <Text numberOfLines={1} style={styles.title}>
+              <Text
+                numberOfLines={1}
+                style={pc ? [styles.title, { color: "black" }] : styles.title}
+              >
                 {pc ? `${title} uploaded` : title}
               </Text>
             </View>

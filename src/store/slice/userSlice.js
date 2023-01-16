@@ -7,6 +7,8 @@ const initialState = {
   adhaarFront: null,
   adhaarBack: null,
   panCard: null,
+  email: null,
+  phone: null,
 };
 
 export const userSlice = createSlice({
@@ -30,6 +32,12 @@ export const userSlice = createSlice({
     },
     setPanCard: (state, action) => {
       state.panCard = action.payload;
+    },
+    setEmail: (state, action) => {
+      state.email = action.payload;
+    },
+    setPhone: (state, action) => {
+      state.phone = action.payload;
     },
   },
 });

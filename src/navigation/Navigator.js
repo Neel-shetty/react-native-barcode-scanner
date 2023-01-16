@@ -142,14 +142,14 @@ const Navigator = () => {
               component={SignUpScreen2}
               options={{ headershown: false }}
             />
+          </>
+        ) : (
+          <>
             <Stack.Screen
               name="KycScreen"
               component={KycScreen}
               options={{ headershown: false }}
             />
-          </>
-        ) : (
-          <>
             <Stack.Screen name="BottomTab" component={BottomTab} />
           </>
         )}

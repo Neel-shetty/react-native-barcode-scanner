@@ -38,8 +38,6 @@ const InputFields = () => {
       .post("http://codelumina.com/project/scanme/api/user/login", {
         phone: values.phoneNumber,
         password: values.password,
-        // phone: "1234567890",
-        // password: "12345678",
       })
       .then(async (res) => {
         res.data;
@@ -49,7 +47,7 @@ const InputFields = () => {
         save("isLoggedIn", "true");
         save("token", JSON.stringify(res.data.data.token));
         save("id", JSON.stringify(res.data.data.id));
-        navigation.navigate("BottomTab", { screen: "HomeScreen" });
+        navigation.navigate("KycScreen");
       })
       .catch((error) => {
         // console.log(e.toJSON());
