@@ -51,7 +51,7 @@ const InputFields = () => {
           save("kyc_status", "true");
           dispatch(setKycStatus(true));
         }
-        dispatch(setError(null));
+        dispatch(setError(false));
         navigation.navigate("KycScreen");
       })
       .catch((error) => {

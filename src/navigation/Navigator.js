@@ -54,6 +54,7 @@ const Navigator = () => {
 
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const kycDone = useSelector((state) => state.user.kycStatus);
+  const formSubmitted = useSelector((state) => state.user.formSubmitted);
 
   async function checkFormSubmitted() {
     let result = await SecureStore.getItemAsync("formSubmitted");
@@ -169,16 +170,19 @@ const Navigator = () => {
           <>
             {!kycDone ? (
               <>
-                <Stack.Screen
-                  name="KycScreen"
-                  component={KycScreen}
-                  options={{ headershown: false }}
-                />
-                <Stack.Screen
-                  name="WaitScreen"
-                  component={WaitScreen}
-                  options={{ headershown: false }}
-                />
+                {!formSubmitted ? (
+                  <Stack.Screen
+                    name="KycScreen"
+                    component={KycScreen}
+                    options={{ headershown: false }}
+                  />
+                ) : (
+                  <Stack.Screen
+                    name="WaitScreen"
+                    component={WaitScreen}
+                    options={{ headershown: false }}
+                  />
+                )}
               </>
             ) : (
               <Stack.Screen name="BottomTab" component={BottomTab} />

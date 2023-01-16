@@ -130,13 +130,9 @@ const InputFields = () => {
       .then(async (res) => {
         res.data;
         console.log(res.data);
-        // dispatch(setLoggedIn(true));
-        // save("isLoggedIn", "true");
-        // save("token", JSON.stringify(res.data.data.token));
-        // save("id", JSON.stringify(res.data.data.id));
         setLoading(false);
         Alert.alert("KYC information submitted", res.data.message);
-        
+        dispatch(setFormSubmitted(true));
         navigation.navigate("WaitScreen");
       })
       .catch((error) => {
@@ -148,6 +144,7 @@ const InputFields = () => {
           if (error.response.data.message === "Form Already Submitted") {
             save("formSubmitted", "true");
             dispatch(setFormSubmitted(true));
+            navigation.navigate("WaitScreen");
           }
           Alert.alert(
             "KYC submission failed",
