@@ -22,6 +22,7 @@ import OnboardingScreen from "../screens/Login/OnboardingScreen";
 import SignInScreen2 from "../screens/Login/SignInScreen2";
 import SignUpScreen2 from "../screens/Login/SignUpScreen2";
 import KycScreen from "../screens/Login/KycScreen";
+import WaitScreen from "../screens/Login/WaitScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -47,6 +48,7 @@ const Navigator = () => {
     }
   }
   const loggedIn = useSelector((state) => state.user.loggedIn);
+  const kycDone = useSelector((state) => state.user.kycStatus);
   useEffect(() => {
     // getValueFor("token");
     // if (loggedIn === false) {
@@ -145,12 +147,22 @@ const Navigator = () => {
           </>
         ) : (
           <>
-            <Stack.Screen
-              name="KycScreen"
-              component={KycScreen}
-              options={{ headershown: false }}
-            />
-            <Stack.Screen name="BottomTab" component={BottomTab} />
+            {!kycDone ? (
+              <>
+                <Stack.Screen
+                  name="KycScreen"
+                  component={KycScreen}
+                  options={{ headershown: false }}
+                />
+                <Stack.Screen
+                  name="WaitScreen"
+                  component={WaitScreen}
+                  options={{ headershown: false }}
+                />
+              </>
+            ) : (
+              <Stack.Screen name="BottomTab" component={BottomTab} />
+            )}
           </>
         )}
       </Stack.Navigator>

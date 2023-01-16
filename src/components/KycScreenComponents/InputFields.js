@@ -207,31 +207,15 @@ const InputFields = () => {
                     fieldType={"name"}
                     error={errors}
                   />
-                  {/* <Input
-                    placeholder={"Phone Number"}
-                    onChangeText={handleChange("phone")}
-                    handleBlur={handleBlur("phone")}
-                    value={values.phone}
-                    fieldType={"phone"}
-                    error={errors}
-                  /> */}
                   <InputView title={phone} />
                   <Input
-                    placeholder={"Phone Number 2"}
+                    placeholder={"Phone Number 2 (optional)"}
                     onChangeText={handleChange("phone2")}
                     handleBlur={handleBlur("phone2")}
                     value={values.phone2}
                     fieldType={"phone"}
                     error={errors}
                   />
-                  {/* <Input
-                    placeholder={"Email"}
-                    onChangeText={handleChange("email")}
-                    handleBlur={handleBlur("email")}
-                    value={values.email}
-                    fieldType={"email"}
-                    error={errors}
-                  /> */}
                   <InputView title={email} />
                   <Input
                     placeholder={"Address"}

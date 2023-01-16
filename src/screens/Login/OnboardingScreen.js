@@ -14,6 +14,8 @@ import * as SplashScreen from "expo-splash-screen";
 import { colors } from "../../constants/colors";
 import { StatusBar } from "expo-status-bar";
 
+SplashScreen.preventAutoHideAsync();
+
 const OnboardingScreen = ({ navigation }) => {
   const { fontScale } = useWindowDimensions(); // import useWindowDimensions()
   const styles = makeStyles(fontScale);

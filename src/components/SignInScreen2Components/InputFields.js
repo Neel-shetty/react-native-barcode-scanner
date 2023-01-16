@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { setError } from "../../store/slice/formErrorSlice";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import { setLoggedIn } from "../../store/slice/userSlice";
+import { setKycStatus, setLoggedIn } from "../../store/slice/userSlice";
 import * as SecureStore from "expo-secure-store";
 import Input from "./common/Input";
 import CustomButton from "./common/CustomButton";
@@ -41,12 +41,16 @@ const InputFields = () => {
       })
       .then(async (res) => {
         res.data;
-        console.log(res.data.message);
+        console.log(res.data);
         console.log(res, "if error-----------");
         dispatch(setLoggedIn(true));
         save("isLoggedIn", "true");
         save("token", JSON.stringify(res.data.data.token));
         save("id", JSON.stringify(res.data.data.id));
+        if (res.data.data.kyc_status === "1") {
+          save("kyc_status", "true")
+          dispatch(setKycStatus(true))
+        };
         navigation.navigate("KycScreen");
       })
       .catch((error) => {

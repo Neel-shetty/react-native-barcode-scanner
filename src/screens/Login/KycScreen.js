@@ -8,9 +8,12 @@ import {
 } from "react-native";
 import React, { useCallback } from "react";
 import { layout } from "../../constants/layout";
-import Header from "../../components/SignInScreen2Components/Header";
+import Header from "../../components/KycScreenComponents/Header";
 import InputFields from "../../components/KycScreenComponents/InputFields";
 import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
 
 const KycScreen = () => {
   const [fontsLoaded] = useFonts({
