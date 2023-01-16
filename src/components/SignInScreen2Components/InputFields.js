@@ -48,9 +48,10 @@ const InputFields = () => {
         save("token", JSON.stringify(res.data.data.token));
         save("id", JSON.stringify(res.data.data.id));
         if (res.data.data.kyc_status === "1") {
-          save("kyc_status", "true")
-          dispatch(setKycStatus(true))
-        };
+          save("kyc_status", "true");
+          dispatch(setKycStatus(true));
+        }
+        dispatch(setError(null));
         navigation.navigate("KycScreen");
       })
       .catch((error) => {

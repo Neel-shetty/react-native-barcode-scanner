@@ -26,9 +26,6 @@ const Input = ({
   const user = useSelector((state) => state.user.loggedIn);
   // console.log(user,"user...")
   console.log("🚀 ~ file: Input.js:34 ~ formError", formError);
-  if (secureTextEntry === true && showPasswordtoggle === true) {
-    secureTextEntry = false;
-  }
 
   return (
     <View style={styles.root}>
@@ -42,11 +39,25 @@ const Input = ({
             value={value}
             // secureTextEntry={secureTextEntry}
           />
-          <Ionicons
-            name="ios-checkmark-circle"
-            size={22}
-            color={formError.phoneNumber === "error" ? "red" : colors.gray}
-          />
+          {fieldType === "name" ? (
+            <Ionicons
+              name="ios-checkmark-circle"
+              size={22}
+              color={formError.name === "error" ? "red" : colors.gray}
+            />
+          ) : fieldType === "address" ? (
+            <Ionicons
+              name="ios-checkmark-circle"
+              size={22}
+              color={formError.address === "error" ? "red" : colors.gray}
+            />
+          ) : (
+            <Ionicons
+              name="ios-checkmark-circle"
+              size={22}
+              color={colors.gray}
+            />
+          )}
         </View>
       </View>
     </View>
