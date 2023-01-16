@@ -3,6 +3,7 @@ import React, { useCallback } from "react";
 import { layout } from "../../constants/layout";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,6 +30,7 @@ const WaitScreen = () => {
   }
   return (
     <View style={styles.root} onLayout={onLayoutRootView}>
+      <StatusBar style="dark" />
       <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
