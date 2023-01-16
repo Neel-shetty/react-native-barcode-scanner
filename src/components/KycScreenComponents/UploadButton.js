@@ -14,6 +14,7 @@ import {
 const UploadButton = ({ onPress, title, type }) => {
   const af = useSelector((state) => state.user.adhaarFront);
   const ab = useSelector((state) => state.user.adhaarFront);
+  const pc = useSelector((state) => state.user.panCard);
   const dispatch = useDispatch();
 
   async function pickImage() {
@@ -61,6 +62,24 @@ const UploadButton = ({ onPress, title, type }) => {
   }
 
   if (type === "adhaarBack" || ab) {
+    return (
+      <View style={styles.root}>
+        <TouchableOpacity onPress={pickImage}>
+          <View style={styles.bg}>
+            <View>
+              <Text numberOfLines={1} style={styles.title}>
+                {ab ? `${title} uploaded` : title}
+              </Text>
+            </View>
+            <View>
+              <Feather name="upload" size={24} color={colors.gray} />
+            </View>
+          </View>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+  if (type === "panCard" || pc) {
     return (
       <View style={styles.root}>
         <TouchableOpacity onPress={pickImage}>
