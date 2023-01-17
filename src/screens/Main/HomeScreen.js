@@ -51,20 +51,23 @@ const HomeScreen = () => {
         resizeMode="cover"
         style={styles.bgImage}
       />
-      <View>
+      <View style={styles.headerContainer}>
         <Header />
       </View>
-      <View>
+      <View style={styles.profileContainer}>
         <Profile />
       </View>
-      <View>
+      <View style={styles.container1}>
         <MainContainer />
       </View>
-      <Text style={styles.access}>Access</Text>
-      <View>
+      <View style={styles.container2}>
+        <View style={{ alignItems: "flex-start" }}>
+          <Text style={styles.access}>Access</Text>
+        </View>
         <SecondContainer />
       </View>
       {/* <Button title="Logout" onPress={Logout} /> */}
+      <View style={styles.dummy} />
     </View>
   );
 };
@@ -89,5 +92,29 @@ const styles = StyleSheet.create({
   access: {
     fontFamily: "poppins-semibold",
     fontSize: 25,
+  },
+  headerContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  profileContainer: {
+    flex: 4,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  container1: {
+    flex: 3,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  container2: {
+    flex: 3,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  dummy: {
+    // flex: 1,
+    minHeight: 85,
   },
 });

@@ -92,7 +92,7 @@ const MainContainer = () => {
         </View>
         <View style={{ flex: 2 }}>
           <TouchableOpacity>
-            <Text style={styles.title}>My Account</Text>
+            <Text style={styles.title}>Scanner</Text>
           </TouchableOpacity>
         </View>
       </View>

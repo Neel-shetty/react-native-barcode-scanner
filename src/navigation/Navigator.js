@@ -134,20 +134,7 @@ const Navigator = () => {
             headerShown: false,
           }}
         />
-        <Tab.Screen
-          name="ChatScreen"
-          component={ChatScreen}
-          options={{
-            tabBarIcon: (props) => (
-              <MaterialCommunityIcons
-                name="message-outline"
-                size={24}
-                color={props.focused ? colors.green : "gray"}
-              />
-            ),
-            headerShown: false,
-          }}
-        />
+        
         <Tab.Screen
           name="ScanScreen"
           component={ScanScreen}
