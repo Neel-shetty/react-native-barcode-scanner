@@ -132,9 +132,10 @@ const Navigator = () => {
               />
             ),
             headerShown: false,
+            tabBarLabel: "Terms",
           }}
         />
-        <Tab.Screen name="Terms" component={ChatScreen} />
+        <Tab.Screen name="Privacy Policy" component={ChatScreen} />
         <Tab.Screen
           name="ScanScreen"
           component={ScanScreen}
@@ -147,6 +148,7 @@ const Navigator = () => {
               />
             ),
             headerShown: false,
+            tabBarLabel: "Email",
           }}
         />
       </Tab.Navigator>

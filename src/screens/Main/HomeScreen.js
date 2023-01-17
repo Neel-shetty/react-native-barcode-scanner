@@ -10,6 +10,7 @@ import Header from "../../components/HomeScreenComponents/Header";
 import Profile from "../../components/HomeScreenComponents/Profile";
 import MainContainer from "../../components/HomeScreenComponents/MainContainer";
 import SecondContainer from "../../components/HomeScreenComponents/SecondContainer";
+import { StatusBar } from "expo-status-bar";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -51,6 +52,7 @@ const HomeScreen = () => {
         resizeMode="cover"
         style={styles.bgImage}
       />
+      <StatusBar style="dark" />
       <View style={styles.headerContainer}>
         <Header />
       </View>
@@ -104,6 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    marginTop: 10,
   },
   profileContainer: {
     flex: 4,

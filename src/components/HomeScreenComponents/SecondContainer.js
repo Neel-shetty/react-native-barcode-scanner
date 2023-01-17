@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     borderRadius: 20,
     // flexDirection: "row",
-    paddingHorizontal: 20,
+    paddingHorizontal: 40,
   },
   itemContainer: {
     alignItems: "center",

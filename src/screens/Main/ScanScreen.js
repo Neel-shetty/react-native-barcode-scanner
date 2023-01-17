@@ -31,7 +31,7 @@ const ScanScreen = () => {
 
   return (
     <View style={styles.root}>
-      <BarCodeScanner
+      {/* <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={{ height: 1280, width: 720 }}
       />
@@ -47,9 +47,9 @@ const ScanScreen = () => {
           justifyContent: "center",
           alignItems: "center",
         }}
-      >
-        {/* <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.5)" }}></View> */}
-        <Text
+      > */}
+      {/* <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.5)" }}></View> */}
+      {/* <Text
           style={[
             style.psb18,
             {
@@ -74,9 +74,10 @@ const ScanScreen = () => {
             borderBottomLeftRadius: 10,
             borderBottomRightRadius: 10,
           }}
-        ></View>
-        {/* <View style={{ flex: 1, backgroundColor: "white" }}></View> */}
-      </View>
+        ></View> */}
+      {/* <View style={{ flex: 1, backgroundColor: "white" }}></View> */}
+      {/* </View> */}
+      <Text>Email</Text>
     </View>
   );
 };

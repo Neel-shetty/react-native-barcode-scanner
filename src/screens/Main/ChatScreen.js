@@ -4,7 +4,7 @@ import React from "react";
 const ChatScreen = () => {
   return (
     <View style={styles.root}>
-      <Text>ChatScreen</Text>
+      <Text>Privacy Policy</Text>
     </View>
   );
 };

@@ -17,7 +17,11 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
       end={{ x: 1, y: 0 }}
     >
       {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
+        const { options, tabBarLabel } = descriptors[route.key];
+        console.log(
+          "🚀 ~ file: BottomTabBar.js:21 ~ {state.routes.map ~ tabBarLabel",
+          tabBarLabel
+        );
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
@@ -57,9 +61,9 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
                 >
                   {/* <NavigationIcon route={label} isFocused={isFocused} /> */}
 
-                  {label === "ProfileScreen" ? (
+                  {label === "Terms" ? (
                     <Foundation name="page" size={34} color={iconColor} />
-                  ) : label === "Terms" ? (
+                  ) : label === "Privacy Policy" ? (
                     <MaterialIcons
                       name="privacy-tip"
                       size={34}
@@ -68,6 +72,11 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
                   ) : (
                     <MaterialIcons name="email" size={34} color={iconColor} />
                   )}
+                  <Text
+                    style={{ color: iconColor, fontFamily: "poppins-regular" }}
+                  >
+                    {label}
+                  </Text>
                 </View>
               </Pressable>
             </View>
