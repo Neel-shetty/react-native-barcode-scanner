@@ -14,8 +14,9 @@ const Header = () => {
     await SecureStore.setItemAsync(key, value);
   }
   function onPress() {
-    save("isLoggedIn", "false");
-    dispatch(setLoggedIn(false));
+    // save("isLoggedIn", "false");
+    // dispatch(setLoggedIn(false));
+    navigation.goBack()
   }
   return (
     <View style={styles.root}>

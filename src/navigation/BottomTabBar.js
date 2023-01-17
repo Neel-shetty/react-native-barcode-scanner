@@ -5,6 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { colors } from "../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { Foundation } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const BottomTabBar = ({ state, descriptors, navigation }) => {
   return (
@@ -25,7 +26,7 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
             : route.name;
 
         const isFocused = state.index === index;
-        const iconColor = isFocused ? "white" : colors.gray;
+        const iconColor = isFocused ? "black" : "white";
         const onPress = () => {
           const event = navigation.emit({
             type: "tabPress",
@@ -36,35 +37,41 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
             navigation.navigate(route.name);
           }
         };
-
-        return (
-          <View key={index} style={styles.mainItemContainer}>
-            <Pressable
-              onPress={onPress}
-              // style={{
-              //   backgroundColor: isFocused ? colors.green : colors.gray,
-              //   borderRadius: 20,
-              // }}
-            >
-              <View
-                style={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flex: 1,
-                  padding: 15,
-                }}
+        if (label !== "HomeScreen")
+          return (
+            <View key={index} style={styles.mainItemContainer}>
+              <Pressable
+                onPress={onPress}
+                // style={{
+                //   backgroundColor: isFocused ? colors.green : colors.gray,
+                //   borderRadius: 20,
+                // }}
               >
-                {/* <NavigationIcon route={label} isFocused={isFocused} /> */}
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flex: 1,
+                    padding: 15,
+                  }}
+                >
+                  {/* <NavigationIcon route={label} isFocused={isFocused} /> */}
 
-                {label === "HomeScreen" ? (
-                  <Foundation name="page" size={24} color={iconColor} />
-                ) : (
-                  <Foundation name="page" size={24} color={iconColor} />
-                )}
-              </View>
-            </Pressable>
-          </View>
-        );
+                  {label === "ProfileScreen" ? (
+                    <Foundation name="page" size={34} color={iconColor} />
+                  ) : label === "Terms" ? (
+                    <MaterialIcons
+                      name="privacy-tip"
+                      size={34}
+                      color={iconColor}
+                    />
+                  ) : (
+                    <MaterialIcons name="email" size={34} color={iconColor} />
+                  )}
+                </View>
+              </Pressable>
+            </View>
+          );
       })}
     </LinearGradient>
     // </View>

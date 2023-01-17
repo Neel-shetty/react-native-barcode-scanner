@@ -11,7 +11,7 @@ const Profile = () => {
         }}
         style={styles.image}
       />
-      <Text style={styles.name}>Daniel Gallelo</Text>
+      <Text style={styles.name}>Daniel Gallego</Text>
       <TouchableOpacity>
         <LinearGradient
           colors={["white", "#c471ed"]}
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     // flex: 1,
   },
   image: {
-    height: 165,
-    width: 165,
+    height: 145,
+    width: 145,
     borderRadius: 100,
   },
   name: {

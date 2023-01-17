@@ -134,7 +134,7 @@ const Navigator = () => {
             headerShown: false,
           }}
         />
-        
+        <Tab.Screen name="Terms" component={ChatScreen} />
         <Tab.Screen
           name="ScanScreen"
           component={ScanScreen}
@@ -190,6 +190,7 @@ const Navigator = () => {
                 component={WaitScreen}
                 options={{ headershown: false }}
               />
+              <Stack.Screen name="HomeScreen" component={HomeScreen} />
               {/* )} */}
             </>
             {/* ) : ( */}

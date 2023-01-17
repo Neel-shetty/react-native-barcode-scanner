@@ -61,7 +61,14 @@ const HomeScreen = () => {
         <MainContainer />
       </View>
       <View style={styles.container2}>
-        <View style={{ alignItems: "flex-start" }}>
+        <View
+          style={{
+            alignItems: "flex-start",
+            // backgroundColor: "pink",
+            width: layout.widthp,
+            paddingLeft: 10,
+          }}
+        >
           <Text style={styles.access}>Access</Text>
         </View>
         <SecondContainer />
@@ -102,16 +109,18 @@ const styles = StyleSheet.create({
     flex: 4,
     alignItems: "center",
     justifyContent: "center",
+    paddingBottom: 20,
   },
   container1: {
-    flex: 3,
+    flex: 3.5,
     alignItems: "center",
     justifyContent: "center",
   },
   container2: {
-    flex: 3,
+    flex: 3.5,
     alignItems: "center",
     justifyContent: "center",
+    paddingBottom: 20,
   },
   dummy: {
     // flex: 1,

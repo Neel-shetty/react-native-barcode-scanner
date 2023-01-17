@@ -1,4 +1,10 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 import { Foundation } from "@expo/vector-icons";
@@ -9,7 +15,11 @@ import { AntDesign } from "@expo/vector-icons";
 
 const MainContainer = () => {
   return (
-    <View style={styles.root}>
+    <ScrollView
+      contentContainerStyle={styles.root}
+      showsVerticalScrollIndicator={false}
+      style={styles.scrollView}
+    >
       {/* <TouchableOpacity> */}
       <View style={styles.itemContainer}>
         <View style={{ flex: 1 }}>
@@ -25,12 +35,6 @@ const MainContainer = () => {
               color="white"
               style={{ transform: [{ rotate: "-45deg" }] }}
             />
-            {/* <Foundation
-              name="page"
-              size={34}
-              color={"white"}
-              style={{ transform: [{ rotate: "-45deg" }] }}
-            /> */}
           </LinearGradient>
         </View>
         <View style={{ flex: 2 }}>
@@ -54,12 +58,6 @@ const MainContainer = () => {
               color="white"
               style={{ transform: [{ rotate: "-45deg" }, { translateX: 5 }] }}
             />
-            {/* <Foundation
-              name="page"
-              size={34}
-              color={"black"}
-              style={{ transform: [{ rotate: "-45deg" }] }}
-            /> */}
           </LinearGradient>
         </View>
         <View style={{ flex: 2 }}>
@@ -82,12 +80,6 @@ const MainContainer = () => {
               color="white"
               style={{ transform: [{ rotate: "-45deg" }] }}
             />
-            {/* <Foundation
-              name="page"
-              size={34}
-              color={"black"}
-              style={{ transform: [{ rotate: "-45deg" }] }}
-            /> */}
           </LinearGradient>
         </View>
         <View style={{ flex: 2 }}>
@@ -96,15 +88,26 @@ const MainContainer = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 export default MainContainer;
 
 const styles = StyleSheet.create({
-  root: {
+  scrollView: {
     width: layout.widthp,
+    backgroundColor: "white",
+    height: 220,
+    // alignItems: "center",
+    // justifyContent: "space-evenly",
+    borderRadius: 20,
+    // flexDirection: "row",
+    paddingHorizontal: 20,
+    alignSelf: "center",
+  },
+  root: {
+    // width: layout.widthp,
     backgroundColor: "white",
     height: 200,
     alignItems: "center",
