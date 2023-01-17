@@ -27,6 +27,7 @@ import SignInScreen2 from "../screens/Login/SignInScreen2";
 import SignUpScreen2 from "../screens/Login/SignUpScreen2";
 import KycScreen from "../screens/Login/KycScreen";
 import WaitScreen from "../screens/Login/WaitScreen";
+import BottomTabBar from "./BottomTabBar";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -81,8 +82,27 @@ const Navigator = () => {
   const BottomTab = () => {
     return (
       <Tab.Navigator
+        tabBar={(props) => {
+          return (
+            <View
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: 0,
+              }}
+            >
+              <BottomTabBar {...props} />
+            </View>
+          );
+        }}
         screenOptions={{
-          tabBarStyle: { borderTopRightRadius: 12, borderTopLeftRadius: 12 },
+          // tabBarStyle: {
+          //   borderTopRightRadius: 60,
+          //   borderTopLeftRadius: 60,
+          //   height: 85,
+          // },
+
           tabBarShowLabel: false,
         }}
       >
@@ -168,25 +188,26 @@ const Navigator = () => {
           </>
         ) : (
           <>
-            {!kycDone ? (
-              <>
-                {!formSubmitted ? (
-                  <Stack.Screen
-                    name="KycScreen"
-                    component={KycScreen}
-                    options={{ headershown: false }}
-                  />
-                ) : (
-                  <Stack.Screen
-                    name="WaitScreen"
-                    component={WaitScreen}
-                    options={{ headershown: false }}
-                  />
-                )}
-              </>
-            ) : (
+            {/* {!kycDone ? ( */}
+            <>
+              {/* {!formSubmitted ? ( */}
               <Stack.Screen name="BottomTab" component={BottomTab} />
-            )}
+              <Stack.Screen
+                name="KycScreen"
+                component={KycScreen}
+                options={{ headershown: false }}
+              />
+              {/* ) : ( */}
+              <Stack.Screen
+                name="WaitScreen"
+                component={WaitScreen}
+                options={{ headershown: false }}
+              />
+              {/* )} */}
+            </>
+            {/* ) : ( */}
+            {/* <Stack.Screen name="BottomTab" component={BottomTab} /> */}
+            {/* )} */}
           </>
         )}
       </Stack.Navigator>

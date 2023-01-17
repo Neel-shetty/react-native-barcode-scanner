@@ -52,7 +52,7 @@ const InputFields = () => {
           dispatch(setKycStatus(true));
         }
         dispatch(setError(false));
-        navigation.navigate("KycScreen");
+        navigation.navigate("BottomTab", { screen: "HomeScreen" });
       })
       .catch((error) => {
         // console.log(e.toJSON());
