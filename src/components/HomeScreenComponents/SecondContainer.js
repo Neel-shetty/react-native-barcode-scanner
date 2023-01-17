@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   root: {
     width: layout.widthp,
     backgroundColor: "white",
-    height: 100,
+    height: 120,
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,
