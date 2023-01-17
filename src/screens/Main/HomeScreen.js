@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     flex: 3.5,
     alignItems: "center",
     justifyContent: "center",
+    // maxHeight: 220,
   },
   container2: {
     flex: 3.5,

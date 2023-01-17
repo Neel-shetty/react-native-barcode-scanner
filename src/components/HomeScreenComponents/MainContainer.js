@@ -15,11 +15,12 @@ import { AntDesign } from "@expo/vector-icons";
 
 const MainContainer = () => {
   return (
-    <ScrollView
-      contentContainerStyle={styles.root}
-      showsVerticalScrollIndicator={false}
-      style={styles.scrollView}
-    >
+    // <ScrollView
+    //   contentContainerStyle={styles.root}
+    //   showsVerticalScrollIndicator={false}
+    //   style={styles.scrollView}
+    // >
+    <View style={[styles.root, styles.scrollView]}>
       {/* <TouchableOpacity> */}
       <View style={styles.itemContainer}>
         <View style={{ flex: 1 }}>
@@ -88,7 +89,8 @@ const MainContainer = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScrollView>
+      {/* </ScrollView> */}
+    </View>
   );
 };
 
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
   scrollView: {
     width: layout.widthp,
     backgroundColor: "white",
-    height: 220,
+    height: 200,
     // alignItems: "center",
     // justifyContent: "space-evenly",
     borderRadius: 20,
