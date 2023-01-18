@@ -28,6 +28,7 @@ import SignUpScreen2 from "../screens/Login/SignUpScreen2";
 import KycScreen from "../screens/Login/KycScreen";
 import WaitScreen from "../screens/Login/WaitScreen";
 import BottomTabBar from "./BottomTabBar";
+import SubscriptionScreen from "../screens/Main/SubscriptionScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -193,6 +194,10 @@ const Navigator = () => {
                 options={{ headershown: false }}
               />
               <Stack.Screen name="HomeScreen" component={HomeScreen} />
+              <Stack.Screen
+                name="SubscriptionScreen"
+                component={SubscriptionScreen}
+              />
               {/* )} */}
             </>
             {/* ) : ( */}

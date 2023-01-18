@@ -54,7 +54,11 @@ const SecondContainer = () => {
           </LinearGradient>
         </View>
         <View style={{ flex: 2 }}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("SubscriptionScreen");
+            }}
+          >
             <Text style={styles.title}>Subscription</Text>
           </TouchableOpacity>
         </View>
