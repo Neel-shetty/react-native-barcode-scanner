@@ -6,14 +6,16 @@ const Banner = () => {
   return (
     <View style={styles.root}>
       <View>
-        <View>
-          <Text>holder</Text>
+        <View style={{flex:2}}>
+          <Text>Enroll your Organization, Agency or Company to get unlimited access and register unlimited vehicles, employees, users</Text>
         </View>
         <View>
-          <Text>holder</Text>
+        <View style={styles.buttonContainer}>
+          <Text>click here</Text>
+        </View>
         </View>
       </View>
-      <View>
+      <View style={{flex:1}}>
         <Text>Image</Text>
       </View>
     </View>
@@ -29,6 +31,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 200,
     width: layout.widthp,
-    backgroundColor:'pink'
+    backgroundColor:'#c471ed',
+    borderRadius:20
   },
+  buttonContainer:{
+    alignItems:'center',
+      justifyContent: 'center',
+      backgroundColor:'red',
+      height: 50,
+      width:150,
+      borderRadius:25,
+  }
 });
