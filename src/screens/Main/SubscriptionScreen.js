@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     height: layout.height,
     position: "absolute",
     top: 0,
-    transform: [{ scale: 1.8 }],
+    transform: [{ scale: 2 }],
   },
   headerTitle: {
     fontFamily: "poppins-semibold",

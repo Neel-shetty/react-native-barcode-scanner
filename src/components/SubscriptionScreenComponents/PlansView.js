@@ -4,12 +4,17 @@ import Plan from "./Plan";
 
 const PlanView = () => {
   return (
-    <View>
-      <Plan />
+    <View style={styles.root}>
+      <Plan title={"Bronze"} />
     </View>
   );
 };
 
 export default PlanView;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  root: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
