@@ -35,15 +35,21 @@ const PlanView = () => {
   return (
     <View
       // contentContainerStyle={styles.root}
-      style={{ height: 500, width: layout.width }}
+      style={{ width: layout.width }}
     >
       <FlatList
         data={plans}
         renderItem={({ item }) => {
-          return <Text>item.name</Text>;
+          return (
+            <View style={{ transform: [{ scale: 0.9 }] }}>
+              <PlanItem title={item.name} />
+            </View>
+          );
         }}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
       />
-      <View
+      {/* <View
         style={{
           flexDirection: "row",
           // backgroundColor: "violet",
@@ -55,10 +61,7 @@ const PlanView = () => {
           width: layout.widthp,
         }}
       >
-        {/* <Plan title={"Bronze"} /> */}
-        {/* <Plan title={"Bronze"} /> */}
-        <PlanItem />
-        <PlanItem />
+
       </View>
       <View
         style={{
@@ -69,9 +72,8 @@ const PlanView = () => {
           alignItems: "center",
         }}
       >
-        {/* <Plan title={"Bronze"} /> */}
-        {/* <Plan title={"Bronze"} /> */}
-      </View>
+        <PlanItem/>
+      </View> */}
     </View>
   );
 };

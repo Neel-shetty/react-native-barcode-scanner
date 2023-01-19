@@ -88,5 +88,6 @@ const styles = StyleSheet.create({
     flex: 8,
     alignItems: "center",
     justifyContent: "center",
+    // backgroundColor: "pink",
   },
 });
