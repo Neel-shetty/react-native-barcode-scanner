@@ -1,14 +1,43 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React from "react";
 
-const Category = ({ title }) => {
+const Category = ({ title, onPress, isSelected }) => {
+  console.log("🚀 ~ file: Category.js:11 ~ Category ~ isSelected", isSelected);
   return (
-    <View style={styles.root}>
-      <Text>{title}</Text>
-    </View>
+    <TouchableOpacity onPress={onPress}>
+      <View
+        style={
+          isSelected
+            ? [styles.root, { backgroundColor: "#c471ed" }]
+            : styles.root
+        }
+      >
+        <Text style={styles.title}>{title}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 export default Category;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  root: {
+    height: 40,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 5,
+    marginRight: 10,
+    paddingHorizontal: 10,
+    marginLeft: 1,
+  },
+  title: {
+    fontFamily: "poppins-semibold",
+  },
+});

@@ -5,6 +5,7 @@ import Banner from "../../components/SubscriptionScreenComponents/Banner";
 import Header from "../../components/HomeScreenComponents/Header";
 import SearchBar from "../../components/SubscriptionScreenComponents/SearchBar";
 import CategoryList from "../../components/SubscriptionScreenComponents/CategoryList";
+import PlanView from "../../components/SubscriptionScreenComponents/PlansView";
 
 const SubscriptionScreen = () => {
   return (
@@ -19,6 +20,7 @@ const SubscriptionScreen = () => {
       <Banner />
       <SearchBar />
       <CategoryList />
+      <PlanView />
     </View>
   );
 };
