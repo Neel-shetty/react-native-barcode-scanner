@@ -2,6 +2,9 @@ import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 import Banner from "../../components/SubscriptionScreenComponents/Banner";
+import Header from "../../components/HomeScreenComponents/Header";
+import SearchBar from "../../components/SubscriptionScreenComponents/SearchBar";
+import CategoryList from "../../components/SubscriptionScreenComponents/CategoryList";
 
 const SubscriptionScreen = () => {
   return (
@@ -11,8 +14,11 @@ const SubscriptionScreen = () => {
         resizeMode="cover"
         style={styles.bgImage}
       />
+      <Header />
       <Text style={styles.headerTitle}>Subscription Plans</Text>
       <Banner />
+      <SearchBar />
+      <CategoryList />
     </View>
   );
 };
