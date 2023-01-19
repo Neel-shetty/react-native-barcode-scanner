@@ -70,6 +70,6 @@ const styles = StyleSheet.create({
   root: {
     width: layout.widthp + 10,
     paddingHorizontal: 5,
-    paddingVertical: 10,
+    // paddingVertical: 10,
   },
 });

@@ -2,8 +2,10 @@ import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { layout } from "../../constants/layout";
+import { Fontisto } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
-const Plan = ({ title }) => {
+const Plan = ({ title, subtitle, icon }) => {
   return (
     <View style={styles.root}>
       <LinearGradient
@@ -16,12 +18,20 @@ const Plan = ({ title }) => {
           source={require("../../../assets/images/ss.png")}
           resizeMode="contain"
           style={styles.bgImage}
-        >
-          {/* <View style={styles.titleContainer}>
-            <Text style={styles.title}>{title}</Text>
-          </View> */}
-        </ImageBackground>
+        ></ImageBackground>
       </LinearGradient>
+      <View style={styles.titleContainer}>
+        <View>
+          <Text style={styles.title}>Silver</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Fontisto name="persons" size={14} color="white" />
+            <Text style={styles.subtitle}>+6 Entries</Text>
+          </View>
+        </View>
+        <View>
+          <SimpleLineIcons name="login" size={24} color="white" />
+        </View>
+      </View>
     </View>
   );
 };
@@ -38,8 +48,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   root: {
-    width: 130,
-    height: 130,
+    width: 200,
+    height: 200,
+    // backgroundColor: "pink",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
   },
   bgImage: {
     flex: 1,
@@ -56,13 +70,17 @@ const styles = StyleSheet.create({
     ],
   },
   titleContainer: {
-    transform: [{ rotate: "-70deg" }, { translateY: 40 }, { translateX: -30 }],
     alignItems: "center",
-    justifyContent: "center",
-    // width: 70,
-    // position: "absolute",
-    // top: 10,
-    // left: 10,
-    // backgroundColor: "pink",
+    justifyContent: "space-around",
+    flexDirection: "row",
+    marginTop: 20,
+  },
+  title: {
+    fontFamily: "poppins-semibold",
+    fontSize: 18,
+  },
+  subtitle: {
+    fontFamily: "poppins-medium",
+    paddingLeft: 10,
   },
 });

@@ -18,7 +18,11 @@ const Category = ({ title, onPress, isSelected }) => {
             : styles.root
         }
       >
-        <Text style={styles.title}>{title}</Text>
+        <Text
+          style={isSelected ? [styles.title, { color: "white" }] : styles.title}
+        >
+          {title}
+        </Text>
       </View>
     </TouchableOpacity>
   );

@@ -15,12 +15,24 @@ const SubscriptionScreen = () => {
         resizeMode="cover"
         style={styles.bgImage}
       />
-      <Header />
-      <Text style={styles.headerTitle}>Subscription Plans</Text>
-      <Banner />
-      <SearchBar />
-      <CategoryList />
-      <PlanView />
+      <View style={styles.headerContainer}>
+        <Header />
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.headerTitle}>Subscription Plans</Text>
+      </View>
+      <View style={styles.bannerContainer}>
+        <Banner />
+      </View>
+      <View style={styles.searchContainer}>
+        <SearchBar />
+      </View>
+      <View style={styles.categoryContainer}>
+        <CategoryList />
+      </View>
+      <View style={styles.planConatiner}>
+        <PlanView />
+      </View>
     </View>
   );
 };
@@ -44,5 +56,37 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: "poppins-semibold",
     fontSize: 20,
+  },
+  headerContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 15,
+  },
+  titleContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  bannerContainer: {
+    flex: 3,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  searchContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  categoryContainer: {
+    flex: 1,
+    // minHeight: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  planConatiner: {
+    flex: 8,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
