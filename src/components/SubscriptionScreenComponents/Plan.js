@@ -22,7 +22,7 @@ const Plan = ({ title, subtitle, icon }) => {
       </LinearGradient>
       <View style={styles.titleContainer}>
         <View>
-          <Text style={styles.title}>Silver</Text>
+          <Text style={styles.title}>{title ? title : "..."}</Text>
           <View style={{ flexDirection: "row" }}>
             <Fontisto name="persons" size={14} color="white" />
             <Text style={styles.subtitle}>+6 Entries</Text>

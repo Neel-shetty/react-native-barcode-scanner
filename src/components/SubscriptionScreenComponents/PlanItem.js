@@ -2,10 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Plan from "./Plan";
 
-const PlanItem = () => {
+const PlanItem = ({ title }) => {
   return (
     <View style={styles.root}>
-      <Plan />
+      <Plan title={title} />
     </View>
   );
 };
