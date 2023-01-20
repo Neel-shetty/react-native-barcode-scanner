@@ -35,7 +35,12 @@ const PlanView = () => {
   return (
     <View
       // contentContainerStyle={styles.root}
-      style={{ width: layout.width }}
+      style={{
+        width: layout.width,
+        // backgroundColor: "white",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
       <FlatList
         data={plans}
@@ -52,16 +57,17 @@ const PlanView = () => {
       {/* <View
         style={{
           flexDirection: "row",
-          // backgroundColor: "violet",
-          // transform: [{ scale: 0.8 }],
           justifyContent: "center",
           alignItems: "center",
-          // height: 130,
-          // flex: 1,
           width: layout.widthp,
         }}
       >
-
+        <View style={{ flex: 1 }}>
+          <PlanItem />
+        </View>
+        <View style={{ flex: 1 }}>
+          <PlanItem />
+        </View>
       </View>
       <View
         style={{
@@ -72,7 +78,12 @@ const PlanView = () => {
           alignItems: "center",
         }}
       >
-        <PlanItem/>
+        <View>
+          <PlanItem />
+        </View>
+        <View>
+          <PlanItem />
+        </View>
       </View> */}
     </View>
   );
