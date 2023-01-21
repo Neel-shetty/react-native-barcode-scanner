@@ -1,13 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
+import { useNavigation } from "@react-navigation/native";
 
 const CategoryButton = ({ data }) => {
+  const navigation = useNavigation();
+  function onPress() {
+    navigation.navigate("RegisterFormScreen");
+  }
   return (
     <View style={styles.root}>
-      <View style={styles.circle}>
-        <Text style={{ color: "white" }}>{data}</Text>
-      </View>
+      <TouchableOpacity onPress={onPress}>
+        <View style={styles.circle}>
+          <Text style={{ color: "white" }}>{data}</Text>
+        </View>
+      </TouchableOpacity>
       <View>
         <Text style={styles.title}>{data}</Text>
       </View>
