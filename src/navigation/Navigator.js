@@ -29,6 +29,7 @@ import KycScreen from "../screens/Login/KycScreen";
 import WaitScreen from "../screens/Login/WaitScreen";
 import BottomTabBar from "./BottomTabBar";
 import SubscriptionScreen from "../screens/Main/SubscriptionScreen";
+import RegisterScreen from "../screens/Main/RegisterScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -198,6 +199,7 @@ const Navigator = () => {
                 name="SubscriptionScreen"
                 component={SubscriptionScreen}
               />
+              <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
               {/* )} */}
             </>
             {/* ) : ( */}

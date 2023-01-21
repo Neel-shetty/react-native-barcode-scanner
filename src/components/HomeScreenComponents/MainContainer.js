@@ -12,8 +12,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const MainContainer = () => {
+  const navigation = useNavigation();
+  function RegisterButton() {
+    navigation.navigate("RegisterScreen");
+  }
   return (
     // <ScrollView
     //   contentContainerStyle={styles.root}
@@ -62,7 +67,7 @@ const MainContainer = () => {
           </LinearGradient>
         </View>
         <View style={{ flex: 2 }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={RegisterButton}>
             <Text style={styles.title}>Register Yourself</Text>
           </TouchableOpacity>
         </View>
