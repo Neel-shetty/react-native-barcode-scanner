@@ -13,7 +13,9 @@ const RegisterScreen = () => {
         resizeMode="cover"
         style={styles.bgImage}
       />
-      <Header />
+      <View style={styles.headerContainer}>
+        <Header />
+      </View>
       <View style={styles.categories}>
         <Categories />
       </View>
@@ -41,9 +43,14 @@ const styles = StyleSheet.create({
     transform: [{ scale: 2 }],
   },
   categories: {
-    flex: 1,
+    flex: 5,
   },
   organizations: {
+    flex: 5,
+  },
+  headerContainer: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

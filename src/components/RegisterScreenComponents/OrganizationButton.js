@@ -6,7 +6,7 @@ const OrganizationButton = ({ data }) => {
   return (
     <View style={styles.root}>
       <View style={styles.box}>
-        <Text>{data}</Text>
+        <Text style={{ color: "white" }}>{data}</Text>
       </View>
       <View>
         <Text style={styles.title}>{data}</Text>

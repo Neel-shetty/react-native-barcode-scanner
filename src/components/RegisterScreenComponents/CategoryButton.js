@@ -6,7 +6,7 @@ const CategoryButton = ({ data }) => {
   return (
     <View style={styles.root}>
       <View style={styles.circle}>
-        <Text>{data}</Text>
+        <Text style={{ color: "white" }}>{data}</Text>
       </View>
       <View>
         <Text style={styles.title}>{data}</Text>

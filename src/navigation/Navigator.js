@@ -30,6 +30,7 @@ import WaitScreen from "../screens/Login/WaitScreen";
 import BottomTabBar from "./BottomTabBar";
 import SubscriptionScreen from "../screens/Main/SubscriptionScreen";
 import RegisterScreen from "../screens/Main/RegisterScreen";
+import RegisterFormScreen from "../screens/Main/RegisterFormScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -179,32 +180,28 @@ const Navigator = () => {
           </>
         ) : (
           <>
-            {/* {!kycDone ? ( */}
-            <>
-              {/* {!formSubmitted ? ( */}
-              <Stack.Screen name="BottomTab" component={BottomTab} />
-              <Stack.Screen
-                name="KycScreen"
-                component={KycScreen}
-                options={{ headershown: false }}
-              />
-              {/* ) : ( */}
-              <Stack.Screen
-                name="WaitScreen"
-                component={WaitScreen}
-                options={{ headershown: false }}
-              />
-              <Stack.Screen name="HomeScreen" component={HomeScreen} />
-              <Stack.Screen
-                name="SubscriptionScreen"
-                component={SubscriptionScreen}
-              />
-              <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-              {/* )} */}
-            </>
+            <Stack.Screen name="BottomTab" component={BottomTab} />
+            <Stack.Screen
+              name="KycScreen"
+              component={KycScreen}
+              options={{ headershown: false }}
+            />
             {/* ) : ( */}
-            {/* <Stack.Screen name="BottomTab" component={BottomTab} /> */}
-            {/* )} */}
+            <Stack.Screen
+              name="WaitScreen"
+              component={WaitScreen}
+              options={{ headershown: false }}
+            />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen
+              name="SubscriptionScreen"
+              component={SubscriptionScreen}
+            />
+            <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+            <Stack.Screen
+              name="RegisterFormScreen"
+              component={RegisterFormScreen}
+            />
           </>
         )}
       </Stack.Navigator>

@@ -14,7 +14,7 @@ const Organizations = () => {
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Organizations</Text>
         <View style={{ paddingLeft: 10 }}>
-          <Octicons name="arrow-down" size={24} color="black" />
+          <Octicons name="arrow-down" size={18} color="black" />
         </View>
       </View>
       <View style={styles.listContainer}>
