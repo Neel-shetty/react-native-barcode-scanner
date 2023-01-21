@@ -30,18 +30,6 @@ const CategoryList = () => {
 
   function onPress(item) {
     const tempArray = [];
-    // function defaultTrue() {
-    //   const tmp = [];
-    //   if (
-    //     !isSelected[1] &&
-    //     !isSelected[2] &&
-    //     !isSelected[3] &&
-    //     !isSelected[4] &&
-    //     !isSelected[0]
-    //   ) {
-    //     data.
-    //   }
-    // }
     isSelected2.map((data) => {
       if (data.key === item.key) {
         tempArray.push({ ...data, selected: true });
@@ -50,7 +38,6 @@ const CategoryList = () => {
         tempArray.push({ ...data, selected: false });
       }
     });
-    // setIsSelected(tempArray);
     dispatch(setSelectedCategory(tempArray));
   }
 

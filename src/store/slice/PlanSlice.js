@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const data = [
-  { title: "All", selected: false, key: 1 },
+  { title: "All", selected: true, key: 1 },
   { title: "Monthly", selected: false, key: 2 },
   { title: "Quarterly", selected: false, key: 3 },
   { title: "Half Yearly", selected: false, key: 4 },
