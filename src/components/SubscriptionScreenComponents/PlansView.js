@@ -1,9 +1,17 @@
-import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import Plan from "./Plan";
 import { layout } from "../../constants/layout";
 import PlanItem from "./PlanItem";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 // const plans = [
 //   {
@@ -133,34 +141,149 @@ const placeholder = [
 
 const PlanView = () => {
   const [planData, setPlanData] = useState(null);
-  console.log("🚀 ~ file: PlansView.js:37 ~ PlanView ~ planData", planData[0]);
+  const [loading, setLoading] = useState(false);
+
+  const category = useSelector((state) => state.plan.category);
+  console.log("🚀 ~ file: PlansView.js:146 ~ PlanView ~ category", category);
+
+  if (planData) {
+    console.log(
+      "🚀 ~ file: PlansView.js:37 ~ PlanView ~ planData",
+      planData[1]
+    );
+  }
 
   async function getPlanData() {
-    axios
-      .post("http://codelumina.com/project/scanme/api/subscriptions")
-      .then((res) => {
-        // console.log(res.data.data)
-        setPlanData(res.data.data);
-      })
-      .catch((error) => console.log(error, error.message));
+    if (category.title === "All") {
+      setLoading(true);
+      axios
+        .post("http://codelumina.com/project/scanme/api/subscriptions")
+        .then((res) => {
+          // console.log(res.data.data)
+          setPlanData(res.data.data);
+          setLoading(false);
+        })
+        .catch((error) => console.log(error, error.message));
+    } else if (category.title === "Monthly") {
+      setLoading(true);
+      axios
+        .post("http://codelumina.com/project/scanme/api/subscription/type", {
+          plan_type: "Monthly",
+        })
+        .then((res) => {
+          console.log(res.data.data);
+          setPlanData(res.data.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response.data);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("Error", error.message);
+          }
+          console.log(error.config);
+        });
+    } else if (category.title === "Quarterly") {
+      setLoading(true);
+      axios
+        .post("http://codelumina.com/project/scanme/api/subscription/type", {
+          plan_type: "Quarterly",
+        })
+        .then((res) => {
+          console.log(res.data.data);
+          setPlanData(res.data.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response.data);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("Error", error.message);
+          }
+          console.log(error.config);
+        });
+    } else if (category.title === "Half Yearly") {
+      setLoading(true);
+      axios
+        .post("http://codelumina.com/project/scanme/api/subscription/type", {
+          plan_type: "Half Yearly",
+        })
+        .then((res) => {
+          console.log(res.data.data);
+          setPlanData(res.data.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response.data);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("Error", error.message);
+          }
+          console.log(error.config);
+        });
+    } else if (category.title === "Yearly") {
+      setLoading(true);
+      axios
+        .post("http://codelumina.com/project/scanme/api/subscription/type", {
+          plan_type: "Yearly",
+        })
+        .then((res) => {
+          console.log(res.data.data);
+          setPlanData(res.data.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          if (error.response) {
+            console.log(error.response.data);
+          } else if (error.request) {
+            console.log(error.request);
+          } else {
+            console.log("Error", error.message);
+          }
+          console.log(error.config);
+          setLoading(false);
+        });
+    } else {
+      setLoading(true);
+      axios
+        .post("http://codelumina.com/project/scanme/api/subscriptions")
+        .then((res) => {
+          // console.log(res.data.data)
+          setPlanData(res.data.data);
+          setLoading(false);
+        })
+        .catch((error) => console.log(error, error.message));
+    }
   }
 
   useEffect(() => {
-    // getPlanData();
-  }, []);
+    getPlanData();
+  }, [category]);
+
+  if (!planData || loading) {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <ActivityIndicator size={"large"} color={"white"} />
+      </View>
+    );
+  }
 
   return (
     <View
-      // contentContainerStyle={styles.root}
       style={{
         width: layout.width,
-        // backgroundColor: "white",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
       <FlatList
-        data={planData ? planData : placeholder}
+        data={planData}
         renderItem={({ item }) => {
           return (
             <View style={{ transform: [{ scale: 0.9 }] }}>
@@ -168,6 +291,7 @@ const PlanView = () => {
                 title={item.plan_name}
                 image={item.image}
                 limit={item.register_limit}
+                type={item.plan_type}
               />
             </View>
           );
@@ -175,37 +299,6 @@ const PlanView = () => {
         numColumns={2}
         showsVerticalScrollIndicator={false}
       />
-      {/* <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          width: layout.widthp,
-        }}
-      >
-        <View style={{ flex: 1 }}>
-          <PlanItem />
-        </View>
-        <View style={{ flex: 1 }}>
-          <PlanItem />
-        </View>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          // flex: 1,
-          width: layout.widthp,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <View>
-          <PlanItem />
-        </View>
-        <View>
-          <PlanItem />
-        </View>
-      </View> */}
     </View>
   );
 };

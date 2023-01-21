@@ -1,11 +1,25 @@
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { layout } from "../../constants/layout";
 import { Fontisto } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
-const Plan = ({ title, subtitle, icon }) => {
+const Plan = ({ title, subtitle, icon, image, limit, type }) => {
+  function getImageName(link) {
+    // console.log(link);
+    const temp = link.split("/");
+    const editedImage = temp[temp.length - 1];
+    // console.log(
+    //   "🚀 ~ file: Plan.js:13 ~ getImageName ~ editedImage",
+    //   editedImage
+    // );
+    return (
+      "http://codelumina.com/project/scanme/public/uploads/subscription/" +
+      editedImage
+    );
+  }
+
   return (
     <View style={styles.root}>
       <LinearGradient
@@ -15,17 +29,19 @@ const Plan = ({ title, subtitle, icon }) => {
         end={{ x: 1, y: 0 }}
       >
         <ImageBackground
-          source={require("../../../assets/images/ss.png")}
+          source={{
+            uri: getImageName(image),
+          }}
           resizeMode="contain"
           style={styles.bgImage}
         ></ImageBackground>
       </LinearGradient>
       <View style={styles.titleContainer}>
         <View>
-          <Text style={styles.title}>{title ? title : "..."}</Text>
+          <Text style={styles.title}>{title}</Text>
           <View style={{ flexDirection: "row" }}>
             <Fontisto name="persons" size={14} color="white" />
-            <Text style={styles.subtitle}>+6 Entries</Text>
+            <Text style={styles.subtitle}>+{limit} Entries</Text>
           </View>
         </View>
         <View>

@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, KeyboardAvoidingView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 import Banner from "../../components/SubscriptionScreenComponents/Banner";
@@ -9,7 +9,13 @@ import PlanView from "../../components/SubscriptionScreenComponents/PlansView";
 
 const SubscriptionScreen = () => {
   return (
-    <View style={styles.root}>
+    // <View style={styles.root}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 50 : 70}
+      enabled={false}
+      style={styles.root}
+    >
       <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
@@ -33,7 +39,9 @@ const SubscriptionScreen = () => {
       <View style={styles.planConatiner}>
         <PlanView />
       </View>
-    </View>
+    </KeyboardAvoidingView>
+
+    // </View>
   );
 };
 
