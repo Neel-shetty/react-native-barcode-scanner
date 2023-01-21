@@ -2,10 +2,10 @@ import { ImageBackground, KeyboardAvoidingView, StyleSheet, Text, View } from "r
 import React from "react";
 import { layout } from "../../constants/layout";
 import Banner from "../../components/SubscriptionScreenComponents/Banner";
-import Header from "../../components/HomeScreenComponents/Header";
 import SearchBar from "../../components/SubscriptionScreenComponents/SearchBar";
 import CategoryList from "../../components/SubscriptionScreenComponents/CategoryList";
 import PlanView from "../../components/SubscriptionScreenComponents/PlansView";
+import Header from "../../components/KycScreenComponents/Header";
 
 const SubscriptionScreen = () => {
   return (

@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 const SecondContainer = () => {
   const navigation = useNavigation();
   function KycButton() {
+    console.log("kyc button pressed");
     navigation.navigate("KycScreen");
   }
   return (

@@ -1,4 +1,11 @@
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -52,7 +59,7 @@ const InputFields = () => {
           dispatch(setKycStatus(true));
         }
         dispatch(setError(false));
-        navigation.navigate("BottomTab",{screen: "HomeScreen"});
+        navigation.navigate("BottomTab", { screen: "HomeScreen" });
       })
       .catch((error) => {
         // console.log(e.toJSON());
@@ -78,6 +85,12 @@ const InputFields = () => {
         console.log("error config", error.config);
       });
     setLoading(false);
+  }
+
+  if (loading) {
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <ActivityIndicator />
+    </View>;
   }
 
   return (
@@ -133,7 +146,11 @@ const InputFields = () => {
               onPress={handleSubmit}
             /> */}
             <View style={styles.buttonContainer}>
-              <CustomButton title={"Sign In"} onPress={handleSubmit} />
+              <CustomButton
+                title={"Sign In"}
+                onPress={handleSubmit}
+                loading={loading}
+              />
             </View>
           </View>
         )}

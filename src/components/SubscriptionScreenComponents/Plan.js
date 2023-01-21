@@ -7,13 +7,8 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 
 const Plan = ({ title, subtitle, icon, image, limit, type }) => {
   function getImageName(link) {
-    // console.log(link);
     const temp = link.split("/");
     const editedImage = temp[temp.length - 1];
-    // console.log(
-    //   "🚀 ~ file: Plan.js:13 ~ getImageName ~ editedImage",
-    //   editedImage
-    // );
     return (
       "http://codelumina.com/project/scanme/public/uploads/subscription/" +
       editedImage
