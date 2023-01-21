@@ -2,6 +2,8 @@ import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Header from "../../components/RegisterScreenComponents/Header";
 import { layout } from "../../constants/layout";
+import Categories from "../../components/RegisterScreenComponents/Categories";
+import Organizations from "../../components/RegisterScreenComponents/Organizations";
 
 const RegisterScreen = () => {
   return (
@@ -12,7 +14,12 @@ const RegisterScreen = () => {
         style={styles.bgImage}
       />
       <Header />
-      <Text>RegisterScreen</Text>
+      <View style={styles.categories}>
+        <Categories />
+      </View>
+      <View style={styles.organizations}>
+        <Organizations />
+      </View>
     </View>
   );
 };
@@ -32,5 +39,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     transform: [{ scale: 2 }],
+  },
+  categories: {
+    flex: 1,
+  },
+  organizations: {
+    flex: 1,
   },
 });
