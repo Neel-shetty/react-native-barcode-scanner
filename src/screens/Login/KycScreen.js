@@ -13,6 +13,7 @@ import InputFields from "../../components/KycScreenComponents/InputFields";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -45,33 +46,35 @@ const KycScreen = () => {
       enabled={false}
       style={styles.root}
     >
-      <ImageBackground
-        source={require("../../../assets/images/bg2.png")}
-        resizeMode="cover"
-        style={styles.bgImage}
-      />
-      <StatusBar style="dark" />
-      <View onLayout={onLayoutRootView} style={styles.headerContainer}>
-        <Header />
-      </View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>KYC</Text>
-      </View>
-      <View style={styles.inputContainer}>
-        <InputFields />
-      </View>
-      <View
-        style={{
-          paddingBottom: 30,
-          alignItems: "center",
-          justifyContent: "center",
-          flex: 1,
-        }}
-      >
-        <TouchableOpacity>
-          <Text style={styles.help}>Need help?</Text>
-        </TouchableOpacity>
-      </View>
+      <SafeAreaView style={styles.root}>
+        <ImageBackground
+          source={require("../../../assets/images/bg2.png")}
+          resizeMode="cover"
+          style={styles.bgImage}
+        />
+        <StatusBar style="dark" />
+        <View onLayout={onLayoutRootView} style={styles.headerContainer}>
+          <Header />
+        </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>KYC</Text>
+        </View>
+        <View style={styles.inputContainer}>
+          <InputFields />
+        </View>
+        <View
+          style={{
+            paddingBottom: 30,
+            alignItems: "center",
+            justifyContent: "center",
+            flex: 1,
+          }}
+        >
+          <TouchableOpacity>
+            <Text style={styles.help}>Need help?</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 };

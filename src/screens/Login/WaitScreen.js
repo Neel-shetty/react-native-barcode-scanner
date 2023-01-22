@@ -1,13 +1,25 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useCallback } from "react";
 import { layout } from "../../constants/layout";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native";
 
 SplashScreen.preventAutoHideAsync();
 
 const WaitScreen = () => {
+  const navigation = useNavigation();
+  function onPress() {
+    navigation.goBack();
+  }
+
   const [fontsLoaded] = useFonts({
     "poppins-regular": require("../../../assets/fonts/Poppins/Poppins-Regular.ttf"),
     "poppins-medium": require("../../../assets/fonts/Poppins/Poppins-Medium.ttf"),
@@ -38,6 +50,13 @@ const WaitScreen = () => {
       />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Please wait while we complete your KYC</Text>
+      </View>
+      <View style={{ flex: 1 }}>
+        <TouchableOpacity onPress={onPress}>
+          <View style={styles.buttonView2}>
+            <Text style={styles.buttonText2}>Go Back</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -71,5 +90,22 @@ const styles = StyleSheet.create({
     flex: 1,
     width: layout.widthp,
     paddingTop: 20,
+  },
+  buttonView2: {
+    height: 60,
+    width: 200,
+    backgroundColor: "white",
+    borderRadius: 60,
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "rgba(0,0,0,1)",
+    // shadowOffset: { width: 1, height: 3 },
+    shadowRadius: 400,
+    shadowOpacity: 1,
+  },
+  buttonText2: {
+    fontFamily: "poppins-semibold",
+    fontSize: 25,
+    color: "black",
   },
 });
