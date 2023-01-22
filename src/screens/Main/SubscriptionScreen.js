@@ -1,4 +1,11 @@
-import { ImageBackground, KeyboardAvoidingView, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 import Banner from "../../components/SubscriptionScreenComponents/Banner";
@@ -17,7 +24,7 @@ const SubscriptionScreen = () => {
       style={styles.root}
     >
       <ImageBackground
-        source={require("../../../assets/images/bg2.png")}
+        source={require("../../../assets/images/subscriptionBg.jpeg")}
         resizeMode="cover"
         style={styles.bgImage}
       />
@@ -59,7 +66,7 @@ const styles = StyleSheet.create({
     height: layout.height,
     position: "absolute",
     top: 0,
-    transform: [{ scale: 2 }],
+    // transform: [{ scale: 2 }],
   },
   headerTitle: {
     fontFamily: "poppins-semibold",

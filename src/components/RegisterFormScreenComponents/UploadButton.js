@@ -45,70 +45,25 @@ const UploadButton = ({ onPress, title, type }) => {
     }
   }
 
-  if (type === "adhaarFront") {
-    return (
-      <View style={styles.root}>
-        <TouchableOpacity onPress={pickImage}>
-          <View style={styles.bg}>
-            <View>
-              <Text
-                numberOfLines={1}
-                style={af ? [styles.title, { color: "black" }] : styles.title}
-              >
-                {af ? `${title} uploaded` : title}
-              </Text>
-            </View>
-            <View>
-              <Feather name="upload" size={24} color={colors.gray} />
-            </View>
+  return (
+    <View style={styles.root}>
+      <TouchableOpacity onPress={pickImage}>
+        <View style={styles.bg}>
+          <View>
+            <Text
+              numberOfLines={1}
+              style={af ? [styles.title, { color: "black" }] : styles.title}
+            >
+              {af ? `${title} uploaded` : title}
+            </Text>
           </View>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-
-  if (type === "adhaarBack") {
-    return (
-      <View style={styles.root}>
-        <TouchableOpacity onPress={pickImage}>
-          <View style={styles.bg}>
-            <View>
-              <Text
-                numberOfLines={1}
-                style={ab ? [styles.title, { color: "black" }] : styles.title}
-              >
-                {ab ? `${title} uploaded` : title}
-              </Text>
-            </View>
-            <View>
-              <Feather name="upload" size={24} color={colors.gray} />
-            </View>
+          <View>
+            <Feather name="upload" size={24} color={colors.gray} />
           </View>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-  if (type === "panCard") {
-    return (
-      <View style={styles.root}>
-        <TouchableOpacity onPress={pickImage}>
-          <View style={styles.bg}>
-            <View>
-              <Text
-                numberOfLines={1}
-                style={pc ? [styles.title, { color: "black" }] : styles.title}
-              >
-                {pc ? `${title} uploaded` : title}
-              </Text>
-            </View>
-            <View>
-              <Feather name="upload" size={24} color={colors.gray} />
-            </View>
-          </View>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
 };
 
 export default UploadButton;

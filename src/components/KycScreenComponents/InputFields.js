@@ -15,7 +15,7 @@ import {
 import * as SecureStore from "expo-secure-store";
 import Input from "./Input";
 import CustomButton from "../SignInScreen2Components/common/CustomButton";
-import UploadButton from "./UploadButton";
+import UploadButton from "../KycScreenComponents/UploadButton";
 import InputView from "./InputView";
 // import FormData from "form-data";
 

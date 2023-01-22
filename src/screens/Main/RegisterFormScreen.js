@@ -1,31 +1,32 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import Fields from "../../components/RegisterFormScreenComponents/Fields";
-
-const formData = [
-  {
-    placeHolder: "Name",
-    type: "input",
-    fieldName: "user_name",
-  },
-  {
-    placeHolder: "Adhaar",
-    type: "image",
-    fieldName: "adhaar_front",
-  },
-  {
-    placeHolder: "",
-    type: "radio",
-    Options: ["1", "2"],
-  },
-];
+import { layout } from "../../constants/layout";
 
 const RegisterFormScreen = () => {
   return (
-    <View style={styles.root}>
-      <Text>test</Text>
-      <Fields />
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 50 : 70}
+      enabled={false}
+      style={styles.root}
+    >
+      <ImageBackground
+        source={require("../../../assets/images/subscriptionBg.jpeg")}
+        resizeMode="cover"
+        style={styles.bgImage}
+      />
+      <View style={styles.root}>
+        <Text>test</Text>
+        <Fields />
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -36,5 +37,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  bgImage: {
+    flex: 1,
+    width: layout.width,
+    height: layout.height,
+    position: "absolute",
+    top: 0,
+    // transform: [{ scale: 2 }],
   },
 });
