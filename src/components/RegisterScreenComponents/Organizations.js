@@ -5,24 +5,25 @@ import OrganizationButton from "./OrganizationButton";
 import { Octicons } from "@expo/vector-icons";
 import { useState } from "react";
 import axios from "axios";
+import { useEffect } from "react";
 
 const Organizations = () => {
   const [loading, setLoading] = useState();
   const [data, setData] = useState();
-  console.log("🚀 ~ file: Categories.js:16 ~ Categories ~ data", data[1].image);
+  // console.log("🚀 ~ file: Categories.js:16 ~ Categories ~ data", data[1].image);
 
   async function fetchCategories() {
     setLoading(true);
     axios
       .post("http://codelumina.com/project/scanme/api/organization/categories")
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.data);
         setData(res.data.data);
         setLoading(false);
       })
       .catch((error) => {
         if (error.response) {
-          console.log(error.response.data);
+          // console.log(error.response.data);
           setLoading(false);
         } else if (error.request) {
           console.log(error.request);
@@ -35,7 +36,7 @@ const Organizations = () => {
   }
 
   useEffect(() => {
-    // fetchCategories();
+    fetchCategories();
   }, []);
 
   if (loading) return;
@@ -52,7 +53,7 @@ const Organizations = () => {
         <FlatList
           data={data}
           renderItem={({ item }) => {
-            return <OrganizationButton data={item} />;
+            return <OrganizationButton title={item.name} image={item.image} />;
           }}
           numColumns={3}
           showsVerticalScrollIndicator={false}

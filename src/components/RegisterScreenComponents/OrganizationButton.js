@@ -1,17 +1,17 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 
-const OrganizationButton = ({ data }) => {
+const OrganizationButton = ({ image, title }) => {
   return (
     <View style={styles.root}>
       <TouchableOpacity>
         <View style={styles.box}>
-          <Text style={{ color: "white" }}>{data}</Text>
+          <Image source={{ uri: image }} style={{ height: 70, width: 70 }} />
         </View>
       </TouchableOpacity>
       <View>
-        <Text style={styles.title}>{data}</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
     </View>
   );

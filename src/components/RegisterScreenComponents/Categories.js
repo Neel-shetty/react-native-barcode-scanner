@@ -13,7 +13,7 @@ import { useEffect } from "react";
 const Categories = () => {
   const [loading, setLoading] = useState();
   const [data, setData] = useState();
-  console.log("🚀 ~ file: Categories.js:16 ~ Categories ~ data", data[1].image)
+  // console.log("🚀 ~ file: Categories.js:16 ~ Categories ~ data", data[1].image)
 
   async function fetchCategories() {
     setLoading(true);
@@ -39,7 +39,7 @@ const Categories = () => {
   }
 
   useEffect(() => {
-    // fetchCategories();
+    fetchCategories();
   }, []);
 
   if (loading) return;
