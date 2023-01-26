@@ -2,12 +2,48 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 import CategoryButton from "./CategoryButton";
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
 
-const data = [
-  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-];
+// const data = [
+//   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+// ];
 
 const Categories = () => {
+  const [loading, setLoading] = useState();
+  const [data, setData] = useState();
+  console.log("🚀 ~ file: Categories.js:16 ~ Categories ~ data", data[1].image)
+
+  async function fetchCategories() {
+    setLoading(true);
+    axios
+      .post("http://codelumina.com/project/scanme/api/individual/categories")
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data);
+          setLoading(false);
+        } else if (error.request) {
+          console.log(error.request);
+          setLoading(false);
+        } else {
+          console.log(error.message);
+          setLoading(false);
+        }
+      });
+  }
+
+  useEffect(() => {
+    // fetchCategories();
+  }, []);
+
+  if (loading) return;
+
   return (
     <View style={styles.root}>
       <View style={styles.titleContainer}>
@@ -17,7 +53,7 @@ const Categories = () => {
         <FlatList
           data={data}
           renderItem={({ item }) => {
-            return <CategoryButton data={item} />;
+            return <CategoryButton image={item.image} title={item.name} />;
           }}
           numColumns={4}
         />
