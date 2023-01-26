@@ -20,7 +20,7 @@ const Categories = () => {
     axios
       .post("http://codelumina.com/project/scanme/api/individual/categories")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setData(res.data.data);
         setLoading(false);
       })
@@ -53,7 +53,13 @@ const Categories = () => {
         <FlatList
           data={data}
           renderItem={({ item }) => {
-            return <CategoryButton image={item.image} title={item.name} />;
+            return (
+              <CategoryButton
+                image={item.image}
+                title={item.name}
+                categoryId={item.id}
+              />
+            );
           }}
           numColumns={4}
         />

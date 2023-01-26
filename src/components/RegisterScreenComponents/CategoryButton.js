@@ -3,10 +3,10 @@ import React from "react";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
 
-const CategoryButton = ({ image, title }) => {
+const CategoryButton = ({ image, title, categoryId }) => {
   const navigation = useNavigation();
   function onPress() {
-    navigation.navigate("RegisterFormScreen");
+    navigation.navigate("RegisterFormScreen", { categoryId: categoryId });
   }
   return (
     <View style={styles.root}>

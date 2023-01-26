@@ -17,7 +17,7 @@ const Organizations = () => {
     axios
       .post("http://codelumina.com/project/scanme/api/organization/categories")
       .then((res) => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setData(res.data.data);
         setLoading(false);
       })
