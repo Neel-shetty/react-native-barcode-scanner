@@ -1,4 +1,10 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 import CategoryButton from "./CategoryButton";
@@ -42,7 +48,7 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
-  if (loading) return;
+  if (loading) return <ActivityIndicator />;
 
   return (
     <View style={styles.root}>

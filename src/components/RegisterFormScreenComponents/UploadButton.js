@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 import { colors } from "../../constants/colors";
@@ -10,8 +10,11 @@ import {
   setAdhaarFront,
   setPanCard,
 } from "../../store/slice/userSlice";
+import { useState } from "react";
 
 const UploadButton = ({ onPress, title, type }) => {
+  const [image, setImage] = useState(null);
+  console.log("🚀 ~ file: UploadButton.js:17 ~ UploadButton ~ image", image);
   const af = useSelector((state) => state.user.adhaarFront);
   // console.log("🚀 ~ file: UploadButton.js:16 ~ UploadButton ~ af", af)
   const ab = useSelector((state) => state.user.adhaarBack);
@@ -33,6 +36,7 @@ const UploadButton = ({ onPress, title, type }) => {
     console.log(result.assets[0].uri);
 
     if (!result.canceled) {
+      setImage(result.assets[0].uri);
       if (type === "adhaarFront") {
         dispatch(setAdhaarFront(result.assets[0]));
       }
@@ -49,10 +53,18 @@ const UploadButton = ({ onPress, title, type }) => {
     <View style={styles.root}>
       <TouchableOpacity onPress={pickImage}>
         <View style={styles.bg}>
+          <Image
+            source={{
+              uri: image
+                ? image
+                : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
+            }}
+            style={{ width: 50, height: 50,borderRadius:30 }}
+          />
           <View>
             <Text
               numberOfLines={1}
-              style={af ? [styles.title, { color: "black" }] : styles.title}
+              style={image?  [styles.title, { color: "black" }] : styles.title}
             >
               {af ? `${title} uploaded` : title}
             </Text>
@@ -60,6 +72,9 @@ const UploadButton = ({ onPress, title, type }) => {
           <View>
             <Feather name="upload" size={24} color={colors.gray} />
           </View>
+          {/* <View>
+            <Text>test</Text>
+          </View> */}
         </View>
       </TouchableOpacity>
     </View>
@@ -73,13 +88,13 @@ const styles = StyleSheet.create({
     width: layout.widthp,
     alignItems: "flex-start",
     justifyContent: "center",
-    height: 68,
+    height: 100,
     width: layout.widthp,
   },
   bg: {
     backgroundColor: "white",
     borderRadius: 10,
-    height: 45,
+    height: 70,
     alignItems: "center",
     justifyContent: "space-between",
     width: layout.widthp,

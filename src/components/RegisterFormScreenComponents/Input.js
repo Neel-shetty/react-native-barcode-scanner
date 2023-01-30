@@ -19,7 +19,10 @@ const Input = ({
   value,
   fieldType,
   secureTextEntry = false,
+  keyboardType,
+  name,
 }) => {
+  console.log("🚀 ~ file: Input.js:25 ~ name", name)
   const [showPasswordtoggle, setShowPasswordToggle] = useState(false);
 
   const formError = useSelector((state) => state.error.error);
@@ -37,6 +40,7 @@ const Input = ({
             onChangeText={onChangeText}
             onBlur={onBlur}
             value={value}
+            keyboardType={keyboardType}
             // secureTextEntry={secureTextEntry}
           />
           {fieldType === "name" ? (
