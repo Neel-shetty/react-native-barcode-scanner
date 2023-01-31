@@ -25,13 +25,9 @@ import CustomButton from "../SignInScreen2Components/common/CustomButton";
 const Fields = () => {
   const [loading, setLoading] = useState();
   const [data, setData] = useState([]);
-  const [response, setResponse] = useState([
-    data.map((item) => {
-      return { [item.label]: "" };
-    }),
-  ]);
+  const [response, setResponse] = useState([]);
 
-  console.log("🚀 ~ file: Fields.js:33 ~ Fields ~ response", response);
+  console.log("🚀 ~ file: Fields.js:29 ~ Fields ~ response", response);
 
   // console.log("🚀 ~ file: Fields.js:27 ~ Fields ~ data", data);
 
@@ -99,25 +95,72 @@ const Fields = () => {
   }
   useEffect(() => {
     fetchCategories();
+    defaultResponseValue();
+  }, []);
+
+  useEffect(() => {
+    onSubmit();
   }, []);
 
   if (loading) return <ActivityIndicator />;
 
-  // function defaultResponseValue() {
-  //   let temp = data.map((item) => {
-  //     return { [item.label]: "" };
-  //   });
-  //   console.log("🚀 ~ file: Fields.js:99 ~ temp ~ temp", temp);
-  //   setResponse(temp);
-  // }
-  // defaultResponseValue();
+  function defaultResponseValue() {
+    let temp = data.map((item) => {
+      return { [item.label]: "" };
+    });
+    console.log("🚀 ~ file: Fields.js:99 ~ temp ~ temp", temp);
+    setResponse(temp);
+  }
+  // setResponse(temp)
+  const onChangeText = (ind, txt, label) => {
+    console.log("onchange function");
+    let temp = response;
+    let idk = [];
+    temp.map((item, index) => {
+      const lbname = item[label];
+      if (index == ind) {
+        idk.push({ ...item, [label]: txt });
+      }
+    });
+    console.log("🚀 ~ file: Fields.js:119 ~ temp.map ~ temp", idk);
+    setResponse(idk);
+    console.log("onchange text end");
+  };
+
+  const onSelectImage = (ind, uri, label) => {
+    console.log("onselect image function");
+    let temp = response;
+    temp.map((item, index) => {
+      if (index == ind) {
+        item[label] = uri;
+      }
+    });
+    console.log("🚀 ~ file: Fields.js:119 ~ temp.map ~ temp", temp);
+    setResponse(temp);
+  };
+
+  const onSelectOption = (ind, txt, label) => {
+    console.log("onchange function");
+    let temp = response;
+    temp.map((item, index) => {
+      if (index == ind) {
+        item[label] = txt;
+      }
+    });
+    console.log("🚀 ~ file: Fields.js:119 ~ temp.map ~ temp", temp);
+    setResponse(temp);
+  };
+
+  function onSubmit() {
+    console.log("on submit --------- ");
+  }
 
   return (
     <View style={styles.root}>
       <View style={{ flex: 9 }}>
         <FlatList
           data={data}
-          renderItem={({ item }) => {
+          renderItem={({ item, index }) => {
             // console.log("🚀 ~ file: Fields.js:94 ~ Fields ~ item", item);
             if (item.field_type === "select") {
               return (
@@ -125,8 +168,9 @@ const Fields = () => {
                   <SelectDropdown
                     data={item.values}
                     defaultButtonText={`Select ${item.label}`}
-                    onSelect={(selectedItem, index) => {
+                    onSelect={(selectedItem, indx) => {
                       console.log(selectedItem, index);
+                      onSelectOption(index, selectedItem, item.label);
                     }}
                     buttonTextAfterSelection={(selectedItem, index) => {
                       // text represented after item is selected
@@ -184,8 +228,7 @@ const Fields = () => {
                   <Input
                     placeholder={item.label}
                     onChangeText={(value) => {
-                      setInputValue(item.label, value);
-                      // tempFormData.append(item.label, value);
+                      onChangeText(index, value, item.label);
                     }}
                     // value={''}
                   />
@@ -198,14 +241,21 @@ const Fields = () => {
                 <Input
                   placeholder={item.label}
                   keyboardType={"numeric"}
-                  onChangeText={(value) => setInputValue(item.id, value)}
+                  onChangeText={(value) =>
+                    onChangeText(index, value, item.label)
+                  }
                   // value={refInputs.current[item.label]}
                 />
               );
             }
             if (item.field_type === "file") {
               formData.append(item.label, "test");
-              return <UploadButton title={item.label} />;
+              return (
+                <UploadButton
+                  title={item.label}
+                  onSelectImage={(val) => onSelectImage(index, val, item.label)}
+                />
+              );
             }
           }}
         />
@@ -217,6 +267,7 @@ const Fields = () => {
           justifyContent: "center",
         }}
       >
+        <Text>{JSON.stringify(response)}</Text>
         <CustomButton
           title={"Submit"}
           onPress={() => {

@@ -12,7 +12,7 @@ import {
 } from "../../store/slice/userSlice";
 import { useState } from "react";
 
-const UploadButton = ({ onPress, title, type }) => {
+const UploadButton = ({ onPress, title, type, onSelectImage }) => {
   const [image, setImage] = useState(null);
   console.log("🚀 ~ file: UploadButton.js:17 ~ UploadButton ~ image", image);
   const af = useSelector((state) => state.user.adhaarFront);
@@ -37,6 +37,7 @@ const UploadButton = ({ onPress, title, type }) => {
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
+      onSelectImage(result.assets[0].uri);
       if (type === "adhaarFront") {
         dispatch(setAdhaarFront(result.assets[0]));
       }
