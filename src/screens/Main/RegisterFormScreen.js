@@ -8,6 +8,7 @@ import {
 import React from "react";
 import Fields from "../../components/RegisterFormScreenComponents/Fields";
 import { layout } from "../../constants/layout";
+import Header from "../../components/RegisterScreenComponents/Header";
 
 const RegisterFormScreen = () => {
   return (
@@ -23,8 +24,14 @@ const RegisterFormScreen = () => {
         style={styles.bgImage}
       />
       <View style={styles.root}>
-        <Text>test</Text>
-        <Fields />
+        <View
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <Header />
+        </View>
+        <View style={{ flex: 11 }}>
+          <Fields />
+        </View>
       </View>
     </KeyboardAvoidingView>
   );

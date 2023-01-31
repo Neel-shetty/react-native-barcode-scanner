@@ -19,44 +19,29 @@ import { layout } from "../../constants/layout";
 import { colors } from "../../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
-
-const countries = ["Egypt", "Canada", "Australia", "Ireland"];
-
-const formData = [
-  {
-    placeHolder: "Name",
-    type: "input",
-    fieldName: "user_name",
-  },
-  {
-    placeHolder: "idk",
-    type: "input",
-    fieldName: "user_name",
-  },
-  {
-    placeHolder: "Adhaar",
-    type: "image",
-    fieldName: "adhaar_front",
-  },
-  {
-    placeHolder: "",
-    type: "radio",
-    Options: ["1", "2"],
-  },
-];
+import { useRef } from "react";
+import CustomButton from "../SignInScreen2Components/common/CustomButton";
 
 const Fields = () => {
   const [loading, setLoading] = useState();
-  const [data, setData] = useState();
-  const [test, setTest] = useState();
-  // console.log("🚀 ~ file: Categories.js:16 ~ Categories ~ data", data[1].image);
+  const [data, setData] = useState([]);
+  const [response, setResponse] = useState([
+    data.map((item) => {
+      return { [item.label]: "" };
+    }),
+  ]);
+
+  console.log("🚀 ~ file: Fields.js:33 ~ Fields ~ response", response);
+
+  // console.log("🚀 ~ file: Fields.js:27 ~ Fields ~ data", data);
+
   const route = useRoute();
   const formData = new FormData();
 
-  console.log(
-    "🚀 ~ file: Fields.js:38 ~ Fields ~ route",
-    route.params.categoryId
-  );
+  function submit() {
+    // Alert.alert("Success", "Data submitted successfully");
+  }
+
   async function fetchCategories() {
     setLoading(true);
     axios
@@ -64,7 +49,7 @@ const Fields = () => {
         `http://codelumina.com/project/scanme/api/dyanmic/form?category_id=${route?.params?.categoryId}`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setData(res.data.data);
         setLoading(false);
       })
@@ -96,7 +81,7 @@ const Fields = () => {
         gender: "Male",
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         Alert.alert("sent data", JSON.stringify(res.data));
       })
       .catch((error) => {
@@ -112,92 +97,136 @@ const Fields = () => {
         }
       });
   }
-
   useEffect(() => {
     fetchCategories();
   }, []);
 
   if (loading) return <ActivityIndicator />;
 
+  // function defaultResponseValue() {
+  //   let temp = data.map((item) => {
+  //     return { [item.label]: "" };
+  //   });
+  //   console.log("🚀 ~ file: Fields.js:99 ~ temp ~ temp", temp);
+  //   setResponse(temp);
+  // }
+  // defaultResponseValue();
+
   return (
     <View style={styles.root}>
-      <Text>Fields</Text>
-      <FlatList
-        data={data}
-        renderItem={({ item }) => {
-          console.log("🚀 ~ file: Fields.js:94 ~ Fields ~ item", item);
-          if (item.field_type === "select") {
-            formData.append(item.label, "test");
-            return (
-              <View style={{ paddingVertical: 10 }}>
-                <SelectDropdown
-                  data={item.values}
-                  defaultButtonText={`Select ${item.label}`}
-                  onSelect={(selectedItem, index) => {
-                    console.log(selectedItem, index);
-                  }}
-                  buttonTextAfterSelection={(selectedItem, index) => {
-                    // text represented after item is selected
-                    // if data array is an array of objects then return selectedItem.property to render after item is selected
-                    return (
-                      <Text
+      <View style={{ flex: 9 }}>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => {
+            // console.log("🚀 ~ file: Fields.js:94 ~ Fields ~ item", item);
+            if (item.field_type === "select") {
+              return (
+                <View style={{ paddingVertical: 10 }}>
+                  <SelectDropdown
+                    data={item.values}
+                    defaultButtonText={`Select ${item.label}`}
+                    onSelect={(selectedItem, index) => {
+                      console.log(selectedItem, index);
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                      // text represented after item is selected
+                      // if data array is an array of objects then return selectedItem.property to render after item is selected
+                      return (
+                        <Text
+                          style={{
+                            color: colors.black,
+                          }}
+                        >
+                          {selectedItem}
+                        </Text>
+                      );
+                    }}
+                    rowTextForSelection={(item, index) => {
+                      // text represented for each item in dropdown
+                      // if data array is an array of objects then return item.property to represent item in dropdown
+                      return item;
+                    }}
+                    buttonStyle={{
+                      width: layout.widthp,
+                      backgroundColor: "white",
+                      borderRadius: 10,
+                      height: 45,
+                    }}
+                    buttonTextStyle={{
+                      fontFamily: "inter-semibold",
+                      color: "#9e9e9e",
+                    }}
+                    renderDropdownIcon={() => (
+                      <View
                         style={{
-                          color: colors.black,
+                          alignItems: "center",
+                          justifyContent: "center",
                         }}
                       >
-                        {selectedItem}
-                      </Text>
-                    );
-                  }}
-                  rowTextForSelection={(item, index) => {
-                    // text represented for each item in dropdown
-                    // if data array is an array of objects then return item.property to represent item in dropdown
-                    return item;
-                  }}
-                  buttonStyle={{
-                    width: layout.widthp,
-                    backgroundColor: "white",
-                    borderRadius: 10,
-                    height: 45,
-                  }}
-                  buttonTextStyle={{
-                    fontFamily: "inter-semibold",
-                    color: "#9e9e9e",
-                  }}
-                  renderDropdownIcon={() => (
-                    <View
-                      style={{ alignItems: "center", justifyContent: "center" }}
-                    >
-                      <AntDesign name="down" size={20} color="black" />
-                    </View>
-                  )}
-                  dropdownStyle={{ backgroundColor: "white", borderRadius: 10 }}
-                  rowTextStyle={{ fontFamily: "inter-semibold" }}
-                  selectedRowStyle={{ backgroundColor: "#ba92f3" }}
-                  selectedRowTextStyle={{ color: "white" }}
+                        <AntDesign name="down" size={20} color="black" />
+                      </View>
+                    )}
+                    dropdownStyle={{
+                      backgroundColor: "white",
+                      borderRadius: 10,
+                    }}
+                    rowTextStyle={{ fontFamily: "inter-semibold" }}
+                    selectedRowStyle={{ backgroundColor: "#ba92f3" }}
+                    selectedRowTextStyle={{ color: "white" }}
+                  />
+                </View>
+              );
+            }
+            if (item.field_type === "text") {
+              formData.append(item.label, "test");
+              return (
+                <View>
+                  <Input
+                    placeholder={item.label}
+                    onChangeText={(value) => {
+                      setInputValue(item.label, value);
+                      // tempFormData.append(item.label, value);
+                    }}
+                    // value={''}
+                  />
+                </View>
+              );
+            }
+            if (item.field_type === "number") {
+              formData.append(item.label, "test");
+              return (
+                <Input
+                  placeholder={item.label}
+                  keyboardType={"numeric"}
+                  onChangeText={(value) => setInputValue(item.id, value)}
+                  // value={refInputs.current[item.label]}
                 />
-                <Button title="send" onPress={sendData} />
-              </View>
-            );
-          }
-          if (item.field_type === "text") {
-            formData.append(item.label, "test");
-            return (
-              <View>
-                <Input placeholder={item.label} name={item.name} />
-              </View>
-            );
-          }
-          if (item.field_type === "number") {
-            formData.append(item.label, "test");
-            return <Input placeholder={item.label} keyboardType={"numeric"} />;
-          }
-          if (item.field_type === "file") {
-            formData.append(item.label, "test");
-            return <UploadButton title={item.label} />;
-          }
+              );
+            }
+            if (item.field_type === "file") {
+              formData.append(item.label, "test");
+              return <UploadButton title={item.label} />;
+            }
+          }}
+        />
+      </View>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          justifyContent: "center",
         }}
-      />
+      >
+        <CustomButton
+          title={"Submit"}
+          onPress={() => {
+            setTimeout(
+              submit,
+              Math.floor(Math.random() * (5000 - 1000)) + 1000
+            );
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -207,5 +236,7 @@ export default Fields;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

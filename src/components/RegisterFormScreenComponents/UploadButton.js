@@ -57,14 +57,14 @@ const UploadButton = ({ onPress, title, type }) => {
             source={{
               uri: image
                 ? image
-                : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
+                : "https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg",
             }}
-            style={{ width: 50, height: 50,borderRadius:30 }}
+            style={{ width: 50, height: 50, borderRadius: 30 }}
           />
           <View>
             <Text
               numberOfLines={1}
-              style={image?  [styles.title, { color: "black" }] : styles.title}
+              style={image ? [styles.title, { color: "black" }] : styles.title}
             >
               {af ? `${title} uploaded` : title}
             </Text>
