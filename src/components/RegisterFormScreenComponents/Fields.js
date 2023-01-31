@@ -119,24 +119,26 @@ const Fields = () => {
     temp.map((item, index) => {
       const lbname = item[label];
       if (index == ind) {
-        idk.push({ ...item, [label]: txt });
+        idk.push({ ...response, [label]: txt });
       }
     });
     console.log("🚀 ~ file: Fields.js:119 ~ temp.map ~ temp", idk);
-    setResponse(idk);
+    setResponse([idk]);
     console.log("onchange text end");
   };
 
   const onSelectImage = (ind, uri, label) => {
     console.log("onselect image function");
     let temp = response;
+    let idk = [];
     temp.map((item, index) => {
       if (index == ind) {
         item[label] = uri;
+        idk.push({ ...item, [label]: uri });
       }
     });
     console.log("🚀 ~ file: Fields.js:119 ~ temp.map ~ temp", temp);
-    setResponse(temp);
+    setResponse(idk);
   };
 
   const onSelectOption = (ind, txt, label) => {
