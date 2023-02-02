@@ -38,7 +38,7 @@ const Fields = () => {
     // Alert.alert("Success", "Data submitted successfully");
   }
 
-  async function fetchCategories() {
+  async function fetchCategories(callback) {
     setLoading(true);
     axios
       .post(
@@ -48,6 +48,7 @@ const Fields = () => {
         // console.log(res.data);
         setData(res.data.data);
         setLoading(false);
+        callback();
       })
       .catch((error) => {
         if (error.response) {
@@ -94,8 +95,9 @@ const Fields = () => {
       });
   }
   useEffect(() => {
-    fetchCategories();
-    defaultResponseValue();
+    fetchCategories(function () {
+      defaultResponseValue();
+    });
   }, []);
 
   useEffect(() => {
@@ -113,17 +115,17 @@ const Fields = () => {
   }
   // setResponse(temp)
   const onChangeText = (ind, txt, label) => {
-    console.log("onchange function");
+    console.log("onchange function,", txt);
     let temp = response;
     let idk = [];
     temp.map((item, index) => {
-      const lbname = item[label];
       if (index == ind) {
-        idk.push({ ...response, [label]: txt });
+        idk.push({ [label]: txt });
+      } else {
+        idk.push(item);
       }
     });
-    console.log("🚀 ~ file: Fields.js:119 ~ temp.map ~ temp", idk);
-    setResponse([idk]);
+    setResponse(idk);
     console.log("onchange text end");
   };
 
@@ -133,8 +135,9 @@ const Fields = () => {
     let idk = [];
     temp.map((item, index) => {
       if (index == ind) {
-        item[label] = uri;
-        idk.push({ ...item, [label]: uri });
+        idk.push({ [label]: uri });
+      } else {
+        idk.push(item);
       }
     });
     console.log("🚀 ~ file: Fields.js:119 ~ temp.map ~ temp", temp);
@@ -142,15 +145,17 @@ const Fields = () => {
   };
 
   const onSelectOption = (ind, txt, label) => {
-    console.log("onchange function");
     let temp = response;
+    let idk = [];
     temp.map((item, index) => {
-      if (index == ind) {
-        item[label] = txt;
+      if (index === ind) {
+        idk.push({ [label]: txt });
+      } else {
+        idk.push(item);
       }
     });
     console.log("🚀 ~ file: Fields.js:119 ~ temp.map ~ temp", temp);
-    setResponse(temp);
+    setResponse(idk);
   };
 
   function onSubmit() {
