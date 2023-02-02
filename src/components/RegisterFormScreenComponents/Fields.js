@@ -40,15 +40,15 @@ const Fields = () => {
 
   async function fetchCategories(callback) {
     setLoading(true);
+    console.log("fetching categories");
     axios
       .post(
         `http://codelumina.com/project/scanme/api/dyanmic/form?category_id=${route?.params?.categoryId}`
       )
       .then((res) => {
-        // console.log(res.data);
         setData(res.data.data);
-        setLoading(false);
         callback();
+        // setLoading(false);
       })
       .catch((error) => {
         if (error.response) {
@@ -67,16 +67,32 @@ const Fields = () => {
   async function sendData() {
     setLoading(true);
     const id = await SecureStore.getItemAsync("id");
-    formData.append("category_id", route.params.category_id);
+    formData.append("category_id", route.params.categoryId);
+    console.log(
+      "🚀 ~ file: Fields.js:71 ~ sendData ~ route.params.category_id",
+      route.params.category_id
+    );
     formData.append("user_id", id);
+    // for (const pair of formData.entries()) {
+    //   console.log(`${pair[0]}, ${pair[1]}`);
+    // }
+
+    console.log(
+      "🚀 ~ file: Fields.js:73 ~ sendData ~ formData.getAll()",
+      formData.getAll('Name')
+    );
     axios
-      .post(`http://codelumina.com/project/scanme/api/dyanmic/form/insert`, {
-        category_id: 7,
-        user_name: "test name",
-        contact_number: "12345",
-        image: "xyz",
-        gender: "Male",
-      })
+      .post(
+        `http://codelumina.com/project/scanme/api/dyanmic/form/insert`,
+        formData,
+        {
+          headers: {
+            // accept: "application/json",
+            accept: "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((res) => {
         // console.log(res.data);
         Alert.alert("sent data", JSON.stringify(res.data));
@@ -107,14 +123,26 @@ const Fields = () => {
   if (loading) return <ActivityIndicator />;
 
   function defaultResponseValue() {
+    console.log("setting default response state");
     let temp = data.map((item) => {
       return { [item.label]: "" };
     });
     console.log("🚀 ~ file: Fields.js:99 ~ temp ~ temp", temp);
     setResponse(temp);
+    setLoading(false);
   }
   // setResponse(temp)
   const onChangeText = (ind, txt, label) => {
+    //direct formdata
+    // formData.delete(label);
+    // formData.append(label, txt);
+    if (formData.getAll(label).length < 1) {
+      formData.append(label, txt);
+    } else {
+      formData.delete(label);
+      formData.append(label, txt);
+    }
+    //set state
     console.log("onchange function,", txt);
     let temp = response;
     let idk = [];
@@ -131,6 +159,31 @@ const Fields = () => {
 
   const onSelectImage = (ind, uri, label) => {
     console.log("onselect image function");
+
+    //directly add value to formdata
+    if (formData.getAll().length < 1) {
+      let filename1 = uri.split("/").pop();
+      let match1 = /\.(\w+)$/.exec(filename1);
+      let type1 = match1 ? `image/${match1[1]}` : `image`;
+      formData.append(label, {
+        uri: uri,
+        name: filename1,
+        type: type1,
+      });
+    } else {
+      formData.delete(label);
+      let filename1 = uri.split("/").pop();
+      let match1 = /\.(\w+)$/.exec(filename1);
+      let type1 = match1 ? `image/${match1[1]}` : `image`;
+      formData.append(label, {
+        uri: uri,
+        name: filename1,
+        type: type1,
+      });
+    }
+    //formdata part ends
+
+    //set state of the fields
     let temp = response;
     let idk = [];
     temp.map((item, index) => {
@@ -145,6 +198,14 @@ const Fields = () => {
   };
 
   const onSelectOption = (ind, txt, label) => {
+    //direct formdata
+    if (formData.getAll().length < 1) {
+      formData.append(label, txt);
+    } else {
+      formData.delete(label);
+      formData.append(label, txt);
+    }
+    //set state
     let temp = response;
     let idk = [];
     temp.map((item, index) => {
@@ -275,15 +336,7 @@ const Fields = () => {
         }}
       >
         <Text>{JSON.stringify(response)}</Text>
-        <CustomButton
-          title={"Submit"}
-          onPress={() => {
-            setTimeout(
-              submit,
-              Math.floor(Math.random() * (5000 - 1000)) + 1000
-            );
-          }}
-        />
+        <CustomButton title={"Submit"} onPress={sendData} />
       </View>
     </View>
   );
