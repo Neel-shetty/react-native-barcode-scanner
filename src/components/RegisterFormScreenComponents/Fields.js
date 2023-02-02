@@ -65,7 +65,7 @@ const Fields = () => {
   }
 
   async function sendData() {
-    setLoading(true);
+    // setLoading(true);
     const id = await SecureStore.getItemAsync("id");
     formData.append("category_id", route.params.categoryId);
     console.log(
@@ -73,14 +73,25 @@ const Fields = () => {
       route.params.category_id
     );
     formData.append("user_id", id);
-    // for (const pair of formData.entries()) {
-    //   console.log(`${pair[0]}, ${pair[1]}`);
-    // }
 
-    console.log(
-      "🚀 ~ file: Fields.js:73 ~ sendData ~ formData.getAll()",
-      formData.getAll('Name')
-    );
+    for (let i = 0; i < response.length; i++) {
+      console.log(response[i]);
+      if (response[i].image) {
+        const uri = response[i][response[i].label];
+        let filename1 = uri.split("/").pop();
+        let match1 = /\.(\w+)$/.exec(filename1);
+        let type1 = match1 ? `image/${match1[1]}` : `image`;
+        formData.append(response[i].label, {
+          uri: uri,
+          name: filename1,
+          type: type1,
+        });
+        console.log(formData);
+      } else {
+        formData.append(response[i].label, response[i][response[i].label]);
+      }
+    }
+
     axios
       .post(
         `http://codelumina.com/project/scanme/api/dyanmic/form/insert`,
@@ -136,19 +147,20 @@ const Fields = () => {
     //direct formdata
     // formData.delete(label);
     // formData.append(label, txt);
-    if (formData.getAll(label).length < 1) {
-      formData.append(label, txt);
-    } else {
-      formData.delete(label);
-      formData.append(label, txt);
-    }
+
+    // if (formData.getAll(label).length < 1) {
+    //   formData.append(label, txt);
+    // } else {
+    //   formData.delete(label);
+    //   formData.append(label, txt);
+    // }
     //set state
     console.log("onchange function,", txt);
     let temp = response;
     let idk = [];
     temp.map((item, index) => {
       if (index == ind) {
-        idk.push({ [label]: txt });
+        idk.push({ [label]: txt, label: label });
       } else {
         idk.push(item);
       }
@@ -161,26 +173,26 @@ const Fields = () => {
     console.log("onselect image function");
 
     //directly add value to formdata
-    if (formData.getAll().length < 1) {
-      let filename1 = uri.split("/").pop();
-      let match1 = /\.(\w+)$/.exec(filename1);
-      let type1 = match1 ? `image/${match1[1]}` : `image`;
-      formData.append(label, {
-        uri: uri,
-        name: filename1,
-        type: type1,
-      });
-    } else {
-      formData.delete(label);
-      let filename1 = uri.split("/").pop();
-      let match1 = /\.(\w+)$/.exec(filename1);
-      let type1 = match1 ? `image/${match1[1]}` : `image`;
-      formData.append(label, {
-        uri: uri,
-        name: filename1,
-        type: type1,
-      });
-    }
+    // if (formData.getAll().length < 1) {
+    //   let filename1 = uri.split("/").pop();
+    //   let match1 = /\.(\w+)$/.exec(filename1);
+    //   let type1 = match1 ? `image/${match1[1]}` : `image`;
+    //   formData.append(label, {
+    //     uri: uri,
+    //     name: filename1,
+    //     type: type1,
+    //   });
+    // } else {
+    //   formData.delete(label);
+    //   let filename1 = uri.split("/").pop();
+    //   let match1 = /\.(\w+)$/.exec(filename1);
+    //   let type1 = match1 ? `image/${match1[1]}` : `image`;
+    //   formData.append(label, {
+    //     uri: uri,
+    //     name: filename1,
+    //     type: type1,
+    //   });
+    // }
     //formdata part ends
 
     //set state of the fields
@@ -188,7 +200,7 @@ const Fields = () => {
     let idk = [];
     temp.map((item, index) => {
       if (index == ind) {
-        idk.push({ [label]: uri });
+        idk.push({ [label]: uri, image: true, label: label });
       } else {
         idk.push(item);
       }
@@ -199,18 +211,18 @@ const Fields = () => {
 
   const onSelectOption = (ind, txt, label) => {
     //direct formdata
-    if (formData.getAll().length < 1) {
-      formData.append(label, txt);
-    } else {
-      formData.delete(label);
-      formData.append(label, txt);
-    }
+    // if (formData.getAll().length < 1) {
+    //   formData.append(label, txt);
+    // } else {
+    //   formData.delete(label);
+    //   formData.append(label, txt);
+    // }
     //set state
     let temp = response;
     let idk = [];
     temp.map((item, index) => {
       if (index === ind) {
-        idk.push({ [label]: txt });
+        idk.push({ [label]: txt, label: label });
       } else {
         idk.push(item);
       }
@@ -290,7 +302,7 @@ const Fields = () => {
               );
             }
             if (item.field_type === "text") {
-              formData.append(item.label, "test");
+              // formData.append(item.label, "test");
               return (
                 <View>
                   <Input
@@ -304,7 +316,7 @@ const Fields = () => {
               );
             }
             if (item.field_type === "number") {
-              formData.append(item.label, "test");
+              // formData.append(item.label, "test");
               return (
                 <Input
                   placeholder={item.label}
@@ -317,7 +329,7 @@ const Fields = () => {
               );
             }
             if (item.field_type === "file") {
-              formData.append(item.label, "test");
+              // formData.append(item.label, "test");
               return (
                 <UploadButton
                   title={item.label}
