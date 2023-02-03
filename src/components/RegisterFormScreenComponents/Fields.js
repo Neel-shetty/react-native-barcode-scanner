@@ -71,7 +71,6 @@ const Fields = () => {
   }
 
   async function sendData() {
-    // setLoading(true);
     const id = await SecureStore.getItemAsync("id");
     formData.append("category_id", route.params.categoryId);
     console.log(
@@ -111,6 +110,7 @@ const Fields = () => {
         }
       )
       .then((res) => {
+        console.log("🚀 ~ file: Fields.js:114 ~ .then ~ res", res.data)
         // console.log(res.data);
         Alert.alert("sent data", JSON.stringify(res.data));
       })
@@ -150,17 +150,6 @@ const Fields = () => {
   }
   // setResponse(temp)
   const onChangeText = (ind, txt, label) => {
-    //direct formdata
-    // formData.delete(label);
-    // formData.append(label, txt);
-
-    // if (formData.getAll(label).length < 1) {
-    //   formData.append(label, txt);
-    // } else {
-    //   formData.delete(label);
-    //   formData.append(label, txt);
-    // }
-    //set state
     console.log("onchange function,", txt);
     let temp = response;
     let idk = [];
