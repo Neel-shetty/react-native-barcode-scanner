@@ -47,8 +47,14 @@ const Fields = () => {
       )
       .then((res) => {
         setData(res.data.data);
-        callback();
-        // setLoading(false);
+        // callback();
+        // setLoading(false); console.log("setting default response state");
+        let temp = res.data.data.map((item) => {
+          return { [item.label]: "" };
+        });
+        console.log("🚀 ~ file: Fields.js:99 ~ temp ~ temp", temp);
+        setResponse(temp);
+        setLoading(false);
       })
       .catch((error) => {
         if (error.response) {
