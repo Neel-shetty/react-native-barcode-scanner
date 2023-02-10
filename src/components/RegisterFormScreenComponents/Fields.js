@@ -38,6 +38,7 @@ const Fields = () => {
     // Alert.alert("Success", "Data submitted successfully");
   }
 
+  
   async function fetchCategories(callback) {
     setLoading(true);
     console.log("fetching categories");
