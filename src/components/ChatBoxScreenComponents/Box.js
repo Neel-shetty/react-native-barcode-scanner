@@ -1,8 +1,10 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
+import { useNavigation } from "@react-navigation/native";
 
 const Box = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.root}>
       <Image
@@ -40,11 +42,14 @@ const Box = () => {
           </View>
         </View>
         <View style={styles.rightContainer}>
-          <TouchableOpacity>
-
-          <View style={styles.inboxButton}>
-            <Text style={styles.location}>Inbox</Text>
-          </View>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("InboxScreen");
+            }}
+          >
+            <View style={styles.inboxButton}>
+              <Text style={styles.location}>Inbox</Text>
+            </View>
           </TouchableOpacity>
         </View>
       </View>
@@ -96,7 +101,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignItems: "flex-end",
     justifyContent: "flex-end",
-    paddingBottom:10
+    paddingBottom: 10,
   },
   inboxButton: {
     height: 30,
