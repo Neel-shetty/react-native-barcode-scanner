@@ -188,7 +188,6 @@ const Navigator = () => {
               component={KycScreen}
               options={{ headershown: false }}
             />
-            {/* ) : ( */}
             <Stack.Screen
               name="WaitScreen"
               component={WaitScreen}

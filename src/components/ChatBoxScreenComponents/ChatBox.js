@@ -47,7 +47,7 @@ const ChatBox = () => {
         for (let i in categories) {
           temparr.push({
             name: categories[i].name,
-            selected: false,
+            selected: i === 0 ? true : false,
             key: categories[i].id,
           });
         }
