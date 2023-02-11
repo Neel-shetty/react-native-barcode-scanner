@@ -33,6 +33,7 @@ import RegisterScreen from "../screens/Main/RegisterScreen";
 import RegisterFormScreen from "../screens/Main/RegisterFormScreen";
 import ChatBoxScreen from "../screens/Main/ChatBoxScreen";
 import InboxScreen from "../screens/Main/InboxScreen";
+import DmScreen from "../screens/Main/DmScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -205,6 +206,7 @@ const Navigator = () => {
             />
             <Stack.Screen name="InboxScreen" component={InboxScreen} />
             <Stack.Screen name="ChatBoxScreen" component={ChatBoxScreen} />
+            <Stack.Screen name="DmScreen" component={DmScreen} />
           </>
         )}
       </Stack.Navigator>

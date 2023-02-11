@@ -14,14 +14,14 @@ const ChatItem = () => {
         />
       </View>
       <View style={styles.nameContainer}>
-        <Text style={styles.name}>test</Text>
+        <Text style={styles.name}>Test</Text>
         <Text numberOfLines={1} style={styles.preview}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt
         </Text>
       </View>
       <View style={styles.detailContainer}>
-        <Text style={styles.preview}>now</Text>
+        <Text style={styles.preview}>Now</Text>
         <View
           style={{
             height: 20,
