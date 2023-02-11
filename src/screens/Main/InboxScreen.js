@@ -1,6 +1,8 @@
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Header from "../../components/InboxScreenComponents/Header";
+import { layout } from "../../constants/layout";
+import ChatItem from "../../components/InboxScreenComponents/ChatItem";
 import ChatList from "../../components/InboxScreenComponents/ChatList";
 
 const InboxScreen = () => {
@@ -15,6 +17,7 @@ const InboxScreen = () => {
         <Header />
       </View>
       <View style={styles.chatlist}>
+        {/* <ChatItem /> */}
         <ChatList />
       </View>
     </View>
@@ -40,11 +43,11 @@ const styles = StyleSheet.create({
   chatlist: {
     alignItems: "center",
     justifyContent: "center",
-    flex: 1,
+    flex: 11,
   },
   headerContainer: {
     alignItems: "center",
     justifyContent: "center",
-    flex: 11,
+    flex: 1,
   },
 });

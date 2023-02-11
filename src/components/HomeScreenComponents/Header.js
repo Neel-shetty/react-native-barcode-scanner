@@ -5,13 +5,21 @@ import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const Header = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <View style={styles.root}>
-      <TouchableOpacity onPress={()=>{navigation.navigate('ChatBoxScreen')}}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("ChatBoxScreen");
+        }}
+      >
         <Ionicons name="menu" size={24} color="white" />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("InboxScreen");
+        }}
+      >
         <Ionicons name="notifications" size={24} color="white" />
       </TouchableOpacity>
     </View>
