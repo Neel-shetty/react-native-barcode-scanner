@@ -8,10 +8,14 @@ const ChatList = () => {
         <Image />
       </View>
       <View style={styles.nameContainer}>
-        <Text>test</Text>
+        <Text style={styles.name}>test</Text>
+        <Text style={styles.preview}>test</Text>
       </View>
       <View style={styles.detailContainer}>
-        <Text>test</Text>
+        <Text style={styles.preview}>now</Text>
+        <View style={{ height: 20, width: 20, borderRadius: 20 }}>
+          <Text>2</Text>
+        </View>
       </View>
     </View>
   );
@@ -40,5 +44,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
+  },
+  name: {
+    fontFamily: "poppins-semibold",
+    fontSize: 16,
+  },
+  preview: {
+    fontFamily: "poppins-semibold",
+    fontSize: 14,
   },
 });
