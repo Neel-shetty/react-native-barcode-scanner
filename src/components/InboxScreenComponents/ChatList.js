@@ -5,7 +5,7 @@ const ChatList = () => {
   return (
     <View style={styles.root}>
       <View style={styles.profileContainer}>
-        <Image />
+        <Image style={styles.image} resizeMode="cover" />
       </View>
       <View style={styles.nameContainer}>
         <Text style={styles.name}>test</Text>
@@ -52,5 +52,10 @@ const styles = StyleSheet.create({
   preview: {
     fontFamily: "poppins-semibold",
     fontSize: 14,
+  },
+  image: {
+    height: 50,
+    width: 50,
+    borderRadius: 25,
   },
 });
