@@ -31,6 +31,7 @@ import BottomTabBar from "./BottomTabBar";
 import SubscriptionScreen from "../screens/Main/SubscriptionScreen";
 import RegisterScreen from "../screens/Main/RegisterScreen";
 import RegisterFormScreen from "../screens/Main/RegisterFormScreen";
+import ChatBoxScreen from "../screens/Main/ChatBoxScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -202,6 +203,7 @@ const Navigator = () => {
               name="RegisterFormScreen"
               component={RegisterFormScreen}
             />
+            <Stack.Screen name="ChatBoxScreen" component={ChatBoxScreen} />
           </>
         )}
       </Stack.Navigator>
