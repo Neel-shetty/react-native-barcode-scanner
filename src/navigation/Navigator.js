@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { LogBox, StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -40,6 +40,7 @@ const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
   const dispatch = useDispatch();
+  // LogBox.ignoreAllLogs();
 
   async function save(key, value) {
     await SecureStore.setItemAsync(key, value);
