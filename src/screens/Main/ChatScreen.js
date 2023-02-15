@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import Header from "../../components/DmScreenComponents/Header";
 
 const ChatScreen = () => {
   return (
     <View style={styles.root}>
-      <Text>Privacy Policy</Text>
+      <Header />
     </View>
   );
 };

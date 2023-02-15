@@ -54,6 +54,9 @@ const ChatBox = () => {
         console.log(temparr);
         setCategories(temparr);
         setLoading(false);
+        async function fetchUsers(){
+
+        }
       })
       .catch((error) => {
         if (error.response) {
