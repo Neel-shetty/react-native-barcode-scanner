@@ -17,12 +17,24 @@ const TextBox = ({ item, type }) => {
       ]}
     >
       <View style={styles.textContainer}>
-        <Text style={[styles.message, type === "receiver" ? {} : null]}>
+        <Text
+          style={[
+            styles.message,
+            type === "receiver" ? { color: "white" } : null,
+          ]}
+        >
           {item.text}
         </Text>
       </View>
       <View style={styles.timeContainer}>
-        <Text style={styles.time}>10:45pm</Text>
+        <Text
+          style={[
+            styles.time,
+            type === "receiver" ? { color: "#baa8df" } : null,
+          ]}
+        >
+          10:45pm
+        </Text>
       </View>
     </View>
   );
@@ -43,14 +55,20 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   message: {
-    fontFamily: "poppins-regular",
+    fontFamily: "poppins-medium",
     fontSize: 16,
     textAlign: "left",
+    color: "#605ea7",
   },
   timeContainer: {
     alignSelf: "flex-end",
   },
   textContainer: {
     alignSelf: "flex-start",
+  },
+  time: {
+    color: "#7e738d",
+    fontFamily: "poppins-regular",
+    fontSize: 12,
   },
 });

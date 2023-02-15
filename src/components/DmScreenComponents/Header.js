@@ -4,8 +4,18 @@ import { Ionicons } from "@expo/vector-icons";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
+import { Menu, MenuItem, MenuDivider } from "react-native-material-menu";
+import { useState } from "react";
 
 const Header = ({ id }) => {
+  const [visible, setVisible] = useState(false);
+
+  const hideMenu = () => setVisible(false);
+
+  const showMenu = () => {
+    setVisible(true);
+  };
+
   const navigation = useNavigation();
 
   function onPress() {
@@ -17,23 +27,59 @@ const Header = ({ id }) => {
     <View style={styles.root}>
       <View style={styles.backContainer}>
         <TouchableOpacity onPress={onPress}>
-          <Ionicons name="chevron-back" size={30} color="white" />
+          <Ionicons
+            name="chevron-back"
+            size={24}
+            color="black"
+            style={{
+              backgroundColor: "white",
+              borderRadius: 100,
+              height: 30,
+              width: 30,
+              alignItems: "center",
+              justifyContent: "center",
+              paddingTop: 3,
+            }}
+          />
         </TouchableOpacity>
         {/* <Text style={styles.title}>Name</Text>
         <View style={{ height: 30, width: 30 }} /> */}
       </View>
       <View style={styles.profileContainer}>
         <View style={styles.imageContainer}>
-          <Image style={styles.image} />
+          <Image
+            source={{
+              uri: "https://randomuser.me/api/portraits/thumb/men/1.jpg",
+            }}
+            style={styles.image}
+          />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.number}>9945367780</Text>
-          <Text style={styles.online}>Online</Text>
+          <Text style={styles.number}>
+            9945367780{"\n"}
+            <Text style={styles.online}>Online</Text>
+          </Text>
         </View>
       </View>
       <View style={styles.menuContainer}>
-        {/* <Ionicons name="menu"/> */}
-        <Entypo name="dots-three-vertical" size={22} color="white" />
+        <Menu
+          anchor={
+            <TouchableOpacity onPress={showMenu}>
+              <Entypo name="dots-three-vertical" size={22} color="white" />
+            </TouchableOpacity>
+          }
+          visible={visible}
+          onRequestClose={hideMenu}
+        >
+          <MenuItem
+            onPress={() => {
+              console.log("report");
+              hideMenu();
+            }}
+          >
+            <Text style={styles.menutext}>Report</Text>
+          </MenuItem>
+        </Menu>
       </View>
     </View>
   );
@@ -49,6 +95,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     flexDirection: "row",
     alignItems: "center",
+    paddingTop: 10,
     // backgroundColor: "pink",
   },
   title: {
@@ -60,7 +107,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   profileContainer: {
-    flex: 4,
+    flex: 8,
     // backgroundColor: "violet",
     flexDirection: "row",
     alignItems: "center",
@@ -80,6 +127,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     paddingLeft: 5,
+    justifyContent: "center",
+    // paddingVertical: 5,
   },
   number: {
     fontFamily: "poppins-semibold",
@@ -88,5 +137,9 @@ const styles = StyleSheet.create({
   online: {
     fontFamily: "poppins-medium",
     color: "white",
+    fontSize: 12,
+  },
+  menutext: {
+    fontFamily: "poppins-medium",
   },
 });

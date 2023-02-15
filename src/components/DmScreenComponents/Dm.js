@@ -10,7 +10,7 @@ const data = [
     type: "sender",
   },
   {
-    text: 2,
+    text: "sed do eiusmod tempor incididunt",
     type: "receiver",
   },
   {
@@ -18,16 +18,24 @@ const data = [
     type: "sender",
   },
   {
-    text: 4,
+    text: 'eiusmod tempor incididunt',
     type: "receiver",
   },
   {
-    text: 5,
+    text: 'quis nostrud exercitation ullamco laboris nisi ut aliquip',
     type: "sender",
   },
   {
     text: 6,
     type: "sender",
+  },
+  {
+    text: 4,
+    type: "receiver",
+  },
+  {
+    text: 4,
+    type: "receiver",
   },
 ];
 
