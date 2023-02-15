@@ -39,6 +39,7 @@ const Header = ({ id }) => {
               alignItems: "center",
               justifyContent: "center",
               paddingTop: 3,
+              paddingLeft: 2,
             }}
           />
         </TouchableOpacity>
@@ -79,6 +80,14 @@ const Header = ({ id }) => {
           >
             <Text style={styles.menutext}>Report</Text>
           </MenuItem>
+          <MenuItem
+            onPress={() => {
+              console.log("block");
+              hideMenu();
+            }}
+          >
+            <Text style={styles.menutext}>Block</Text>
+          </MenuItem>
         </Menu>
       </View>
     </View>
@@ -105,6 +114,8 @@ const styles = StyleSheet.create({
   },
   backContainer: {
     flex: 1,
+    // alignItems: "center",
+    justifyContent: "center",
   },
   profileContainer: {
     flex: 8,

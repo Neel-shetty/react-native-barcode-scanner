@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
+import { Ionicons } from "@expo/vector-icons";
 
 const TextBox = ({ item, type }) => {
   return (
@@ -35,6 +36,14 @@ const TextBox = ({ item, type }) => {
         >
           10:45pm
         </Text>
+        {type === "sender" ? (
+          <Ionicons
+            name="checkmark"
+            size={15}
+            color="black"
+            style={{ paddingLeft: 5 }}
+          />
+        ) : null}
       </View>
     </View>
   );
@@ -62,6 +71,7 @@ const styles = StyleSheet.create({
   },
   timeContainer: {
     alignSelf: "flex-end",
+    flexDirection: "row",
   },
   textContainer: {
     alignSelf: "flex-start",
