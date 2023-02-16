@@ -111,13 +111,11 @@ const Dm = () => {
         }
       });
   }
-  async function checkMessages() {
-    setInterval(fetchMessages, 2000);
-  }
   useEffect(() => {
-    // checkMessages();
+    let interval = null;
+    interval = setInterval(fetchMessages, 1000);
     return () => {
-      // checkMessages();
+      clearInterval(interval);
     };
   }, []);
   useEffect(() => {

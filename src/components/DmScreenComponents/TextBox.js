@@ -12,17 +12,17 @@ const TextBox = ({
 }) => {
   const time = new Date(date);
   time.getTime();
-  console.log(
-    "🚀 ~ file: TextBox.js:9 ~ TextBox ~ time.getTime()",
-    time.getHours(),
-    time.getMinutes(),
-    time.toLocaleTimeString("en-US", {
-      timeZone: "UTC",
-      hour12: true,
-      // hour: "numeric",
-      // minute: "numeric",
-    })
-  );
+  // console.log(
+  //   "🚀 ~ file: TextBox.js:9 ~ TextBox ~ time.getTime()",
+  //   time.getHours(),
+  //   time.getMinutes(),
+  //   time.toLocaleTimeString("en-US", {
+  //     timeZone: "UTC",
+  //     hour12: true,
+  //     // hour: "numeric",
+  //     // minute: "numeric",
+  //   })
+  // );
   return (
     <View
       style={[
@@ -53,7 +53,7 @@ const TextBox = ({
             textAlign === "left" ? { color: "#baa8df" } : null,
           ]}
         >
-          {time.getHours()}:{time.getMinutes()}pm
+          {time.getHours()}:{time.getMinutes()}
         </Text>
         {textAlign === "right" ? (
           <Ionicons
