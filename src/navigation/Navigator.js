@@ -40,7 +40,7 @@ const Stack = createNativeStackNavigator();
 
 const Navigator = () => {
   const dispatch = useDispatch();
-  // LogBox.ignoreAllLogs();
+  LogBox.ignoreAllLogs();
 
   async function save(key, value) {
     await SecureStore.setItemAsync(key, value);

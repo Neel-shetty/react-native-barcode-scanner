@@ -113,7 +113,7 @@ const Fields = () => {
       .then((res) => {
         console.log("🚀 ~ file: Fields.js:114 ~ .then ~ res", res.data)
         // console.log(res.data);
-        Alert.alert("sent data", JSON.stringify(res.data));
+        Alert.alert("Registered", res.data.message);
       })
       .catch((error) => {
         if (error.response) {
@@ -343,7 +343,7 @@ const Fields = () => {
           justifyContent: "center",
         }}
       >
-        <Text>{JSON.stringify(response)}</Text>
+        {/* <Text>{JSON.stringify(response)}</Text> */}
         <CustomButton title={"Submit"} onPress={sendData} />
       </View>
     </View>

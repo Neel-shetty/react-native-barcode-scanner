@@ -1,4 +1,5 @@
 import {
+  Alert,
   FlatList,
   StyleSheet,
   Text,
@@ -101,6 +102,7 @@ const ChatBox = () => {
           console.log(error.response.data);
           if (error.response.data.status == 0) {
             setUsers([]);
+            Alert.alert('Failed',error.response.data.message)
           }
           setLoading(false);
         } else if (error.request) {
