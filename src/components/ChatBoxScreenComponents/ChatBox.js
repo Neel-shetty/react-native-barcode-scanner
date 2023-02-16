@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import Box from "./Box";
+import * as SecureStore from "expo-secure-store";
 
 const boxlist = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -19,7 +20,8 @@ const ChatBox = () => {
   const [loading, setLoading] = useState();
   // const [data, setData] = useState();
   const [categories, setCategories] = useState();
-  console.log("🚀 ~ file: ChatBox.js:16 ~ ChatBox ~ categories", categories);
+  const [users, setUsers] = useState([]);
+  // console.log("🚀 ~ file: ChatBox.js:16 ~ ChatBox ~ categories", categories);
   // const [select, setSelect] = useState(categories);
 
   function onSelect(index) {
@@ -40,7 +42,7 @@ const ChatBox = () => {
     setLoading(true);
     axios
       .post(`${BASEURL}/individual/categories`)
-      .then((res) => {
+      .then(async (res) => {
         // console.log(res.data);
         const categories = res.data.data;
         let temparr = [];
@@ -53,10 +55,8 @@ const ChatBox = () => {
         }
         console.log(temparr);
         setCategories(temparr);
+        await fetchUsers();
         setLoading(false);
-        async function fetchUsers(){
-
-        }
       })
       .catch((error) => {
         if (error.response) {
@@ -71,9 +71,54 @@ const ChatBox = () => {
         }
       });
   }
+
+  async function fetchUsers() {
+    const id = await SecureStore.getItemAsync("id");
+    console.log("🚀 ~ file: ChatBox.js:75 ~ fetchUsers ~ id", id);
+    var category_id;
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].selected) {
+        category_id = categories[i].key;
+      }
+    }
+    console.log(
+      "🚀 ~ file: ChatBox.js:116 ~ fetchUsers ~ category_id",
+      category_id
+    );
+    axios
+      .post(`${BASEURL}/my/category-wise/users`, {
+        user_id: id,
+        category_id: category_id,
+      })
+      .then((res) => {
+        console.log("response data ---------- ", res.data);
+        setUsers(res.data.data);
+      })
+      .catch((error) => {
+        console.log("error");
+        if (error.response) {
+          console.log(error.response.data);
+          if (error.response.data.status == 0) {
+            setUsers([]);
+          }
+          setLoading(false);
+        } else if (error.request) {
+          console.log(error.request);
+          setLoading(false);
+        } else {
+          console.log(error.message);
+          setLoading(false);
+        }
+      });
+  }
+
   useEffect(() => {
     fetchCategories();
   }, []);
+
+  useEffect(() => {
+    fetchUsers();
+  }, [categories]);
 
   if (loading) return;
 
@@ -110,9 +155,9 @@ const ChatBox = () => {
       </View>
       <View style={styles.boxContainer}>
         <FlatList
-          data={boxlist}
+          data={users}
           renderItem={({ item }) => {
-            return <Box />;
+            return <Box name={item.name} barcode={item.barcode} />;
           }}
         />
       </View>

@@ -3,6 +3,8 @@ import React from "react";
 import CustomInput from "./CustomInput";
 import TextBox from "./TextBox";
 import { layout } from "../../constants/layout";
+import { useState } from "react";
+import axios from "axios";
 
 const data = [
   {
@@ -18,11 +20,11 @@ const data = [
     type: "sender",
   },
   {
-    text: 'eiusmod tempor incididunt',
+    text: "eiusmod tempor incididunt",
     type: "receiver",
   },
   {
-    text: 'quis nostrud exercitation ullamco laboris nisi ut aliquip',
+    text: "quis nostrud exercitation ullamco laboris nisi ut aliquip",
     type: "sender",
   },
   {
@@ -40,6 +42,34 @@ const data = [
 ];
 
 const Dm = () => {
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState()
+  async function fetchMessages() {
+    axios
+      .post(`${BASEURL}/my/category-wise/users`, {
+        sender_id:''
+      })
+      .then((res) => {
+        console.log("response data ---------- ", res.data);
+        setUsers(res.data.data);
+      })
+      .catch((error) => {
+        console.log("error");
+        if (error.response) {
+          console.log(error.response.data);
+          if (error.response.data.status == 0) {
+            setUsers([]);
+          }
+          setLoading(false);
+        } else if (error.request) {
+          console.log(error.request);
+          setLoading(false);
+        } else {
+          console.log(error.message);
+          setLoading(false);
+        }
+      });
+  }
   return (
     <View style={styles.root}>
       <View style={styles.listContainer}>

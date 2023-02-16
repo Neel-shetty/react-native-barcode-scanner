@@ -3,7 +3,7 @@ import React from "react";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
 
-const Box = () => {
+const Box = ({ name, barcode }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.root}>
@@ -21,8 +21,8 @@ const Box = () => {
       />
       <View style={styles.bottomContainer}>
         <View style={styles.textContainer}>
-          <Text style={styles.name}>Neha sharma</Text>
-          <Text style={styles.location}>jakarta, indonesia</Text>
+          <Text style={styles.name}>{name}</Text>
+          {/* <Text style={styles.location}>jakarta, indonesia</Text> */}
           <View style={styles.bottomTextContainer}>
             <View
               style={{
@@ -44,7 +44,7 @@ const Box = () => {
         <View style={styles.rightContainer}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("InboxScreen");
+              navigation.navigate("InboxScreen", { barcode: barcode });
             }}
           >
             <View style={styles.inboxButton}>

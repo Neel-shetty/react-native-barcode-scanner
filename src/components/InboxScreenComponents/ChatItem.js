@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const ChatItem = () => {
+const ChatItem = ({name}) => {
   const navigation = useNavigation()
   return (
     <View style={styles.root}>
@@ -17,7 +17,7 @@ const ChatItem = () => {
           />
         </View>
         <View style={styles.nameContainer}>
-          <Text style={styles.name}>Test</Text>
+          <Text style={styles.name}>{name}</Text>
           <Text numberOfLines={1} style={styles.preview}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt
