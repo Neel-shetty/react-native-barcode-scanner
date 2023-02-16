@@ -1,23 +1,38 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  ImageBackground,
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import React from "react";
 import Header from "../../components/DmScreenComponents/Header";
 import { layout } from "../../constants/layout";
 import Dm from "../../components/DmScreenComponents/Dm";
+import { useKeyboard } from "@react-native-community/hooks";
 
 const DmScreen = () => {
+  const keyboard = useKeyboard();
+
+  console.log("keyboard isKeyboardShow: ", keyboard.keyboardShown);
+  console.log("keyboard keyboardHeight: ", keyboard.keyboardHeight);
+
   return (
     <View style={styles.root}>
+      {/* <KeyboardAvoidingView> */}
       <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
         style={styles.bgImage}
       />
+      {/* <View style={{ height: 20 }} /> */}
       <View style={styles.headerContainer}>
         <Header />
       </View>
       <View style={styles.dmContainer}>
         <Dm />
       </View>
+      {/* </KeyboardAvoidingView> */}
     </View>
   );
 };
@@ -42,6 +57,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    // backgroundColor: "pink",
+    // marginTop:20
+    minHeight:30
   },
   dmContainer: {
     flex: 10,

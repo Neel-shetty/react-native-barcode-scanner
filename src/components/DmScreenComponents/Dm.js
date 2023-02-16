@@ -1,10 +1,15 @@
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, TextInput, View } from "react-native";
 import React from "react";
 import CustomInput from "./CustomInput";
 import TextBox from "./TextBox";
 import { layout } from "../../constants/layout";
 import { useState } from "react";
 import axios from "axios";
+import * as SecureStore from "expo-secure-store";
+import { useRoute } from "@react-navigation/native";
+import { useEffect } from "react";
+import { BASEURL } from "../../constants/apiurl";
+import { Formik } from "formik";
 
 const data = [
   {
@@ -43,23 +48,28 @@ const data = [
 
 const Dm = () => {
   const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState()
+  console.log("🚀 ~ file: Dm.js:50 ~ Dm ~ messages", messages);
+  const [loading, setLoading] = useState();
+  const [inputText, setInputText] = useState();
+
+  const route = useRoute();
+  console.log("🚀 ~ file: Dm.js:51 ~ Dm ~ route", route.params);
   async function fetchMessages() {
+    const id = await SecureStore.getItemAsync("id");
     axios
-      .post(`${BASEURL}/my/category-wise/users`, {
-        sender_id:''
+      .post(`${BASEURL}/my/messages`, {
+        sender_id: id,
+        receiver_id: route.params.receiverId,
+        // category_id: route.params.category_id,
       })
       .then((res) => {
-        console.log("response data ---------- ", res.data);
-        setUsers(res.data.data);
+        // console.log("response data ---------- ", res.data);
+        setMessages(res.data.data);
       })
       .catch((error) => {
         console.log("error");
         if (error.response) {
           console.log(error.response.data);
-          if (error.response.data.status == 0) {
-            setUsers([]);
-          }
           setLoading(false);
         } else if (error.request) {
           console.log(error.request);
@@ -70,22 +80,102 @@ const Dm = () => {
         }
       });
   }
+  async function sendMessage(message) {
+    console.log("🚀 ~ file: Dm.js:84 ~ sendMessage ~ message", message);
+    console.log(route.params.receiverId, route.params.category_id);
+    const id = await SecureStore.getItemAsync("id");
+    console.log("🚀 ~ file: Dm.js:87 ~ sendMessage ~ id", id);
+    axios
+      .post(`${BASEURL}/send/message`, {
+        sender_id: id,
+        receiver_id: route.params.receiverId,
+        category_id: route.params.category_id,
+        message: message,
+      })
+      .then((res) => {
+        console.log("response data sendmessage ---------- ", res.data);
+        fetchMessages();
+        // setMessages(res.data.data);
+      })
+      .catch((error) => {
+        console.log("error");
+        if (error.response) {
+          console.log(error.response.data);
+          setLoading(false);
+        } else if (error.request) {
+          console.log(error.request);
+          setLoading(false);
+        } else {
+          console.log(error.message);
+          setLoading(false);
+        }
+      });
+  }
+  async function checkMessages() {
+    setInterval(fetchMessages, 2000);
+  }
+  useEffect(() => {
+    // checkMessages();
+    return () => {
+      // checkMessages();
+    };
+  }, []);
+  useEffect(() => {
+    fetchMessages();
+  }, []);
   return (
     <View style={styles.root}>
       <View style={styles.listContainer}>
         <FlatList
-          data={data}
+          data={messages}
           renderItem={({ item }) => {
             return (
               <View style={{ width: layout.width }}>
-                <TextBox item={item} type={item.type} />
+                <TextBox
+                  text={item.message}
+                  read={item.is_read}
+                  textAlign={item.text_side}
+                  date={item.created_at}
+                />
               </View>
             );
           }}
+          inverted
         />
       </View>
       <View style={styles.inputContainer}>
-        <CustomInput />
+        <Formik
+          initialValues={{ message: "" }}
+          onSubmit={(values, { resetForm }) => {
+            console.log(values);
+            sendMessage(values.message);
+            resetForm();
+          }}
+        >
+          {({
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            values,
+            touched,
+            errors,
+            handleReset,
+          }) => (
+            <CustomInput
+              reset={handleReset}
+              onBlur={handleBlur("message")}
+              onChangeText={handleChange("message")}
+              value={values.message}
+              submit={handleSubmit}
+            />
+            // <TextInput
+            //   onChangeText={handleChange("message")}
+            //   onBlur={handleBlur("message")}
+            //   value={values.message}
+            //   style={{ width: layout.width }}
+            // />
+          )}
+        </Formik>
       </View>
     </View>
   );

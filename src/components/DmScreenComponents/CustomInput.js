@@ -9,7 +9,7 @@ import React from "react";
 import { layout } from "../../constants/layout";
 import { Ionicons } from "@expo/vector-icons";
 
-const CustomInput = () => {
+const CustomInput = ({ onChangeText, onBlur, value, submit, reset }) => {
   return (
     <View style={styles.root}>
       <TextInput
@@ -17,8 +17,15 @@ const CustomInput = () => {
         placeholder="Message"
         placeholderTextColor={"white"}
         autoCapitalize="sentences"
+        onChangeText={onChangeText}
+        onBlur={onBlur}
+        value={value}
       />
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          submit();
+        }}
+      >
         <Ionicons name="send" color={"white"} size={24} />
       </TouchableOpacity>
     </View>

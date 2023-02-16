@@ -2,11 +2,19 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const ChatItem = ({name}) => {
-  const navigation = useNavigation()
+const ChatItem = ({ name, receiverId, category_id, image }) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.root}>
-      <TouchableOpacity style={styles.root} onPress={()=>{navigation.navigate('DmScreen')}}>
+      <TouchableOpacity
+        style={styles.root}
+        onPress={() => {
+          navigation.navigate("DmScreen", {
+            receiverId: receiverId,
+            category_id: category_id,
+          });
+        }}
+      >
         <View style={styles.profileContainer}>
           <Image
             style={styles.image}

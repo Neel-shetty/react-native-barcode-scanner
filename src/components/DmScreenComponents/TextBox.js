@@ -3,12 +3,31 @@ import React from "react";
 import { layout } from "../../constants/layout";
 import { Ionicons } from "@expo/vector-icons";
 
-const TextBox = ({ item, type }) => {
+const TextBox = ({
+  text,
+  textAlign = "right",
+  type = "sender",
+  read,
+  date,
+}) => {
+  const time = new Date(date);
+  time.getTime();
+  console.log(
+    "🚀 ~ file: TextBox.js:9 ~ TextBox ~ time.getTime()",
+    time.getHours(),
+    time.getMinutes(),
+    time.toLocaleTimeString("en-US", {
+      timeZone: "UTC",
+      hour12: true,
+      // hour: "numeric",
+      // minute: "numeric",
+    })
+  );
   return (
     <View
       style={[
         styles.root,
-        type === "receiver"
+        textAlign === "left"
           ? {
               backgroundColor: "#846dca",
               alignSelf: "flex-start",
@@ -21,24 +40,24 @@ const TextBox = ({ item, type }) => {
         <Text
           style={[
             styles.message,
-            type === "receiver" ? { color: "white" } : null,
+            textAlign === "left" ? { color: "white" } : null,
           ]}
         >
-          {item.text}
+          {text}
         </Text>
       </View>
       <View style={styles.timeContainer}>
         <Text
           style={[
             styles.time,
-            type === "receiver" ? { color: "#baa8df" } : null,
+            textAlign === "left" ? { color: "#baa8df" } : null,
           ]}
         >
-          10:45pm
+          {time.getHours()}:{time.getMinutes()}pm
         </Text>
-        {type === "sender" ? (
+        {textAlign === "right" ? (
           <Ionicons
-            name="checkmark"
+            name={read == "1" ? "checkmark-done" : "checkmark"}
             size={15}
             color="black"
             style={{ paddingLeft: 5 }}

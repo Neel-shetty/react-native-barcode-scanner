@@ -45,6 +45,7 @@ const ChatBox = () => {
       .then(async (res) => {
         // console.log(res.data);
         const categories = res.data.data;
+        console.log("🚀 ~ file: ChatBox.js:48 ~ .then ~ categories", categories)
         let temparr = [];
         for (let i in categories) {
           temparr.push({
@@ -56,7 +57,7 @@ const ChatBox = () => {
         console.log(temparr);
         setCategories(temparr);
         await fetchUsers();
-        setLoading(false);
+        // setLoading(false);
       })
       .catch((error) => {
         if (error.response) {
@@ -157,7 +158,19 @@ const ChatBox = () => {
         <FlatList
           data={users}
           renderItem={({ item }) => {
-            return <Box name={item.name} barcode={item.barcode} />;
+            var category_id;
+            for (let i = 0; i < categories.length; i++) {
+              if (categories[i].selected) {
+                category_id = categories[i].key;
+              }
+            }
+            return (
+              <Box
+                name={item.name}
+                barcode={item.barcode}
+                category_id={category_id}
+              />
+            );
           }}
         />
       </View>
@@ -181,10 +194,11 @@ const styles = StyleSheet.create({
   },
   categoryBar: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     borderTopWidth: 1,
     borderColor: "#9784ce",
+    width:layout.width 
     // backgroundColor: "coral",
   },
   boxContainer: {

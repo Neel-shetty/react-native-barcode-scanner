@@ -105,6 +105,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingTop: 10,
+    marginBottom: 10,
+    // marginTop:10
     // backgroundColor: "pink",
   },
   title: {

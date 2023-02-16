@@ -53,7 +53,12 @@ const ChatList = () => {
         renderItem={({ item }) => {
           return (
             <View style={{ height: 70, width: layout.width }}>
-              <ChatItem name={item.name} image={item.image} />
+              <ChatItem
+                name={item.name}
+                image={item.image}
+                receiverId={item.receiver_id}
+                category_id={route.params.category_id}
+              />
             </View>
           );
         }}

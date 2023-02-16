@@ -3,8 +3,9 @@ import React from "react";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
 
-const Box = ({ name, barcode }) => {
+const Box = ({ name, barcode, category_id }) => {
   const navigation = useNavigation();
+
   return (
     <View style={styles.root}>
       <Image
@@ -44,7 +45,10 @@ const Box = ({ name, barcode }) => {
         <View style={styles.rightContainer}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("InboxScreen", { barcode: barcode });
+              navigation.navigate("InboxScreen", {
+                barcode: barcode,
+                category_id: category_id,
+              });
             }}
           >
             <View style={styles.inboxButton}>
