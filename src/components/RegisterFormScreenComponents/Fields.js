@@ -112,7 +112,6 @@ const Fields = () => {
       )
       .then((res) => {
         console.log("🚀 ~ file: Fields.js:114 ~ .then ~ res", res.data)
-        // console.log(res.data);
         Alert.alert("Registered", res.data.message);
       })
       .catch((error) => {
