@@ -15,7 +15,6 @@ import {
 } from "../store/slice/userSlice";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileScreen from "../screens/Main/ProfileScreen";
-import ScanScreen from "../screens/Main/ScanScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
@@ -34,6 +33,8 @@ import ChatBoxScreen from "../screens/Main/ChatBoxScreen";
 import InboxScreen from "../screens/Main/InboxScreen";
 import DmScreen from "../screens/Main/DmScreen";
 import PrivacyScreen from "../screens/Main/PrivacyScreen";
+import EmailScreen from "../screens/Main/EmailScreen";
+import ScanScreen from "../screens/Main/ScanScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -144,8 +145,8 @@ const Navigator = () => {
         />
         <Tab.Screen name="Privacy Policy" component={PrivacyScreen} />
         <Tab.Screen
-          name="ScanScreen"
-          component={ScanScreen}
+          name="EmailScreen"
+          component={EmailScreen}
           options={{
             tabBarIcon: (props) => (
               <Ionicons
@@ -208,6 +209,7 @@ const Navigator = () => {
             <Stack.Screen name="InboxScreen" component={InboxScreen} />
             <Stack.Screen name="ChatBoxScreen" component={ChatBoxScreen} />
             <Stack.Screen name="DmScreen" component={DmScreen} />
+            <Stack.Screen name="ScanScreen" component={ScanScreen} />
           </>
         )}
       </Stack.Navigator>
