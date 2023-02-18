@@ -35,9 +35,18 @@ import DmScreen from "../screens/Main/DmScreen";
 import PrivacyScreen from "../screens/Main/PrivacyScreen";
 import EmailScreen from "../screens/Main/EmailScreen";
 import ScanScreen from "../screens/Main/ScanScreen";
+import { Octicons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import {
+  DrawerContentScrollView,
+  DrawerItem,
+  DrawerItemList,
+  createDrawerNavigator,
+} from "@react-navigation/drawer";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
 const Navigator = () => {
   const dispatch = useDispatch();
@@ -46,7 +55,6 @@ const Navigator = () => {
   async function save(key, value) {
     await SecureStore.setItemAsync(key, value);
   }
-
   async function getValueFor(key) {
     let result = await SecureStore.getItemAsync(key);
     console.log("🚀 ~ file: Navigator.js:21 ~ getValueFor ~ result", result);
@@ -87,6 +95,74 @@ const Navigator = () => {
     checkFormSubmitted();
   }, [loggedIn]);
 
+  function DrawerNavigator() {
+    return (
+      <Drawer.Navigator
+        screenOptions={{
+          headerShown: false,
+          drawerActiveTintColor: "white",
+          drawerStyle: { backgroundColor: "#c370ed" },
+        }}
+        drawerContent={(props) => {
+          return (
+            <DrawerContentScrollView {...props}>
+              <DrawerItemList {...props} />
+              <DrawerItem
+                label="Logout"
+                onPress={() => {
+                  console.log("logged out");
+                  dispatch(setLoggedIn(false));
+                  save("isLoggedIn", "false");
+                }}
+                // inactiveBackgroundColor="#e6f4ea"
+                labelStyle={{
+                  fontFamily: "poppins-semibold",
+                  color: "white",
+                }}
+                style={{ borderBottomWidth: 2, borderColor: "#edf0f3" }}
+                icon={({ color, size }) => {
+                  return (
+                    <SimpleLineIcons
+                      name="logout"
+                      size={size}
+                      color={"white"}
+                    />
+                  );
+                }}
+              />
+            </DrawerContentScrollView>
+          );
+        }}
+      >
+        <Drawer.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            drawerLabel: ({ focused, color }) => {
+              return (
+                <View>
+                  <Text
+                    style={{
+                      fontFamily: "poppins-semibold",
+                      color: focused ? color : colors.gray,
+                    }}
+                  >
+                    Home Screen
+                  </Text>
+                </View>
+              );
+            },
+            drawerContentContainerStyle: {},
+            drawerItemStyle: { borderBottomWidth: 2, borderColor: "#edf0f3" },
+            drawerIcon: ({ focused, color, size }) => {
+              return <AntDesign name="home" size={size} color={color} />;
+            },
+          }}
+        />
+      </Drawer.Navigator>
+    );
+  }
+
   const BottomTab = () => {
     return (
       <Tab.Navigator
@@ -115,8 +191,8 @@ const Navigator = () => {
         }}
       >
         <Tab.Screen
-          name="HomeScreen"
-          component={HomeScreen}
+          name="DrawerNavigator"
+          component={DrawerNavigator}
           options={{
             tabBarIcon: (props) => (
               <AntDesign

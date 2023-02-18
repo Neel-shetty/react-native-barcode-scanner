@@ -41,7 +41,7 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
             navigation.navigate(route.name);
           }
         };
-        if (label !== "HomeScreen")
+        if (label !== "DrawerNavigator")
           return (
             <View key={index} style={styles.mainItemContainer}>
               <Pressable

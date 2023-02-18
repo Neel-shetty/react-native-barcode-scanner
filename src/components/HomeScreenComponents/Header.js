@@ -10,14 +10,14 @@ const Header = () => {
     <View style={styles.root}>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("ChatBoxScreen");
+          navigation.openDrawer();
         }}
       >
         <Ionicons name="menu" size={24} color="white" />
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("InboxScreen");
+          navigation.navigate("ChatBoxScreen");
         }}
       >
         <Ionicons name="notifications" size={24} color="white" />
