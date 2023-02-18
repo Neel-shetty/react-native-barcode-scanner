@@ -1,4 +1,5 @@
 import {
+  BackHandler,
   ImageBackground,
   KeyboardAvoidingView,
   StyleSheet,
@@ -10,13 +11,16 @@ import Header from "../../components/DmScreenComponents/Header";
 import { layout } from "../../constants/layout";
 import Dm from "../../components/DmScreenComponents/Dm";
 import { useKeyboard } from "@react-native-community/hooks";
+import { useNavigation } from "@react-navigation/native";
 
 const DmScreen = () => {
   const keyboard = useKeyboard();
+  const navigation = useNavigation();
 
   console.log("keyboard isKeyboardShow: ", keyboard.keyboardShown);
   console.log("keyboard keyboardHeight: ", keyboard.keyboardHeight);
 
+  
   return (
     <View style={styles.root}>
       {/* <KeyboardAvoidingView> */}
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     // backgroundColor: "pink",
     // marginTop:20
-    minHeight:30
+    minHeight: 30,
   },
   dmContainer: {
     flex: 10,

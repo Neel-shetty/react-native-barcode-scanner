@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native";
 const ScanScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
+  console.log("🚀 ~ file: ScanScreen.js:14 ~ ScanScreen ~ scanned", scanned)
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
@@ -49,8 +50,10 @@ const ScanScreen = () => {
       const { status } = await BarCodeScanner.requestPermissionsAsync();
       setHasPermission(status === "granted");
     };
-
     getBarCodeScannerPermissions();
+    return () => {
+      setScanned(false);
+    };
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
@@ -62,31 +65,6 @@ const ScanScreen = () => {
     setScanned(true);
     alert(`QR code has been scanned!`);
   };
-
-  function fetchUserDetails() {
-    axios
-      .post(`${BASEURL}/my/messages`, {
-        sender_id: id,
-        receiver_id: route.params.receiverId,
-        // category_id: route.params.category_id,
-      })
-      .then((res) => {
-        console.log("response data ---------- ", res.data);
-      })
-      .catch((error) => {
-        console.log("error");
-        if (error.response) {
-          console.log(error.response.data);
-          setLoading(false);
-        } else if (error.request) {
-          console.log(error.request);
-          setLoading(false);
-        } else {
-          console.log(error.message);
-          setLoading(false);
-        }
-      });
-  }
 
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;
