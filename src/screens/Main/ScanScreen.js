@@ -6,11 +6,43 @@ import CustomButton from "../../components/SignInScreen2Components/common/Custom
 import { StatusBar } from "expo-status-bar";
 import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
+import { useNavigation } from "@react-navigation/native";
 
 const ScanScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigation = useNavigation();
+
+  async function fetchQrDetails(url) {
+    axios
+      .post(url)
+      .then((res) => {
+        console.log("response data ---------- ", res.data);
+        if (res.data) {
+          const receiverId = res.data.data.receiver_id;
+          const category_id = res.data.data.category_id;
+          navigation.navigate("DmScreen", {
+            receiverId: receiverId,
+            category_id: category_id,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("error");
+        if (error.response) {
+          console.log(error.response.data);
+          setLoading(false);
+        } else if (error.request) {
+          console.log(error.request);
+          setLoading(false);
+        } else {
+          console.log(error.message);
+          setLoading(false);
+        }
+      });
+  }
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -22,8 +54,13 @@ const ScanScreen = () => {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
+    console.log(
+      "🚀 ~ file: ScanScreen.js:25 ~ handleBarCodeScanned ~ data",
+      data
+    );
+    fetchQrDetails(data);
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    alert(`QR code has been scanned!`);
   };
 
   function fetchUserDetails() {
