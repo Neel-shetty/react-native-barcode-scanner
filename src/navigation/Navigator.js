@@ -43,6 +43,7 @@ import {
   DrawerItemList,
   createDrawerNavigator,
 } from "@react-navigation/drawer";
+import AccountScreen from "../screens/Main/AccountScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -234,6 +235,11 @@ const Navigator = () => {
             headerShown: false,
             tabBarLabel: "Email",
           }}
+        />
+        <Tab.Screen
+          name={AccountScreen.name}
+          component={AccountScreen.component}
+          options={{ headerShown: false }}
         />
       </Tab.Navigator>
     );

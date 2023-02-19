@@ -13,6 +13,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import AccountScreen from "../../screens/Main/AccountScreen";
 
 const MainContainer = () => {
   const navigation = useNavigation();
@@ -44,7 +45,11 @@ const MainContainer = () => {
           </LinearGradient>
         </View>
         <View style={{ flex: 2 }}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate(AccountScreen.name);
+            }}
+          >
             <Text style={styles.title}>My Account</Text>
           </TouchableOpacity>
         </View>

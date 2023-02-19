@@ -6,6 +6,7 @@ import { colors } from "../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { Foundation } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import AccountScreen from "../screens/Main/AccountScreen";
 
 const BottomTabBar = ({ state, descriptors, navigation }) => {
   return (
@@ -18,10 +19,7 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
     >
       {state.routes.map((route, index) => {
         const { options, tabBarLabel } = descriptors[route.key];
-        console.log(
-          "🚀 ~ file: BottomTabBar.js:21 ~ {state.routes.map ~ tabBarLabel",
-          tabBarLabel
-        );
+
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
@@ -41,6 +39,9 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
             navigation.navigate(route.name);
           }
         };
+        if (label === AccountScreen.name) {
+          return;
+        }
         if (label !== "DrawerNavigator")
           return (
             <View key={index} style={styles.mainItemContainer}>
@@ -60,7 +61,6 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
                   }}
                 >
                   {/* <NavigationIcon route={label} isFocused={isFocused} /> */}
-
                   {label === "Terms" ? (
                     <Foundation name="page" size={34} color={iconColor} />
                   ) : label === "Privacy Policy" ? (
