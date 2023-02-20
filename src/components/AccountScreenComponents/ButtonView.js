@@ -3,14 +3,65 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { layout } from "../../constants/layout";
+import { useNavigation } from "@react-navigation/native";
+import { Entypo } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const ButtonView = () => {
+  const navigation = useNavigation();
+
+  const data = [
+    {
+      name: "Chat",
+      onPress: function () {
+        navigation.navigate("ChatBoxScreen");
+      },
+      icon: (
+        <Entypo
+          name="chat"
+          size={30}
+          color="white"
+          style={{ transform: [{ rotate: "-45deg" }] }}
+        />
+      ),
+    },
+    {
+      name: "Scanner",
+      onPress: function () {
+        navigation.navigate("ScanScreen");
+      },
+      icon: (
+        <AntDesign
+          name="scan1"
+          size={28}
+          color="white"
+          style={{ transform: [{ rotate: "-45deg" }] }}
+        />
+      ),
+    },
+    {
+      name: "Help",
+      onPress: function () {
+        navigation.navigate("HelpScreen");
+      },
+      icon: (
+        <MaterialIcons
+          name="info"
+          size={30}
+          color="white"
+          style={{ transform: [{ rotate: "-45deg" }] }}
+        />
+      ),
+    },
+  ];
+
   return (
     <View style={styles.root}>
-      {["chat", "scanner", "help"].map((item) => {
+      {data.map((item) => {
         console.log("🚀 ~ file: ButtonView.js:11 ~ .map ~ item", item);
         return (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={item.onPress}>
             <View style={styles.optionBox} key={item}>
               <View
                 style={{
@@ -26,15 +77,16 @@ const ButtonView = () => {
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
                 >
-                  <MaterialCommunityIcons
+                  {item.icon}
+                  {/* <MaterialCommunityIcons
                     name="account"
                     size={34}
                     color="white"
                     style={{ transform: [{ rotate: "-45deg" }] }}
-                  />
+                  /> */}
                 </LinearGradient>
                 <View style={{ marginTop: 10 }} />
-                <Text style={styles.subtitle}>{item}</Text>
+                <Text style={styles.subtitle}>{item?.name}</Text>
               </View>
             </View>
           </TouchableOpacity>
