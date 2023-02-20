@@ -14,12 +14,15 @@ import { useEffect } from "react";
 import axios from "axios";
 import { Entypo } from "@expo/vector-icons";
 import { layout } from "../../constants/layout";
+import { useNavigation } from "@react-navigation/native";
 
 const CategortInfoList = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState();
   const [currentCategory, setCurrentCategory] = useState();
   const [counter, setCounter] = useState(0);
+
+  const navigation = useNavigation();
 
   async function fetchCategories() {
     setLoading(true);
@@ -92,7 +95,11 @@ const CategortInfoList = () => {
           <Entypo name="chevron-right" size={28} color="white" />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("QrScreen", { category: currentCategory });
+        }}
+      >
         <CategoryInfo category={currentCategory} loading={loading} />
       </TouchableOpacity>
     </View>
