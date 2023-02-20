@@ -11,9 +11,9 @@ import Profile from "../../components/HomeScreenComponents/Profile";
 import MainContainer from "../../components/HomeScreenComponents/MainContainer";
 import SecondContainer from "../../components/HomeScreenComponents/SecondContainer";
 import { StatusBar } from "expo-status-bar";
-import VehicleInfo from "../../components/AccountScreenComponents/VehicleInfo";
 import ButtonView from "../../components/AccountScreenComponents/ButtonView";
 import Banner from "../../components/AccountScreenComponents/Banner";
+import CategoryInfo from "../../components/AccountScreenComponents/CategoryInfo";
 
 const AccountScreen = () => {
   return (
@@ -28,8 +28,10 @@ const AccountScreen = () => {
         <Header />
       </View>
       <View style={styles.profileContainer}>
-        <Text style={styles.title}>My Account</Text>
-        <VehicleInfo />
+        <View style={{ marginBottom: 10 }}>
+          <Text style={styles.title}>My Account</Text>
+        </View>
+        <CategoryInfo />
       </View>
       <View style={styles.container1}>
         <ButtonView />

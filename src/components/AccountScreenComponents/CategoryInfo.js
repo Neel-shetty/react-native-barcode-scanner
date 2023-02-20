@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 
-const VehicleInfo = () => {
+const CategoryInfo = () => {
   return (
     <View style={styles.root}>
       <Text style={styles.vehicle}>VEHICLE</Text>
@@ -11,7 +11,7 @@ const VehicleInfo = () => {
   );
 };
 
-export default VehicleInfo;
+export default CategoryInfo;
 
 const styles = StyleSheet.create({
   root: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     width: layout.width * 0.8,
     borderRadius: 20,
     elevation: 20,
-    shadowColor:'black'
+    shadowColor: "black",
   },
   vehicle: {
     fontFamily: "poppins-semibold",

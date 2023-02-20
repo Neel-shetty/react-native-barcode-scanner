@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -10,32 +10,34 @@ const ButtonView = () => {
       {["chat", "scanner", "help"].map((item) => {
         console.log("🚀 ~ file: ButtonView.js:11 ~ .map ~ item", item);
         return (
-          <View style={styles.optionBox}>
-            <View
-              style={{
-                alignItems: "center",
-                justifyContent: "center",
-                alignSelf: "center",
-                marginTop: 10,
-              }}
-            >
-              <LinearGradient
-                colors={["#8c52ff", "#c471ed"]}
-                style={styles.iconContainer}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
+          <TouchableOpacity>
+            <View style={styles.optionBox} key={item}>
+              <View
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  alignSelf: "center",
+                  marginTop: 10,
+                }}
               >
-                <MaterialCommunityIcons
-                  name="account"
-                  size={34}
-                  color="white"
-                  style={{ transform: [{ rotate: "-45deg" }] }}
-                />
-              </LinearGradient>
-              <View style={{ marginTop: 10 }} />
-              <Text style={styles.subtitle}>{item}</Text>
+                <LinearGradient
+                  colors={["#8c52ff", "#c471ed"]}
+                  style={styles.iconContainer}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                >
+                  <MaterialCommunityIcons
+                    name="account"
+                    size={34}
+                    color="white"
+                    style={{ transform: [{ rotate: "-45deg" }] }}
+                  />
+                </LinearGradient>
+                <View style={{ marginTop: 10 }} />
+                <Text style={styles.subtitle}>{item}</Text>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         );
       })}
     </View>
