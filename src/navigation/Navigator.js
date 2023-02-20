@@ -44,6 +44,7 @@ import {
   createDrawerNavigator,
 } from "@react-navigation/drawer";
 import AccountScreen from "../screens/Main/AccountScreen";
+import QrScreen from "../screens/Main/QrScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -292,6 +293,7 @@ const Navigator = () => {
             <Stack.Screen name="ChatBoxScreen" component={ChatBoxScreen} />
             <Stack.Screen name="DmScreen" component={DmScreen} />
             <Stack.Screen name="ScanScreen" component={ScanScreen} />
+            <Stack.Screen name="QrScreen" component={QrScreen} />
           </>
         )}
       </Stack.Navigator>

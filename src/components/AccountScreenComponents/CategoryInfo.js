@@ -1,12 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 
-const CategoryInfo = ({ category }) => {
+const CategoryInfo = ({ category, loading }) => {
   return (
     <View style={styles.root}>
-      <Text style={styles.vehicle}>{category.name}</Text>
-      <Text style={styles.number}>{category.value}</Text>
+      {loading ? (
+        <ActivityIndicator color={"purple"} />
+      ) : (
+        <>
+          <Text style={styles.vehicle}>{category?.name}</Text>
+          <Text style={styles.number}>{category?.value}</Text>
+        </>
+      )}
     </View>
   );
 };

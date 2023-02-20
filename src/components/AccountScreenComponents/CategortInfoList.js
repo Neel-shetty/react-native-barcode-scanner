@@ -62,7 +62,7 @@ const CategortInfoList = () => {
     setCurrentCategory(currCategory);
   }
 
-  if (loading) return <ActivityIndicator size={"large"} color={"purple"} />;
+  // if (loading) return <ActivityIndicator size={"large"} color={"purple"} />;
 
   return (
     <View style={styles.root}>
@@ -93,7 +93,7 @@ const CategortInfoList = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity>
-        <CategoryInfo category={currentCategory} />
+        <CategoryInfo category={currentCategory} loading={loading} />
       </TouchableOpacity>
     </View>
   );
