@@ -14,6 +14,7 @@ import { StatusBar } from "expo-status-bar";
 import ButtonView from "../../components/AccountScreenComponents/ButtonView";
 import Banner from "../../components/AccountScreenComponents/Banner";
 import CategoryInfo from "../../components/AccountScreenComponents/CategoryInfo";
+import CategortInfoList from "../../components/AccountScreenComponents/CategortInfoList";
 
 const AccountScreen = () => {
   return (
@@ -28,10 +29,8 @@ const AccountScreen = () => {
         <Header />
       </View>
       <View style={styles.profileContainer}>
-        <View style={{ marginBottom: 10 }}>
-          <Text style={styles.title}>My Account</Text>
-        </View>
-        <CategoryInfo />
+        {/* <CategoryInfo /> */}
+        <CategortInfoList />
       </View>
       <View style={styles.container1}>
         <ButtonView />

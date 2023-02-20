@@ -2,11 +2,11 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 
-const CategoryInfo = () => {
+const CategoryInfo = ({ category }) => {
   return (
     <View style={styles.root}>
-      <Text style={styles.vehicle}>VEHICLE</Text>
-      <Text style={styles.number}>DL03AN1123</Text>
+      <Text style={styles.vehicle}>{category.name}</Text>
+      <Text style={styles.number}>{category.value}</Text>
     </View>
   );
 };
