@@ -11,6 +11,8 @@ import Profile from "../../components/HomeScreenComponents/Profile";
 import MainContainer from "../../components/HomeScreenComponents/MainContainer";
 import SecondContainer from "../../components/HomeScreenComponents/SecondContainer";
 import { StatusBar } from "expo-status-bar";
+import VehicleInfo from "../../components/AccountScreenComponents/VehicleInfo";
+import ButtonView from "../../components/AccountScreenComponents/ButtonView";
 
 const AccountScreen = () => {
   return (
@@ -25,12 +27,13 @@ const AccountScreen = () => {
         <Header />
       </View>
       <View style={styles.profileContainer}>
+        <Text style={styles.title}>My Account</Text>
+        <VehicleInfo />
       </View>
       <View style={styles.container1}>
+        <ButtonView />
       </View>
-      <View style={styles.container2}>
-       
-      </View>
+      <View style={styles.container2}></View>
       <View style={styles.dummy} />
     </View>
   );
@@ -64,13 +67,14 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   profileContainer: {
-    flex: 4,
+    flex: 3,
     alignItems: "center",
     justifyContent: "center",
     paddingBottom: 20,
+    // backgroundColor: "pink",
   },
   container1: {
-    flex: 3.5,
+    flex: 4.5,
     alignItems: "center",
     justifyContent: "center",
     // maxHeight: 220,
@@ -84,5 +88,10 @@ const styles = StyleSheet.create({
   dummy: {
     // flex: 1,
     minHeight: 85,
+  },
+  title: {
+    fontFamily: "poppins-semibold",
+    fontSize: 28,
+    color: "white",
   },
 });
