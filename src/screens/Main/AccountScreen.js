@@ -13,6 +13,7 @@ import SecondContainer from "../../components/HomeScreenComponents/SecondContain
 import { StatusBar } from "expo-status-bar";
 import VehicleInfo from "../../components/AccountScreenComponents/VehicleInfo";
 import ButtonView from "../../components/AccountScreenComponents/ButtonView";
+import Banner from "../../components/AccountScreenComponents/Banner";
 
 const AccountScreen = () => {
   return (
@@ -33,7 +34,12 @@ const AccountScreen = () => {
       <View style={styles.container1}>
         <ButtonView />
       </View>
-      <View style={styles.container2}></View>
+      <View style={styles.container2}>
+        <View style={{ width: layout.widthp, paddingLeft: 5 }}>
+          <Text style={styles.headerTitle}>Promotional Banners</Text>
+        </View>
+        <Banner />
+      </View>
       <View style={styles.dummy} />
     </View>
   );
@@ -93,5 +99,9 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-semibold",
     fontSize: 28,
     color: "white",
+  },
+  headerTitle: {
+    fontFamily: "poppins-semibold",
+    fontSize: 18,
   },
 });
