@@ -61,9 +61,9 @@ const Categories = () => {
           renderItem={({ item }) => {
             return (
               <CategoryButton
+                category={item}
                 image={item.image}
                 title={item.name}
-                categoryId={item.id}
               />
             );
           }}

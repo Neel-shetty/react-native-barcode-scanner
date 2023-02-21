@@ -17,7 +17,7 @@ const Header = () => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("ChatBoxScreen");
+          navigation.navigate("AllCategoriesScreen");
         }}
       >
         <Ionicons name="notifications" size={24} color="white" />

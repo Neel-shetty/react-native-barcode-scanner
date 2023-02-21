@@ -19,9 +19,8 @@ const AllCategoriesScreen = () => {
       <View style={styles.categories}>
         <Categories />
       </View>
-      <View style={styles.organizations}>
-        <Organizations />
-      </View>
+      {/* <View style={styles.organizations}>
+      </View> */}
     </View>
   );
 };
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
     transform: [{ scale: 2 }],
   },
   categories: {
-    flex: 5,
+    flex: 10,
   },
   organizations: {
     flex: 5,

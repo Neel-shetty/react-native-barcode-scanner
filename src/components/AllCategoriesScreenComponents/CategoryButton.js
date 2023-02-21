@@ -3,10 +3,10 @@ import React from "react";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
 
-const CategoryButton = ({ image, title, categoryId }) => {
+const CategoryButton = ({ image, title, category }) => {
   const navigation = useNavigation();
   function onPress() {
-    navigation.navigate("RegisterFormScreen", { categoryId: categoryId });
+    navigation.navigate("QrScreen", { category: category });
   }
   return (
     <View style={styles.root}>
@@ -16,7 +16,9 @@ const CategoryButton = ({ image, title, categoryId }) => {
         </View>
       </TouchableOpacity>
       <View>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title} numberOfLines={1}>
+          {title}
+        </Text>
       </View>
     </View>
   );
