@@ -53,7 +53,13 @@ const Organizations = () => {
         <FlatList
           data={data}
           renderItem={({ item }) => {
-            return <OrganizationButton title={item.name} image={item.image} />;
+            return (
+              <OrganizationButton
+                title={item.name}
+                image={item.image}
+                categoryId={item.id}
+              />
+            );
           }}
           numColumns={3}
           showsVerticalScrollIndicator={false}

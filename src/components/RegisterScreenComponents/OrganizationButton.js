@@ -1,11 +1,16 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
+import { useNavigation } from "@react-navigation/native";
 
-const OrganizationButton = ({ image, title }) => {
+const OrganizationButton = ({ image, title, categoryId }) => {
+  const navigation = useNavigation();
+  function onPress() {
+    navigation.navigate("RegisterFormScreen", { categoryId: categoryId });
+  }
   return (
     <View style={styles.root}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={onPress}>
         <View style={styles.box}>
           <Image source={{ uri: image }} style={{ height: 70, width: 70 }} />
         </View>

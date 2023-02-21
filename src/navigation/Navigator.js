@@ -46,6 +46,7 @@ import {
 import AccountScreen from "../screens/Main/AccountScreen";
 import QrScreen from "../screens/Main/QrScreen";
 import HelpScreen from "../screens/Main/HelpScreen";
+import AllCategoriesScreen from "../screens/Main/AllCategoriesScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -296,6 +297,10 @@ const Navigator = () => {
             <Stack.Screen name="ScanScreen" component={ScanScreen} />
             <Stack.Screen name="QrScreen" component={QrScreen} />
             <Stack.Screen name="HelpScreen" component={HelpScreen} />
+            <Stack.Screen
+              name="AllCategoriesScreen"
+              component={AllCategoriesScreen}
+            />
           </>
         )}
       </Stack.Navigator>
