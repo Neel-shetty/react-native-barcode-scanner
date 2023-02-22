@@ -95,7 +95,6 @@ const Dm = () => {
       .then((res) => {
         console.log("response data sendmessage ---------- ", res.data);
         fetchMessages();
-        // setMessages(res.data.data);
       })
       .catch((error) => {
         console.log("error");

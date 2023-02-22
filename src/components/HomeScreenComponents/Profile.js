@@ -11,7 +11,7 @@ const Profile = () => {
         }}
         style={styles.image}
       />
-      <Text style={styles.name}>Daniel Gallego</Text>
+      <Text style={styles.name}>Daniel Gallego eas</Text>
       <TouchableOpacity>
         <LinearGradient
           colors={["white", "#c471ed"]}
