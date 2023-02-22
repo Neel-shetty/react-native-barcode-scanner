@@ -1,26 +1,26 @@
 import { Button, ImageBackground, StyleSheet, Text, View } from "react-native";
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setLoggedIn } from "../../store/slice/userSlice";
+import { setLoggedIn } from "../../../store/slice/userSlice";
 import * as SecureStore from "expo-secure-store";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { layout } from "../../constants/layout";
-import Header from "../../components/HomeScreenComponents/Header";
-import Profile from "../../components/HomeScreenComponents/Profile";
-import MainContainer from "../../components/HomeScreenComponents/MainContainer";
-import SecondContainer from "../../components/HomeScreenComponents/SecondContainer";
+import { layout } from "../../../constants/layout";
+import Header from "../../../components/HomeScreenComponents/Header";
+import Profile from "../../../components/HomeScreenComponents/Profile";
+import MainContainer from "../../../components/HomeScreenComponents/MainContainer";
+import SecondContainer from "../../../components/HomeScreenComponents/SecondContainer";
 import { StatusBar } from "expo-status-bar";
-import ButtonView from "../../components/AccountScreenComponents/ButtonView";
-import Banner from "../../components/AccountScreenComponents/Banner";
-import CategoryInfo from "../../components/AccountScreenComponents/CategoryInfo";
-import CategortInfoList from "../../components/AccountScreenComponents/CategortInfoList";
+import ButtonView from "../../../components/AccountScreenComponents/ButtonView";
+import Banner from "../../../components/AccountScreenComponents/Banner";
+import CategoryInfo from "../../../components/AccountScreenComponents/CategoryInfo";
+import CategortInfoList from "../../../components/AccountScreenComponents/CategortInfoList";
 
 const AccountScreen = () => {
   return (
     <View style={styles.root}>
       <ImageBackground
-        source={require("../../../assets/images/bg2.png")}
+        source={require("../../../../assets/images/bg2.png")}
         resizeMode="cover"
         style={styles.bgImage}
       />

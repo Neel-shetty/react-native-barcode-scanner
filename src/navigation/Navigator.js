@@ -43,10 +43,11 @@ import {
   DrawerItemList,
   createDrawerNavigator,
 } from "@react-navigation/drawer";
-import AccountScreen from "../screens/Main/AccountScreen";
+import AccountScreen from "../screens/Main/AccountScreenFlow/AccountScreen";
 import QrScreen from "../screens/Main/QrScreen";
 import HelpScreen from "../screens/Main/HelpScreen";
 import AllCategoriesScreen from "../screens/Main/AllCategoriesScreen";
+import CategoryUsersScreen from "../screens/Main/AccountScreenFlow/CategoryUsersScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -300,6 +301,10 @@ const Navigator = () => {
             <Stack.Screen
               name="AllCategoriesScreen"
               component={AllCategoriesScreen}
+            />
+            <Stack.Screen
+              name="CategoryUsersScreen"
+              component={CategoryUsersScreen}
             />
           </>
         )}

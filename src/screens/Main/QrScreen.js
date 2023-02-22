@@ -14,13 +14,27 @@ import { useRef } from "react";
 import QRCode from "react-native-qrcode-svg";
 import { useState } from "react";
 import CustomButton from "../../components/SignInScreen2Components/common/CustomButton";
+import * as SecureStore from "expo-secure-store";
+import { useRoute } from "@react-navigation/native";
+import { useEffect } from "react";
 
 const QrScreen = ({ category }) => {
   const [status, requestPermission] = MediaLibrary.usePermissions();
-  const [link, setLink] = useState("error");
+  const [link, setLink] = useState({});
   const [loading, setLoading] = useState(false);
 
   const imageRef = useRef();
+  const route = useRoute();
+
+  async function setQrData() {
+    const sender_id = await SecureStore.getItemAsync("id");
+    const receiver_id = route?.params?.receiver_id;
+    const category_id = route?.params?.category_id;
+    setLink({
+      receiver_id: receiver_id,
+      category_id: category_id,
+    });
+  }
 
   const onSaveImageAsync = async () => {
     try {
@@ -43,6 +57,11 @@ const QrScreen = ({ category }) => {
   if (status === null) {
     requestPermission();
   }
+
+  useEffect(() => {
+    setQrData();
+  }, []);
+
   return (
     <ViewShot ref={imageRef} style={styles.root}>
       <SafeAreaView style={styles.root}>
@@ -63,7 +82,7 @@ const QrScreen = ({ category }) => {
           <View style={styles.qrContainer}>
             <View style={styles.blackContainer}>
               <View style={styles.whiteContainer}>
-                <QRCode value={link} size={200} />
+                <QRCode value={JSON.stringify(link)} size={200} />
               </View>
               <View
                 style={{

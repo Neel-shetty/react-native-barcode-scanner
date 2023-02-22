@@ -15,19 +15,22 @@ import axios from "axios";
 import { Entypo } from "@expo/vector-icons";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
+import * as SecureStore from "expo-secure-store";
 
 const CategortInfoList = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState();
   const [currentCategory, setCurrentCategory] = useState();
+  console.log("🚀 ~ file: CategortInfoList.js:24 ~ CategortInfoList ~ currentCategory:", currentCategory)
   const [counter, setCounter] = useState(0);
 
   const navigation = useNavigation();
 
   async function fetchCategories() {
+    const id = await SecureStore.getItemAsync("id");
     setLoading(true);
     axios
-      .post(`${BASEURL}/individual/categories`)
+      .post(`${BASEURL}/my/category`, { user_id: id })
       .then(async (res) => {
         // console.log(res.data);
         const categories = res.data.data;
@@ -97,7 +100,11 @@ const CategortInfoList = () => {
       </View>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate("QrScreen", { category: currentCategory });
+          if (!loading) {
+            navigation.navigate("CategoryUsersScreen", {
+              category: currentCategory,
+            });
+          }
         }}
       >
         <CategoryInfo category={currentCategory} loading={loading} />

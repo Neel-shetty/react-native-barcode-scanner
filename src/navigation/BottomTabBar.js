@@ -6,7 +6,7 @@ import { colors } from "../constants/colors";
 import { LinearGradient } from "expo-linear-gradient";
 import { Foundation } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import AccountScreen from "../screens/Main/AccountScreen";
+import AccountScreen from "../screens/Main/AccountScreenFlow/AccountScreen";
 
 const BottomTabBar = ({ state, descriptors, navigation }) => {
   return (

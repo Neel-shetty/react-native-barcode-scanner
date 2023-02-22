@@ -11,39 +11,39 @@ import { useNavigation } from "@react-navigation/native";
 const ScanScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  console.log("🚀 ~ file: ScanScreen.js:14 ~ ScanScreen ~ scanned", scanned)
+  console.log("🚀 ~ file: ScanScreen.js:14 ~ ScanScreen ~ scanned", scanned);
   const [loading, setLoading] = useState(false);
 
   const navigation = useNavigation();
 
-  async function fetchQrDetails(url) {
-    axios
-      .post(url)
-      .then((res) => {
-        console.log("response data ---------- ", res.data);
-        if (res.data) {
-          const receiverId = res.data.data.receiver_id;
-          const category_id = res.data.data.category_id;
-          navigation.navigate("DmScreen", {
-            receiverId: receiverId,
-            category_id: category_id,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log("error");
-        if (error.response) {
-          console.log(error.response.data);
-          setLoading(false);
-        } else if (error.request) {
-          console.log(error.request);
-          setLoading(false);
-        } else {
-          console.log(error.message);
-          setLoading(false);
-        }
-      });
-  }
+  // async function fetchQrDetails(url) {
+  //   axios
+  //     .post(url)
+  //     .then((res) => {
+  //       console.log("response data ---------- ", res.data);
+  //       if (res.data) {
+  //         const receiverId = res.data.data.receiver_id;
+  //         const category_id = res.data.data.category_id;
+  //         navigation.navigate("DmScreen", {
+  //           receiverId: receiverId,
+  //           category_id: category_id,
+  //         });
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.log("error");
+  //       if (error.response) {
+  //         console.log(error.response.data);
+  //         setLoading(false);
+  //       } else if (error.request) {
+  //         console.log(error.request);
+  //         setLoading(false);
+  //       } else {
+  //         console.log(error.message);
+  //         setLoading(false);
+  //       }
+  //     });
+  // }
 
   useEffect(() => {
     const getBarCodeScannerPermissions = async () => {
@@ -61,7 +61,12 @@ const ScanScreen = () => {
       "🚀 ~ file: ScanScreen.js:25 ~ handleBarCodeScanned ~ data",
       data
     );
-    fetchQrDetails(data);
+    // fetchQrDetails(data);
+    const scannedData = JSON.parse(data);
+    navigation.navigate("DmScreen", {
+      receiverId: scannedData?.receiver_id,
+      category_id: scannedData?.category_id,
+    });
     setScanned(true);
     alert(`QR code has been scanned!`);
   };

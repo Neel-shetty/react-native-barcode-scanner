@@ -60,7 +60,7 @@ const Dm = () => {
       .post(`${BASEURL}/my/messages`, {
         sender_id: id,
         receiver_id: route.params.receiverId,
-        // category_id: route.params.category_id,
+        category_id: route.params.category_id,
       })
       .then((res) => {
         // console.log("response data ---------- ", res.data);

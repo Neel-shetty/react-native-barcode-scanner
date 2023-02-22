@@ -9,8 +9,8 @@ const CategoryInfo = ({ category, loading }) => {
         <ActivityIndicator color={"purple"} />
       ) : (
         <>
-          <Text style={styles.vehicle}>{category?.name}</Text>
-          <Text style={styles.number}>{category?.value}</Text>
+          <Text style={styles.vehicle}>{category?.category_name}</Text>
+          <Text style={styles.number}>{category?.form_value}</Text>
         </>
       )}
     </View>
