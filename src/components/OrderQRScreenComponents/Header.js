@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = () => {
+const Header = ({ title }) => {
   const navigation = useNavigation();
 
   function onPress() {
@@ -17,7 +17,7 @@ const Header = () => {
       <TouchableOpacity onPress={onPress}>
         <Ionicons name="chevron-back" size={30} color="white" />
       </TouchableOpacity>
-      <Text style={styles.title}>Order Quantity</Text>
+      <Text style={styles.title}>{title}</Text>
       <View style={{ height: 30, width: 30 }} />
     </View>
   );

@@ -1,10 +1,17 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
+import { useNavigation } from "@react-navigation/native";
 
 const OrderItem = ({ order }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={styles.root} onPress={() => {}}>
+    <TouchableOpacity
+      style={styles.root}
+      onPress={() => {
+        navigation.navigate("OrderQRFormScreen");
+      }}
+    >
       <View style={{ flex: 3, height: 110 }}>
         <Text style={styles.text}>Quantity - {order.qty}</Text>
         <Text numberOfLines={3} style={styles.description}>

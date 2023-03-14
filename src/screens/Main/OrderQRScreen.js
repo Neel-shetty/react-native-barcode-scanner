@@ -1,4 +1,5 @@
 import {
+  ActivityIndicator,
   FlatList,
   ImageBackground,
   StyleSheet,
@@ -14,13 +15,18 @@ import Header from "../../components/OrderQRScreenComponents/Header";
 import OrderItem from "../../components/OrderQRScreenComponents/OrderItem";
 
 const OrderQRScreen = () => {
-  const { data } = useQuery("fetch_order_qty", async () =>
+  const { data, isLoading, error } = useQuery("fetch_order_qty", async () =>
     axios.post(`${BASEURL}/order_qty`)
   );
   console.log(
     "🚀 ~ file: OrderQRScreen.js:11 ~ OrderQRScreen ~ data:",
-    data.data.data
+    data?.data?.data
   );
+
+  if (!data || isLoading || error) {
+    return <ActivityIndicator />;
+  }
+  
   return (
     <View style={styles.root}>
       <ImageBackground
@@ -29,11 +35,11 @@ const OrderQRScreen = () => {
         style={styles.bgImage}
       />
       <View style={styles.headerContainer}>
-        <Header />
+        <Header title={"Order Quantity"} />
       </View>
       <View style={{ flex: 8 }}>
         <FlatList
-          data={data.data.data}
+          data={data?.data?.data ? data?.data?.data : []}
           renderItem={({ item, index }) => {
             return <OrderItem order={item} />;
           }}
@@ -58,9 +64,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     transform: [{ scale: 2 }],
-  },
-  categories: {
-    flex: 10,
   },
   headerContainer: {
     flex: 1,
