@@ -15,7 +15,7 @@ import QRCode from "react-native-qrcode-svg";
 import { useState } from "react";
 import CustomButton from "../../components/SignInScreen2Components/common/CustomButton";
 import * as SecureStore from "expo-secure-store";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect } from "react";
 
 const QrScreen = ({ category }) => {
@@ -25,6 +25,7 @@ const QrScreen = ({ category }) => {
 
   const imageRef = useRef();
   const route = useRoute();
+  const navigation = useNavigation();
 
   async function setQrData() {
     const sender_id = await SecureStore.getItemAsync("id");
@@ -122,7 +123,12 @@ const QrScreen = ({ category }) => {
             >
               DL03AN1123
             </Text>
-            <View style={{ marginTop: 10 }}>
+            <View style={{ marginTop: 10, marginBottom: 20 }}>
+              <CustomButton
+                title={"Buy QR"}
+                onPress={() => navigation.navigate("OrderQRScreen")}
+              />
+              <View style={{ height: 10 }} />
               <CustomButton title={"Save"} onPress={onSaveImageAsync} />
             </View>
           </View>

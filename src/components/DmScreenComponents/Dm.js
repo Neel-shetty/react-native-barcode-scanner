@@ -53,9 +53,10 @@ const Dm = () => {
   const [inputText, setInputText] = useState();
 
   const route = useRoute();
-  console.log("🚀 ~ file: Dm.js:51 ~ Dm ~ route", route.params);
+  console.log("🚀 ~ file: Dm.js:51 ~ Dm ~ route", route.params.receiverId);
   async function fetchMessages() {
     const id = await SecureStore.getItemAsync("id");
+    console.log("🚀 ~ file: Dm.js:59 ~ fetchMessages ~ id:", id);
     axios
       .post(`${BASEURL}/my/messages`, {
         sender_id: id,

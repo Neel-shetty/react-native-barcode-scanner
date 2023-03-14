@@ -48,6 +48,7 @@ import QrScreen from "../screens/Main/QrScreen";
 import HelpScreen from "../screens/Main/HelpScreen";
 import AllCategoriesScreen from "../screens/Main/AllCategoriesScreen";
 import CategoryUsersScreen from "../screens/Main/AccountScreenFlow/CategoryUsersScreen";
+import OrderQRScreen from "../screens/Main/OrderQRScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -306,6 +307,7 @@ const Navigator = () => {
               name="CategoryUsersScreen"
               component={CategoryUsersScreen}
             />
+            <Stack.Screen name="OrderQRScreen" component={OrderQRScreen} />
           </>
         )}
       </Stack.Navigator>
