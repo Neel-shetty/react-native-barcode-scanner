@@ -5,6 +5,10 @@
         "buildType": "apk"
       },
       "channel": "preview"
+    },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
     }
   }
 }

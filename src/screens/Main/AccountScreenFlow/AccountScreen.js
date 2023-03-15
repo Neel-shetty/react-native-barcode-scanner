@@ -8,7 +8,6 @@ import * as SplashScreen from "expo-splash-screen";
 import { layout } from "../../../constants/layout";
 import Header from "../../../components/HomeScreenComponents/Header";
 import Profile from "../../../components/HomeScreenComponents/Profile";
-import MainContainer from "../../../components/HomeScreenComponents/MainContainer";
 import SecondContainer from "../../../components/HomeScreenComponents/SecondContainer";
 import { StatusBar } from "expo-status-bar";
 import ButtonView from "../../../components/AccountScreenComponents/ButtonView";

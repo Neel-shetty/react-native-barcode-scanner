@@ -28,7 +28,7 @@ const Input = ({
   const formError = useSelector((state) => state.error.error);
   const user = useSelector((state) => state.user.loggedIn);
   // console.log(user,"user...")
-  console.log("🚀 ~ file: Input.js:34 ~ formError", formError);
+  // console.log("🚀 ~ file: Input.js:34 ~ formError", formError);
 
   return (
     <View style={styles.root}>

@@ -9,7 +9,7 @@ const OrderItem = ({ order }) => {
     <TouchableOpacity
       style={styles.root}
       onPress={() => {
-        navigation.navigate("OrderQRFormScreen");
+        navigation.navigate("OrderQRFormScreen", { orderId: order.id });
       }}
     >
       <View style={{ flex: 3, height: 110 }}>

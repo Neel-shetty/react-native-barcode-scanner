@@ -4,15 +4,88 @@ import { Formik } from "formik";
 import { useState } from "react";
 import Input from "./Input";
 import CustomButton from "../SignInScreen2Components/common/CustomButton";
+import RazorpayCheckout from "react-native-razorpay";
+import axios from "axios";
+import { BASEURL } from "../../constants/apiurl";
+import { useRoute } from "@react-navigation/native";
+import * as SecureStore from "expo-secure-store";
 
 const InputFields = () => {
   const [loading, setLoading] = useState(false);
+  const route = useRoute();
+  console.log(
+    "🚀 ~ file: InputFields.js:15 ~ InputFields ~ route:",
+    route.params?.orderId
+  );
   return (
     <View>
       <Formik
         initialValues={{ phoneNumber: "", address: "", name: "", email: "" }}
         onSubmit={(values) => {
           console.log(values);
+          axios
+            .post(`${BASEURL}/create/order/id`, {
+              amount: 1000,
+            })
+            .then((res) => {
+              let options = {
+                description: "Credits towards consultation",
+                image: "https://i.imgur.com/3g7nmJC.jpg",
+                currency: "INR",
+                key: "rzp_test_RFqjBfnOlEqSwr",
+                amount: "1000",
+                name: "Acme Corp",
+                order_id: res.data.data, //Replace this with an order_id created using Orders API.
+                // prefill: {
+                //   email: "gaurav.kumar@example.com",
+                //   contact: "9191919191",
+                //   name: "Gaurav Kumar",
+                // },
+                theme: { color: "pink" },
+              };
+              RazorpayCheckout.open(options)
+                .then((data) => {
+                  // handle success
+                  alert(`Success: ${data.razorpay_payment_id}`);
+                  axios
+                    .post(`${BASEURL}/payment/details`, {
+                      razorpay_payment_id: data.razorpay_payment_id,
+                      razorpay_order_id: res.data.data,
+                      razorpay_signature: data.razorpay_signature,
+                    })
+                    .then(async (response) => {
+                      const id = await SecureStore.getItemAsync("id");
+                      axios
+                        .post(`${BASEURL}/order/insert`, {
+                          user_id: id,
+                          transaction_id: data.razorpay_payment_id,
+                          order_id: route.params?.orderId,
+                          name: values.name,
+                          address: values.address,
+                          email: values.email,
+                          phone: values.phoneNumber,
+                        })
+                        .then((result) => {
+                          console.log(
+                            "order insert response --- ",
+                            result.data
+                          );
+                        })
+                        .catch((sendCartError) =>
+                          console.log(
+                            "order insert error --- ",
+                            sendCartError.response
+                          )
+                        );
+                    })
+                    .catch((err) => console.log(err));
+                })
+                .catch((error) => {
+                  // handle failure
+                  alert(`Error: ${error.code} | ${error.description}`);
+                });
+            })
+            .catch((error) => console.log(error.response));
         }}
       >
         {({
