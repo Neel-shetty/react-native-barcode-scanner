@@ -13,10 +13,10 @@ import * as SecureStore from "expo-secure-store";
 const InputFields = () => {
   const [loading, setLoading] = useState(false);
   const route = useRoute();
-  console.log(
-    "🚀 ~ file: InputFields.js:15 ~ InputFields ~ route:",
-    route.params?.orderId
-  );
+  // console.log(
+  //   "🚀 ~ file: InputFields.js:15 ~ InputFields ~ route:",
+  //   route.params?.orderId
+  // );
   return (
     <View>
       <Formik
@@ -25,7 +25,7 @@ const InputFields = () => {
           console.log(values);
           axios
             .post(`${BASEURL}/create/order/id`, {
-              amount: 1000,
+              amount: route.params?.amount,
             })
             .then((res) => {
               let options = {
@@ -33,8 +33,8 @@ const InputFields = () => {
                 image: "https://i.imgur.com/3g7nmJC.jpg",
                 currency: "INR",
                 key: "rzp_test_RFqjBfnOlEqSwr",
-                amount: "1000",
-                name: "Acme Corp",
+                amount: route.params?.amount,
+                name: "Scan Me",
                 order_id: res.data.data, //Replace this with an order_id created using Orders API.
                 // prefill: {
                 //   email: "gaurav.kumar@example.com",
@@ -58,7 +58,7 @@ const InputFields = () => {
                       axios
                         .post(`${BASEURL}/order/insert`, {
                           user_id: id,
-                          transaction_id: data.razorpay_payment_id,
+                          payment_id: data.razorpay_payment_id,
                           order_id: route.params?.orderId,
                           name: values.name,
                           address: values.address,
@@ -74,7 +74,7 @@ const InputFields = () => {
                         .catch((sendCartError) =>
                           console.log(
                             "order insert error --- ",
-                            sendCartError.response
+                            sendCartError.response.data
                           )
                         );
                     })
@@ -121,10 +121,10 @@ const InputFields = () => {
               <Input
                 placeholder={"Name"}
                 title={"Name"}
-                onChangeText={handleChange("password")}
-                handleBlur={handleBlur("password")}
-                value={values.password}
-                fieldType={"password"}
+                onChangeText={handleChange("name")}
+                handleBlur={handleBlur("name")}
+                value={values.name}
+                fieldType={"name"}
                 // secureTextEntry={true}
                 errpr={errors}
               />

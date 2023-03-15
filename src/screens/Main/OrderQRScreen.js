@@ -18,15 +18,15 @@ const OrderQRScreen = () => {
   const { data, isLoading, error } = useQuery("fetch_order_qty", async () =>
     axios.post(`${BASEURL}/order_qty`)
   );
-  console.log(
-    "🚀 ~ file: OrderQRScreen.js:11 ~ OrderQRScreen ~ data:",
-    data?.data?.data
-  );
+  // console.log(
+  //   "🚀 ~ file: OrderQRScreen.js:11 ~ OrderQRScreen ~ data:",
+  //   data?.data?.data
+  // );
 
   if (!data || isLoading || error) {
     return <ActivityIndicator />;
   }
-  
+
   return (
     <View style={styles.root}>
       <ImageBackground
