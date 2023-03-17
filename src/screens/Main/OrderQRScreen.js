@@ -24,7 +24,7 @@ const OrderQRScreen = () => {
   // );
 
   if (!data || isLoading || error) {
-    return <ActivityIndicator />;
+    return null;
   }
 
   return (
@@ -34,17 +34,23 @@ const OrderQRScreen = () => {
         resizeMode="cover"
         style={styles.bgImage}
       />
-      <View style={styles.headerContainer}>
-        <Header title={"Order Quantity"} />
-      </View>
-      <View style={{ flex: 8 }}>
-        <FlatList
-          data={data?.data?.data ? data?.data?.data : []}
-          renderItem={({ item, index }) => {
-            return <OrderItem order={item} />;
-          }}
-        />
-      </View>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <>
+          <View style={styles.headerContainer}>
+            <Header title={"Order Quantity"} />
+          </View>
+          <View style={{ flex: 8 }}>
+            <FlatList
+              data={data?.data?.data ? data?.data?.data : []}
+              renderItem={({ item, index }) => {
+                return <OrderItem order={item} />;
+              }}
+            />
+          </View>
+        </>
+      )}
     </View>
   );
 };
