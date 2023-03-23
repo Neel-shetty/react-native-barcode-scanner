@@ -4,16 +4,24 @@ import { layout } from "../../constants/layout";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = () => {
+const Header = ({ showDrawerToggle = true }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.root}>
       <TouchableOpacity
         onPress={() => {
+          if(!showDrawerToggle){
+            navigation.goBack()
+            return
+          }
           navigation.openDrawer();
         }}
       >
-        <Ionicons name="menu" size={24} color="white" />
+        {showDrawerToggle ? (
+          <Ionicons name="menu" size={24} color="white" />
+        ) : (
+          <Ionicons name="chevron-back" size={24} color="white" />
+        )}
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {

@@ -50,6 +50,7 @@ import AllCategoriesScreen from "../screens/Main/AllCategoriesScreen";
 import CategoryUsersScreen from "../screens/Main/AccountScreenFlow/CategoryUsersScreen";
 import OrderQRScreen from "../screens/Main/OrderQRScreen";
 import OrderQRFormScreen from "../screens/Main/OrderQRFormScreen";
+import EditProfileScreen from "../screens/Main/EditProfileScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -312,6 +313,10 @@ const Navigator = () => {
             <Stack.Screen
               name="OrderQRFormScreen"
               component={OrderQRFormScreen}
+            />
+            <Stack.Screen
+              name="EditProfileScreen"
+              component={EditProfileScreen}
             />
           </>
         )}

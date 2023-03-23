@@ -24,8 +24,8 @@ const AccountScreen = () => {
         style={styles.bgImage}
       />
       <StatusBar style="dark" />
-      <View style={styles.headerContainer}>
-        <Header />
+      <View style={[styles.headerContainer, { marginTop: 20 }]}>
+        <Header showDrawerToggle={false} />
       </View>
       <View style={styles.profileContainer}>
         {/* <CategoryInfo /> */}

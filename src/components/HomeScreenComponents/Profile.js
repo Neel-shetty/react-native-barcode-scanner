@@ -1,8 +1,10 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 
 const Profile = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.root}>
       <Image
@@ -12,7 +14,9 @@ const Profile = () => {
         style={styles.image}
       />
       <Text style={styles.name}>Daniel Gallego eas</Text>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("EditProfileScreen")}
+      >
         <LinearGradient
           colors={["white", "#c471ed"]}
           style={styles.buttonContainer}
