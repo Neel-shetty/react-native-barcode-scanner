@@ -19,7 +19,7 @@ import * as SecureStore from "expo-secure-store";
 
 const CategortInfoList = () => {
   const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState();
   console.log("🚀 ~ file: CategortInfoList.js:24 ~ CategortInfoList ~ currentCategory:", currentCategory)
   const [counter, setCounter] = useState(0);
