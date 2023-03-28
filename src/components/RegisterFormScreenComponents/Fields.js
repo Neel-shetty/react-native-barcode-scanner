@@ -26,6 +26,7 @@ const Fields = () => {
   const [loading, setLoading] = useState();
   const [data, setData] = useState([]);
   const [response, setResponse] = useState([]);
+  const [sending, setSending] = useState(false);
 
   console.log("🚀 ~ file: Fields.js:29 ~ Fields ~ response", response);
 
@@ -38,7 +39,6 @@ const Fields = () => {
     // Alert.alert("Success", "Data submitted successfully");
   }
 
-  
   async function fetchCategories(callback) {
     setLoading(true);
     console.log("fetching categories");
@@ -72,6 +72,7 @@ const Fields = () => {
   }
 
   async function sendData() {
+    setSending(true);
     const id = await SecureStore.getItemAsync("id");
     formData.append("category_id", route.params.categoryId);
     console.log(
@@ -111,7 +112,7 @@ const Fields = () => {
         }
       )
       .then((res) => {
-        console.log("🚀 ~ file: Fields.js:114 ~ .then ~ res", res.data)
+        console.log("🚀 ~ file: Fields.js:114 ~ .then ~ res", res.data);
         Alert.alert("Registered", res.data.message);
       })
       .catch((error) => {
@@ -125,6 +126,9 @@ const Fields = () => {
           console.log(error.message);
           setLoading(false);
         }
+      })
+      .finally(() => {
+        setSending(false);
       });
   }
   useEffect(() => {
@@ -343,7 +347,7 @@ const Fields = () => {
         }}
       >
         {/* <Text>{JSON.stringify(response)}</Text> */}
-        <CustomButton title={"Submit"} onPress={sendData} />
+        <CustomButton loading={sending} title={"Submit"} onPress={sendData} />
       </View>
     </View>
   );

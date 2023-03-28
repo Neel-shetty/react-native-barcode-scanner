@@ -70,6 +70,7 @@ const HomeScreen = () => {
             // backgroundColor: "pink",
             width: layout.widthp,
             paddingLeft: 10,
+            marginTop: 20,
           }}
         >
           <Text style={styles.access}>Access</Text>
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 10,
+    marginTop: 20,
   },
   profileContainer: {
     flex: 4,

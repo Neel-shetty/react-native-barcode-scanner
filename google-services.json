@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "871841774532",
+    "project_id": "scan-me-dac83",
+    "storage_bucket": "scan-me-dac83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871841774532:android:01d5f90cffd9e9052f0291",
+        "android_client_info": {
+          "package_name": "com.scanme.scanme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871841774532-2u4u6ae9i60s8i0j8uhck98lu8m8fra1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXRDkJZp3d_UogHqMBmP7ILLitI-ZTdcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871841774532-2u4u6ae9i60s8i0j8uhck98lu8m8fra1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

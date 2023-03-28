@@ -11,7 +11,12 @@ import { colors } from "../../../constants/colors";
 
 const CustomButton = ({ title, onPress, loading }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity
+      onPress={() => {
+        if (loading) return;
+        onPress();
+      }}
+    >
       <View style={styles.root}>
         {loading ? (
           <ActivityIndicator />

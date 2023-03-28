@@ -21,7 +21,10 @@ const CategortInfoList = () => {
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState();
-  console.log("🚀 ~ file: CategortInfoList.js:24 ~ CategortInfoList ~ currentCategory:", currentCategory)
+  console.log(
+    "🚀 ~ file: CategortInfoList.js:24 ~ CategortInfoList ~ currentCategory:",
+    currentCategory
+  );
   const [counter, setCounter] = useState(0);
 
   const navigation = useNavigation();
@@ -101,13 +104,23 @@ const CategortInfoList = () => {
       <TouchableOpacity
         onPress={() => {
           if (!loading) {
-            navigation.navigate("CategoryUsersScreen", {
-              category: currentCategory,
-            });
+            if (categories.length === 0) {
+              navigation.navigate("RegisterScreen");
+            } else {
+              navigation.navigate("CategoryUsersScreen", {
+                category: currentCategory,
+              });
+            }
           }
         }}
       >
-        <CategoryInfo category={currentCategory} loading={loading} />
+        {categories.length === 0 && !loading ? (
+          <View style={styles.box}>
+            <Text>Register a user to view details</Text>
+          </View>
+        ) : (
+          <CategoryInfo category={currentCategory} loading={loading} />
+        )}
       </TouchableOpacity>
     </View>
   );
@@ -124,5 +137,15 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-semibold",
     fontSize: 28,
     color: "white",
+  },
+  box: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: layout.height * 0.17,
+    backgroundColor: "white",
+    width: layout.width * 0.8,
+    borderRadius: 20,
+    elevation: 20,
+    shadowColor: "black",
   },
 });
