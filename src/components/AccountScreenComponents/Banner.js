@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Animated } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  Image,
+} from "react-native";
 import React, { useState, useRef, useEffect } from "react";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
@@ -16,9 +23,9 @@ const Banner = () => {
 
   async function getImages() {
     axios
-      .post(`${BASEURL}/banner`)
+      .post(`${BASEURL}/banners`)
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         setImages(res.data.data);
       })
       .catch((error) => console.log(error));
@@ -63,7 +70,12 @@ const Banner = () => {
                 style={{ flex: 1, width: layout.widthp, overflow: "hidden" }}
               >
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("HomeScreen")}
+                  onPress={() => {
+                    if (item.page === "Plans") {
+                      navigation.navigate("SubscriptionScreen");
+                    }
+                    // navigation.navigate("HomeScreen");
+                  }}
                 >
                   {/* <View style={styles.bannerTextContainer}> */}
                   <Text style={styles.bannerText}>{item.title}</Text>
@@ -72,7 +84,7 @@ const Banner = () => {
                   <Image
                     source={{ uri: item.image }}
                     style={{ height: layout.widthp / 3, width: "100%" }}
-                    // resizeMode="contain"
+                    resizeMode="contain"
                   />
                 </TouchableOpacity>
               </Animated.View>
