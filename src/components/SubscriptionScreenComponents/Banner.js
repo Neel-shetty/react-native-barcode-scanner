@@ -1,51 +1,108 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  Animated,
+  Image,
+} from "react-native";
+import React, { useState, useRef, useEffect } from "react";
 import { layout } from "../../constants/layout";
+import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import { BASEURL } from "../../constants/apiurl";
+import BannerItem from "./BannerItem";
 
 const Banner = () => {
+  const [images, setImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [autoScroll, setAutoScroll] = useState(true);
+
+  const navigation = useNavigation();
+
+  const ref = useRef();
+
+  async function getImages() {
+    axios
+      .post(`${BASEURL}/subscription-banners`)
+      .then((res) => {
+        console.log(res.data);
+        setImages(res.data.data);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
+  useEffect(() => {
+    let interval = null;
+    if (images.length === 0) {
+      return;
+    }
+    if (autoScroll) {
+      interval = setInterval(() => {
+        let nextIndex = currentIndex + 1;
+        if (nextIndex >= images.length) {
+          nextIndex = 0;
+        }
+        setCurrentIndex(nextIndex);
+        ref.current.scrollToIndex({
+          animated: true,
+          index: nextIndex,
+        });
+      }, 3000);
+    }
+
+    return () => clearInterval(interval);
+  }, [autoScroll, currentIndex, images]);
+
   return (
     <View style={styles.root}>
-      <View
-        style={{
-          flex: 2,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <View
-          style={{
-            flex: 2,
-            alignItems: "center",
-            justifyContent: "center",
+      <View>
+        <Animated.FlatList
+          ref={ref}
+          data={images}
+          renderItem={({ item }) => {
+            return (
+              <Animated.View
+                key={item.id}
+                style={{ flex: 1, width: layout.widthp, overflow: "hidden" }}
+              >
+                <BannerItem image={item.image} description={item.name} />
+              </Animated.View>
+            );
           }}
-        >
-          <Text style={styles.text}>
-            Enroll your Organization, Agency or Company to get unlimited access
-            and register unlimited vehicles, employees, users
-          </Text>
-        </View>
-        <View style={{ flex: 1 }}>
-          <TouchableOpacity>
-            <View style={styles.buttonContainer}>
-              <Text style={styles.buttonText}>click here</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View
-        style={{
-          flex: 1,
-          // backgroundColor: "pink",
-          height: 150,
-          alignItems: "flex-start",
-          justifyContent: "flex-end",
-        }}
-      >
-        <Image
-          source={require("../../../assets/images/phone.png")}
-          style={styles.image}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          getItemLayout={(data, index) => ({
+            length: layout.widthp,
+            offset: layout.widthp * index,
+            index,
+          })}
+          snapToInterval={layout.widthp}
+          decelerationRate="fast"
+          bounces={false}
+          pagingEnabled
+          onScroll={(e) => {}}
+          windowSize={1}
+          initialNumToRender={1}
+          maxToRenderPerBatch={1}
+          removeClippedSubviews={true}
+          viewabilityConfig={{ viewAreaCoveragePercentThreshold: 50 }}
         />
       </View>
+      <View
+        style={{
+          flexDirection: "row",
+          width: layout.widthp,
+          justifyContent: "center",
+          alignItems: "center",
+          // backgroundColor: "turquoise",
+          // height: 30,
+        }}
+      ></View>
     </View>
   );
 };
@@ -55,38 +112,11 @@ export default Banner;
 const styles = StyleSheet.create({
   root: {
     alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: "row",
+    justifyContent: "center",
     height: 150,
     width: layout.widthp,
-    backgroundColor: "#c471ed",
+    backgroundColor: "white",
     borderRadius: 20,
-    paddingLeft: 20,
-    overflow: "hidden",
-    paddingTop: 10,
-  },
-  buttonContainer: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "red",
-    height: 30,
-    width: 80,
-    borderRadius: 25,
-  },
-  text: {
-    fontFamily: "poppins-regular",
-    fontSize: 13,
-    color: "white",
-    // textAlign:'center'
-  },
-  image: {
-    width: 120,
-    height: 120,
-    transform: [{ translateX: -25 }, { translateY: -5 }],
-  },
-  buttonText: {
-    fontFamily: "poppins-semibold",
-    color: "white",
-    fontSize: 12,
+    backgroundColor: "#c471ed",
   },
 });

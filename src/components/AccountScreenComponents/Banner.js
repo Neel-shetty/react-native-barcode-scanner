@@ -74,7 +74,6 @@ const Banner = () => {
                     if (item.page === "Plans") {
                       navigation.navigate("SubscriptionScreen");
                     }
-                    // navigation.navigate("HomeScreen");
                   }}
                 >
                   {/* <View style={styles.bannerTextContainer}> */}
@@ -101,19 +100,7 @@ const Banner = () => {
           decelerationRate="fast"
           bounces={false}
           pagingEnabled
-          onScroll={(e) => {
-            // const x = e.nativeEvent.contentOffset.x;
-            // if (
-            //   Math.floor(Math.floor(x) / Math.floor(layout.widthp)) >
-            //     currentIndex ||
-            //   Math.floor(Math.floor(x) / Math.floor(layout.widthp)) === 0
-            // ) {
-            //   setCurrentIndex(
-            //     Math.floor(Math.floor(x) / Math.floor(layout.widthp))
-            //   );
-            // }
-            // setAutoScroll(false);
-          }}
+          onScroll={(e) => {}}
           windowSize={1}
           initialNumToRender={1}
           maxToRenderPerBatch={1}
@@ -130,26 +117,7 @@ const Banner = () => {
           // backgroundColor: "turquoise",
           // height: 30,
         }}
-      >
-        {/* {images.map((item, index) => {
-          return (
-            <View
-              key={item.image}
-              style={{
-                width: 8,
-                height: 8,
-                borderRadius: 4,
-                backgroundColor: currentIndex == index ? '#93e3fe' : 'gray',
-                marginLeft: 5,
-                marginBottom: 15,
-                // position: "absolute",
-                alignItems: 'center',
-                justifyContent: 'center',
-                alignSelf: 'center',
-              }}></View>
-          );
-        })} */}
-      </View>
+      ></View>
     </View>
   );
 };
