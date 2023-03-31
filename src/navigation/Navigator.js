@@ -14,7 +14,6 @@ import {
   setLoggedIn,
 } from "../store/slice/userSlice";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import ProfileScreen from "../screens/Main/ProfileScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { colors } from "../constants/colors";
 import { AntDesign } from "@expo/vector-icons";
@@ -33,7 +32,7 @@ import ChatBoxScreen from "../screens/Main/ChatBoxScreen";
 import InboxScreen from "../screens/Main/InboxScreen";
 import DmScreen from "../screens/Main/DmScreen";
 import PrivacyScreen from "../screens/Main/PrivacyScreen";
-import EmailScreen from "../screens/Main/EmailScreen";
+import EmailScreen from "../screens/Main/AboutScreen";
 import ScanScreen from "../screens/Main/ScanScreen";
 import { Octicons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
@@ -51,6 +50,9 @@ import CategoryUsersScreen from "../screens/Main/AccountScreenFlow/CategoryUsers
 import OrderQRScreen from "../screens/Main/OrderQRScreen";
 import OrderQRFormScreen from "../screens/Main/OrderQRFormScreen";
 import EditProfileScreen from "../screens/Main/EditProfileScreen";
+import TermsScreen from "../screens/Main/TermsScreen";
+import AboutScreen from "../screens/Main/AboutScreen";
+import { Foundation } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -167,6 +169,32 @@ const Navigator = () => {
             },
           }}
         />
+        <Drawer.Screen
+          name="Terms"
+          component={TermsScreen}
+          options={{
+            drawerLabel: ({ focused, color }) => {
+              return (
+                <View>
+                  <Text
+                    style={{
+                      fontFamily: "poppins-semibold",
+                      color: focused ? color : color, //colors.gray,
+                    }}
+                  >
+                    Terms
+                  </Text>
+                </View>
+              );
+            },
+            drawerContentContainerStyle: {},
+            drawerItemStyle: { borderBottomWidth: 2, borderColor: "#edf0f3" },
+            drawerIcon: ({ focused, color, size }) => {
+              return <Foundation name="page" size={size} color={color} />;
+            },
+          }}
+        />
+        
       </Drawer.Navigator>
     );
   }
@@ -213,8 +241,8 @@ const Navigator = () => {
           }}
         />
         <Tab.Screen
-          name="ProfileScreen"
-          component={ProfileScreen}
+          name="TermsScreen"
+          component={TermsScreen}
           options={{
             tabBarIcon: (props) => (
               <MaterialIcons
@@ -227,10 +255,14 @@ const Navigator = () => {
             tabBarLabel: "Terms",
           }}
         />
-        <Tab.Screen name="Privacy Policy" component={PrivacyScreen} />
         <Tab.Screen
-          name="EmailScreen"
-          component={EmailScreen}
+          name="Privacy Policy"
+          component={PrivacyScreen}
+          options={{ headerShown: false }}
+        />
+        <Tab.Screen
+          name="AboutScreen"
+          component={AboutScreen}
           options={{
             tabBarIcon: (props) => (
               <Ionicons
@@ -240,7 +272,7 @@ const Navigator = () => {
               />
             ),
             headerShown: false,
-            tabBarLabel: "Email",
+            tabBarLabel: "About",
           }}
         />
         <Tab.Screen

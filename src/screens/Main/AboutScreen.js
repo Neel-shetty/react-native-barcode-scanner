@@ -9,15 +9,13 @@ import {
 import React from "react";
 import { layout } from "../../constants/layout";
 import Header from "../../components/OrderQRScreenComponents/Header";
-import InputFields from "../../components/EditProfileScreenComponents/InputFields";
 import { useState } from "react";
 import { useEffect } from "react";
-import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import RenderHtml, { defaultSystemFonts } from "react-native-render-html";
 
-const PrivacyScreen = () => {
+const AboutScreen = () => {
   const [terms, setTerms] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +23,7 @@ const PrivacyScreen = () => {
     const getTerms = async () => {
       try {
         setLoading(true);
-        axios.post(`${BASEURL}/privacy`).then((res) => {
+        axios.post(`${BASEURL}/about`).then((res) => {
           console.log(res.data);
           setTerms(res.data?.data);
           setLoading(false);
@@ -58,7 +56,7 @@ const PrivacyScreen = () => {
           style={styles.bgImage}
         />
         <View style={styles.headerContainer}>
-          <Header title={"Privacy Policy"} />
+          <Header title={"About Us"} />
         </View>
         <View
           style={{ flex: 8, alignItems: "flex-start", width: layout.widthp }}
@@ -102,7 +100,7 @@ const PrivacyScreen = () => {
   );
 };
 
-export default PrivacyScreen;
+export default AboutScreen;
 
 const styles = StyleSheet.create({
   root: {

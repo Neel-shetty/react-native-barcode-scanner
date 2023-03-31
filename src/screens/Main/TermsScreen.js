@@ -17,7 +17,7 @@ import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import RenderHtml, { defaultSystemFonts } from "react-native-render-html";
 
-const PrivacyScreen = () => {
+const TermsScreen = () => {
   const [terms, setTerms] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +25,7 @@ const PrivacyScreen = () => {
     const getTerms = async () => {
       try {
         setLoading(true);
-        axios.post(`${BASEURL}/privacy`).then((res) => {
+        axios.post(`${BASEURL}/terms`).then((res) => {
           console.log(res.data);
           setTerms(res.data?.data);
           setLoading(false);
@@ -58,7 +58,7 @@ const PrivacyScreen = () => {
           style={styles.bgImage}
         />
         <View style={styles.headerContainer}>
-          <Header title={"Privacy Policy"} />
+          <Header title={"Terms"} />
         </View>
         <View
           style={{ flex: 8, alignItems: "flex-start", width: layout.widthp }}
@@ -102,7 +102,7 @@ const PrivacyScreen = () => {
   );
 };
 
-export default PrivacyScreen;
+export default TermsScreen;
 
 const styles = StyleSheet.create({
   root: {
