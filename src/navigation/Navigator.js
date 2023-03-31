@@ -53,6 +53,7 @@ import EditProfileScreen from "../screens/Main/EditProfileScreen";
 import TermsScreen from "../screens/Main/TermsScreen";
 import AboutScreen from "../screens/Main/AboutScreen";
 import { Foundation } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -179,7 +180,7 @@ const Navigator = () => {
                   <Text
                     style={{
                       fontFamily: "poppins-semibold",
-                      color: focused ? color : color, //colors.gray,
+                      color: "white", //colors.gray,
                     }}
                   >
                     Terms
@@ -190,11 +191,62 @@ const Navigator = () => {
             drawerContentContainerStyle: {},
             drawerItemStyle: { borderBottomWidth: 2, borderColor: "#edf0f3" },
             drawerIcon: ({ focused, color, size }) => {
-              return <Foundation name="page" size={size} color={color} />;
+              return <Foundation name="page" size={size} color={"white"} />;
             },
           }}
         />
-        
+        <Drawer.Screen
+          name="Privacy"
+          component={TermsScreen}
+          options={{
+            drawerLabel: ({ focused, color }) => {
+              return (
+                <View>
+                  <Text
+                    style={{
+                      fontFamily: "poppins-semibold",
+                      color: "white", //colors.gray,
+                    }}
+                  >
+                    Privacy Policy
+                  </Text>
+                </View>
+              );
+            },
+            drawerContentContainerStyle: {},
+            drawerItemStyle: { borderBottomWidth: 2, borderColor: "#edf0f3" },
+            drawerIcon: ({ focused, color, size }) => {
+              return (
+                <MaterialIcons name="privacy-tip" size={size} color={"white"} />
+              );
+            },
+          }}
+        />
+        <Drawer.Screen
+          name="About"
+          component={TermsScreen}
+          options={{
+            drawerLabel: ({ focused, color }) => {
+              return (
+                <View>
+                  <Text
+                    style={{
+                      fontFamily: "poppins-semibold",
+                      color: "white", //colors.gray,
+                    }}
+                  >
+                    About Us
+                  </Text>
+                </View>
+              );
+            },
+            drawerContentContainerStyle: {},
+            drawerItemStyle: { borderBottomWidth: 2, borderColor: "#edf0f3" },
+            drawerIcon: ({ focused, color, size }) => {
+              return <Feather name="info" size={24} color="white" />;
+            },
+          }}
+        />
       </Drawer.Navigator>
     );
   }

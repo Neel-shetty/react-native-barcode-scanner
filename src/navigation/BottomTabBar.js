@@ -7,6 +7,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Foundation } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import AccountScreen from "../screens/Main/AccountScreenFlow/AccountScreen";
+import { Feather } from "@expo/vector-icons";
 
 const BottomTabBar = ({ state, descriptors, navigation }) => {
   return (
@@ -70,7 +71,8 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
                       color={iconColor}
                     />
                   ) : (
-                    <MaterialIcons name="email" size={34} color={iconColor} />
+                    // <MaterialIcons name="email" size={34} color={iconColor} />
+                    <Feather name="info" size={34} color={iconColor} />
                   )}
                   <Text
                     style={{ color: iconColor, fontFamily: "poppins-regular" }}
