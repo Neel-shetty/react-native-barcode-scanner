@@ -1,4 +1,11 @@
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -18,6 +25,9 @@ import CustomButton from "../SignInScreen2Components/common/CustomButton";
 import UploadButton from "../KycScreenComponents/UploadButton";
 import InputView from "./InputView";
 // import FormData from "form-data";
+import Checkbox from "expo-checkbox";
+import { layout } from "../../constants/layout";
+import TermsAndConditions from "../TermsAndConditions";
 
 const InputFields = () => {
   const [loading, setLoading] = useState(false);
@@ -26,6 +36,7 @@ const InputFields = () => {
   const [image, setImage] = useState(null);
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [terms, setTerms] = useState(false);
 
   console.log("🚀 ~ file: InputFields.js:26 ~ InputFields ~ loading", loading);
   const formScheme = yup.object({
@@ -257,9 +268,15 @@ const InputFields = () => {
               )}
             </View>
             <View style={styles.buttonContainer}>
+              <TermsAndConditions
+                screen={"KycScreen"}
+                terms={terms}
+                setTerms={setTerms}
+              />
               <CustomButton
                 title={loading ? "Loading..." : "Next"}
                 onPress={handleSubmit}
+                loading={loading}
               />
             </View>
           </View>

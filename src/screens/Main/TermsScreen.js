@@ -16,11 +16,12 @@ import * as SecureStore from "expo-secure-store";
 import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import RenderHtml, { defaultSystemFonts } from "react-native-render-html";
+import { useRoute } from "@react-navigation/native";
 
 const TermsScreen = () => {
   const [terms, setTerms] = useState();
   const [loading, setLoading] = useState(false);
-
+  const route = useRoute();
   useEffect(() => {
     const getTerms = async () => {
       try {
@@ -44,6 +45,14 @@ const TermsScreen = () => {
     "Poppins-Regular",
   ];
 
+  const previousScreen = route?.params?.previousScreen
+    ? route.params.previousScreen
+    : null;
+
+  console.log(
+    "🚀 ~ file: TermsScreen.js:49 ~ TermsScreen ~ previousScreen:",
+    route
+  );
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -58,7 +67,7 @@ const TermsScreen = () => {
           style={styles.bgImage}
         />
         <View style={styles.headerContainer}>
-          <Header title={"Terms"} />
+          <Header title={"Terms"} previousScreen={previousScreen} />
         </View>
         <View
           style={{ flex: 8, alignItems: "flex-start", width: layout.widthp }}

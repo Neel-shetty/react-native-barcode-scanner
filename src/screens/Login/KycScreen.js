@@ -1,6 +1,7 @@
 import {
   ImageBackground,
   KeyboardAvoidingView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -40,42 +41,44 @@ const KycScreen = () => {
   }
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 50 : 70}
-      enabled={false}
-      style={styles.root}
-    >
-      <SafeAreaView style={styles.root}>
-        <ImageBackground
-          source={require("../../../assets/images/bg2.png")}
-          resizeMode="cover"
-          style={styles.bgImage}
-        />
-        <StatusBar style="dark" />
-        <View onLayout={onLayoutRootView} style={styles.headerContainer}>
-          <Header />
-        </View>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>KYC</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <InputFields />
-        </View>
-        <View
-          style={{
-            paddingBottom: 30,
-            alignItems: "center",
-            justifyContent: "center",
-            flex: 1,
-          }}
-        >
-          <TouchableOpacity>
+    <ScrollView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 50 : 70}
+        enabled={false}
+        style={styles.root}
+      >
+        <SafeAreaView style={styles.root}>
+          <ImageBackground
+            source={require("../../../assets/images/bg2.png")}
+            resizeMode="cover"
+            style={styles.bgImage}
+          />
+          <StatusBar style="dark" />
+          <View onLayout={onLayoutRootView} style={styles.headerContainer}>
+            <Header />
+          </View>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>KYC</Text>
+          </View>
+          <View style={styles.inputContainer}>
+            <InputFields />
+          </View>
+          <View
+            style={{
+              paddingBottom: 30,
+              alignItems: "center",
+              justifyContent: "center",
+              flex: 1,
+            }}
+          >
+            {/* <TouchableOpacity>
             <Text style={styles.help}>Need help?</Text>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
-    </KeyboardAvoidingView>
+          </TouchableOpacity> */}
+          </View>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 

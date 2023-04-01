@@ -4,12 +4,15 @@ import { Ionicons } from "@expo/vector-icons";
 import { layout } from "../../constants/layout";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ title }) => {
+const Header = ({ title, previousScreen }) => {
   const navigation = useNavigation();
 
   function onPress() {
     // save("isLoggedIn", "false");
     // dispatch(setLoggedIn(false));
+    if (previousScreen) {
+      navigation.navigate(previousScreen);
+    }
     navigation.goBack();
   }
   return (

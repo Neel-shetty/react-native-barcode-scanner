@@ -308,7 +308,7 @@ const Navigator = () => {
           }}
         />
         <Tab.Screen
-          name="Privacy Policy"
+          name="PrivacyPolicy"
           component={PrivacyScreen}
           options={{ headerShown: false }}
         />
