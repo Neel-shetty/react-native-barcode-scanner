@@ -10,7 +10,7 @@ import { layout } from "../constants/layout";
 import Checkbox from "expo-checkbox";
 import { useNavigation } from "@react-navigation/native";
 
-const TermsAndConditions = ({ terms, setTerms, screen }) => {
+const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
   const navigation = useNavigation();
   return (
     <View
@@ -30,7 +30,7 @@ const TermsAndConditions = ({ terms, setTerms, screen }) => {
           setTerms(event);
         }}
         style={{ marginRight: 10 }}
-        color={"#c874ec"}
+        color={color ? null : "#c874ec"}
       />
       <Text
         style={{
@@ -44,7 +44,12 @@ const TermsAndConditions = ({ terms, setTerms, screen }) => {
             navigation.navigate("TermsScreen", { previousScreen: screen });
           }}
         >
-          <Text style={{ fontFamily: "poppins-regular", color: "#c874ec" }}>
+          <Text
+            style={{
+              fontFamily: "poppins-regular",
+              color: color ? "white" : "#c874ec",
+            }}
+          >
             Terms of Service
           </Text>
         </TouchableOpacity>
@@ -58,7 +63,12 @@ const TermsAndConditions = ({ terms, setTerms, screen }) => {
             });
           }}
         >
-          <Text style={{ fontFamily: "poppins-regular", color: "#c874ec" }}>
+          <Text
+            style={{
+              fontFamily: "poppins-regular",
+              color: color ? "white" : "#c874ec",
+            }}
+          >
             {" "}
             Privacy Policy
           </Text>

@@ -91,6 +91,13 @@ const InputFields = () => {
   }
 
   async function sendKyc(values) {
+    if (terms === false) {
+      Alert.alert(
+        "Failed",
+        "Please accept terms of service and privacy policy"
+      );
+      return;
+    }
     setLoading(true);
     let id = await getValuefor("id");
     // id = JSON.stringify(id);

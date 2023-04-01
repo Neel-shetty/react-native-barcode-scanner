@@ -21,12 +21,14 @@ import { AntDesign } from "@expo/vector-icons";
 import * as SecureStore from "expo-secure-store";
 import { useRef } from "react";
 import CustomButton from "../SignInScreen2Components/common/CustomButton";
+import TermsAndConditions from "../TermsAndConditions";
 
 const Fields = () => {
   const [loading, setLoading] = useState();
   const [data, setData] = useState([]);
   const [response, setResponse] = useState([]);
   const [sending, setSending] = useState(false);
+  const [terms, setTerms] = useState(false);
 
   console.log("🚀 ~ file: Fields.js:29 ~ Fields ~ response", response);
 
@@ -72,6 +74,13 @@ const Fields = () => {
   }
 
   async function sendData() {
+    if (terms === false) {
+      Alert.alert(
+        "Failed",
+        "Please accept terms of service and privacy policy"
+      );
+      return;
+    }
     setSending(true);
     const id = await SecureStore.getItemAsync("id");
     formData.append("category_id", route.params.categoryId);
@@ -341,12 +350,18 @@ const Fields = () => {
       </View>
       <View
         style={{
-          flex: 1,
+          flex: 2,
           alignItems: "center",
           justifyContent: "center",
         }}
       >
         {/* <Text>{JSON.stringify(response)}</Text> */}
+        <TermsAndConditions
+          terms={terms}
+          setTerms={setTerms}
+          // screen={"RegisterFormScreen"}
+          color={"white"}
+        />
         <CustomButton loading={sending} title={"Submit"} onPress={sendData} />
       </View>
     </View>
