@@ -67,7 +67,11 @@ const Banner = () => {
             return (
               <Animated.View
                 key={item.id}
-                style={{ flex: 1, width: layout.widthp, overflow: "hidden" }}
+                style={{
+                  width: layout.widthp,
+                  overflow: "hidden",
+                  // backgroundColor:'pink'
+                }}
               >
                 <TouchableOpacity
                   onPress={() => {
@@ -82,7 +86,12 @@ const Banner = () => {
                   {/* </View> */}
                   <Image
                     source={{ uri: item.image }}
-                    style={{ height: layout.widthp / 3, width: "100%" }}
+                    style={{
+                      // height: layout.widthp / 3,
+                      height: "100%",
+                      width: layout.widthp,
+                      // backgroundColor: "pink",
+                    }}
                     resizeMode="contain"
                   />
                 </TouchableOpacity>

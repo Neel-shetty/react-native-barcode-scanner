@@ -7,8 +7,9 @@ const BannerItem = ({ description, image }) => {
     <View style={styles.root}>
       <View
         style={{
-          flex: 2,
+          flex: 3,
           alignItems: "center",
+          // backgroundColor: "pink",
           justifyContent: "center",
         }}
       >
@@ -17,6 +18,8 @@ const BannerItem = ({ description, image }) => {
             flex: 2,
             alignItems: "center",
             justifyContent: "center",
+            width: layout.widthp / 2,
+            alignSelf: "flex-start",
           }}
         >
           <Text style={styles.text}>
@@ -35,10 +38,12 @@ const BannerItem = ({ description, image }) => {
       </View>
       <View
         style={{
-          flex: 1,
+          flex: 2,
           height: 150,
-          alignItems: "flex-start",
-          justifyContent: "flex-end",
+          alignItems: "center",
+          justifyContent: "center",
+          // backgroundColor: "#ff002b",
+          maxWidth: 150,
         }}
       >
         <Image source={{ uri: image }} style={styles.image} />
@@ -74,12 +79,13 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-regular",
     fontSize: 13,
     color: "white",
-    // textAlign:'center'
+    textAlign: "left",
   },
   image: {
     width: 120,
     height: 120,
-    transform: [{ translateX: -25 }, { translateY: -5 }],
+    // transform: [{ translateX: -25 }, { translateY: -5 }],
+    borderRadius: 10,
   },
   buttonText: {
     fontFamily: "poppins-semibold",
