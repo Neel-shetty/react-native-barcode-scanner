@@ -70,11 +70,6 @@ const Checkout = () => {
           amount: price,
           name: "Scan Me",
           order_id: res.data.data, //Replace this with an order_id created using Orders API.
-          // prefill: {
-          //   email: "gaurav.kumar@example.com",
-          //   contact: "9191919191",
-          //   name: "Gaurav Kumar",
-          // },
           theme: { color: "pink" },
         };
         RazorpayCheckout.open(options)
@@ -167,7 +162,7 @@ const Checkout = () => {
           // marginTop: layout.height * 0.1,
         }}
       >
-        <CustomButton title="Pay" />
+        <CustomButton title="Pay" onPress={placeOrder} />
       </View>
     </View>
   );
