@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { layout } from "../../constants/layout";
 import Input from "./Input";
 import { Formik } from "formik";
@@ -18,6 +18,7 @@ const Checkout = () => {
   const [price, setPrice] = useState(route.params.plan.amount);
   console.log("🚀 ~ file: Checkout.js:15 ~ Checkout ~ price:", price);
   const plan = route.params.plan;
+  const naivagation = useNavigation();
 
   async function sendCoupon(coupon) {
     if (discountApplied) return;
@@ -96,6 +97,7 @@ const Checkout = () => {
                   })
                   .then((result) => {
                     console.log("order insert response --- ", result.data);
+                    naivagation.navigate("SubscriptionScreen");
                   })
                   .catch((sendCartError) =>
                     console.log(
