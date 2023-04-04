@@ -21,6 +21,7 @@ const Input = ({
   secureTextEntry = false,
   keyboardType,
   name,
+  onPressClose,
 }) => {
   // console.log("🚀 ~ file: Input.js:25 ~ name", name);
   const [showPasswordtoggle, setShowPasswordToggle] = useState(false);
@@ -63,7 +64,9 @@ const Input = ({
               color={colors.gray}
             />
           )} */}
-          <View style={{ width: 22 }} />
+          <TouchableOpacity onPress={onPressClose}>
+            <Ionicons name="close-circle" size={22} />
+          </TouchableOpacity>
         </View>
       </View>
     </View>

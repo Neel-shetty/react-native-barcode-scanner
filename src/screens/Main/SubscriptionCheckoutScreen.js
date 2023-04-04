@@ -6,12 +6,11 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { layout } from "../../constants/layout";
 import Header from "../../components/OrderQRScreenComponents/Header";
-import InputFields from "../../components/EditProfileScreenComponents/InputFields";
+import { layout } from "../../constants/layout";
+import Checkout from "../../components/SubscriptionCheckoutScreenComponents/Checkout";
 
-const EditProfileScreen = () => {
-  
+const SubscriptionCheckoutScreen = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -26,17 +25,17 @@ const EditProfileScreen = () => {
           style={styles.bgImage}
         />
         <View style={styles.headerContainer}>
-          <Header title={"Edit Profile"} />
+          <Header title={"Checkout"} />
         </View>
         <View style={{ flex: 8 }}>
-          <InputFields />
+          <Checkout />
         </View>
       </View>
     </KeyboardAvoidingView>
   );
 };
 
-export default EditProfileScreen;
+export default SubscriptionCheckoutScreen;
 
 const styles = StyleSheet.create({
   root: {

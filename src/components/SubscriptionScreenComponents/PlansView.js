@@ -288,10 +288,12 @@ const PlanView = () => {
           return (
             <View style={{ transform: [{ scale: 0.9 }] }}>
               <PlanItem
+                plan={item}
                 title={item.plan_name}
                 image={item.image}
                 limit={item.register_limit}
                 type={item.plan_type}
+                price={item.price}
               />
             </View>
           );

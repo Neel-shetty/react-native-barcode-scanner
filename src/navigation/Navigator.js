@@ -54,6 +54,7 @@ import TermsScreen from "../screens/Main/TermsScreen";
 import AboutScreen from "../screens/Main/AboutScreen";
 import { Foundation } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
+import SubscriptionCheckoutScreen from "../screens/Main/SubscriptionCheckoutScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -401,6 +402,10 @@ const Navigator = () => {
             <Stack.Screen
               name="EditProfileScreen"
               component={EditProfileScreen}
+            />
+            <Stack.Screen
+              name="SubscriptionCheckoutScreen"
+              component={SubscriptionCheckoutScreen}
             />
           </>
         )}
