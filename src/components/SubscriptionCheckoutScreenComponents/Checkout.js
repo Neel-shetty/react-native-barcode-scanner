@@ -8,7 +8,7 @@ import CustomButton from "../SignInScreen2Components/common/CustomButton";
 import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import { Alert } from "react-native";
-import RazorpayCheckout from "react-native-razorpay";
+import RazorpayCheckout, { CheckoutOptions } from "react-native-razorpay";
 
 const Checkout = () => {
   const [discount, setDiscount] = useState(0);
@@ -63,15 +63,21 @@ const Checkout = () => {
         amount: price,
       })
       .then((res) => {
-        let options = {
-          description: "Credits towards consultation",
+        console.log("🚀 ~ file: Checkout.js:66 ~ .then ~ res:", res.data.data);
+        let options: CheckoutOptions = {
+          description: "Subscription",
           image: "https://i.imgur.com/3g7nmJC.jpg",
           currency: "INR",
-          key: "rzp_test_RFqjBfnOlEqSwr",
-          amount: price,
+          key: "rzp_live_DuYBNnUQGI2bMj",
+          amount: 100,
           name: "Scan Me",
           order_id: res.data.data, //Replace this with an order_id created using Orders API.
-          theme: { color: "pink" },
+          // theme: { color: "pink" },
+          prefill: {
+            name: "Rajat",
+            email: "test@test.com",
+            contact: "9999999999",
+          },
         };
         RazorpayCheckout.open(options)
           .then((data) => {

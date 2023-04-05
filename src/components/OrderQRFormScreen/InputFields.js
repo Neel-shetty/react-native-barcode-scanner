@@ -32,7 +32,7 @@ const InputFields = () => {
                 description: "Credits towards consultation",
                 image: "https://i.imgur.com/3g7nmJC.jpg",
                 currency: "INR",
-                key: "rzp_test_RFqjBfnOlEqSwr",
+                key: "rzp_live_DuYBNnUQGI2bMj",
                 amount: route.params?.amount,
                 name: "Scan Me",
                 order_id: res.data.data, //Replace this with an order_id created using Orders API.
