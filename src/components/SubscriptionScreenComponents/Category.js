@@ -14,7 +14,15 @@ const Category = ({ title, onPress, isSelected }) => {
       <View
         style={
           isSelected
-            ? [styles.root, { backgroundColor: "#c471ed" }]
+            ? [
+                styles.root,
+                {
+                  backgroundColor: "black",
+                  borderWidth: 1,
+                  borderColor: "white",
+                  borderRadius: 20,
+                },
+              ]
             : styles.root
         }
       >
@@ -33,7 +41,7 @@ export default Category;
 const styles = StyleSheet.create({
   root: {
     height: 40,
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
@@ -43,5 +51,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "poppins-semibold",
+    color: "white",
   },
 });

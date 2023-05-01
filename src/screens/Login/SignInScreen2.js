@@ -11,6 +11,7 @@ import { layout } from "../../constants/layout";
 import Header from "../../components/SignInScreen2Components/Header";
 import InputFields from "../../components/SignInScreen2Components/InputFields";
 import CustomButton from "../../components/SignInScreen2Components/common/CustomButton";
+import { colors } from "../../constants/colors";
 
 const SignInScreen2 = () => {
   return (
@@ -20,11 +21,11 @@ const SignInScreen2 = () => {
       enabled={false}
       style={styles.root}
     >
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
         style={styles.bgImage}
-      />
+      /> */}
       <View style={styles.headerContainer}>
         <Header />
       </View>
@@ -58,6 +59,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,
@@ -91,6 +93,6 @@ const styles = StyleSheet.create({
   help: {
     fontFamily: "poppins-medium",
     fontSize: 16,
-    color: "#3e3e3d",
+    color: "white",
   },
 });

@@ -16,14 +16,18 @@ const SearchBar = () => {
         <Ionicons
           name="search"
           size={24}
-          color="#764af1"
+          color="white"
           style={{ paddingBottom: 3 }}
         />
-        <TextInput style={styles.input} placeholder="Plans" />
+        <TextInput
+          placeholderTextColor={"white"}
+          style={styles.input}
+          placeholder="Plans"
+        />
       </View>
       <View style={styles.filterContainer}>
         <TouchableOpacity>
-          <Ionicons name="filter" size={30} color="white" />
+          <Ionicons name="filter" size={25} color="white" />
         </TouchableOpacity>
       </View>
     </View>
@@ -40,14 +44,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   inputContainer: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     flexDirection: "row",
-    borderRadius: 5,
+    borderRadius: 20,
     // width: layout.width * 0.75,
     height: 40,
     alignItems: "center",
     justifyContent: "space-around",
     flex: 7,
+    borderWidth: 1,
+    borderColor: "white",
   },
   input: {
     width: layout.width * 0.6,
@@ -55,15 +61,18 @@ const styles = StyleSheet.create({
     fontFamily: "poppins-regular",
     fontSize: 16,
     alignItems: "center",
+    color: "white",
   },
   filterContainer: {
-    backgroundColor: "#c471ed",
-    borderRadius: 5,
+    backgroundColor: "black",
+    borderRadius: 20,
     height: 40,
     maxWidth: 40,
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
     marginLeft: 20,
+    borderWidth: 1,
+    borderColor: "white",
   },
 });

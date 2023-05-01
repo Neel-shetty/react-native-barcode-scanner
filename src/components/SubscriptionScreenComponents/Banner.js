@@ -68,7 +68,11 @@ const Banner = () => {
             return (
               <Animated.View
                 key={item.id}
-                style={{ flex: 1, width: layout.widthp, overflow: "hidden" }}
+                style={{
+                  flex: 1,
+                  width: layout.widthp,
+                  overflow: "hidden",
+                }}
               >
                 <BannerItem image={item.image} description={item.name} />
               </Animated.View>
@@ -93,7 +97,7 @@ const Banner = () => {
           viewabilityConfig={{ viewAreaCoveragePercentThreshold: 50 }}
         />
       </View>
-      <View
+      {/* <View
         style={{
           flexDirection: "row",
           width: layout.widthp,
@@ -102,7 +106,7 @@ const Banner = () => {
           // backgroundColor: "turquoise",
           // height: 30,
         }}
-      ></View>
+      ></View> */}
     </View>
   );
 };
@@ -115,8 +119,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: 150,
     width: layout.widthp,
-    backgroundColor: "white",
+    // backgroundColor: "white",
     borderRadius: 20,
-    backgroundColor: "#c471ed",
+    backgroundColor: "black",
   },
 });

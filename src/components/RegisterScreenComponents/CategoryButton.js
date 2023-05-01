@@ -38,9 +38,10 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#a16ce6",
+    backgroundColor: "white",
   },
   title: {
     fontFamily: "poppins-medium",
+    color: "white",
   },
 });

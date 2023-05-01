@@ -363,7 +363,7 @@ const Navigator = () => {
             <Stack.Screen
               name="KycScreen"
               component={KycScreen}
-              options={{ headershown: false }}
+              // options={{ headershown: true }}
             />
             <Stack.Screen
               name="WaitScreen"

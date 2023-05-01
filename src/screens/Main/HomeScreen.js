@@ -53,7 +53,7 @@ const HomeScreen = () => {
         resizeMode="cover"
         style={styles.bgImage}
       />
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <View style={styles.headerContainer}>
         <Header />
       </View>

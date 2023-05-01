@@ -46,6 +46,7 @@ const Input = ({
               onBlur={onBlur}
               value={value}
               secureTextEntry={secureTextEntry}
+              placeholderTextColor={"white"}
             />
             <Ionicons
               name="ios-checkmark-circle"
@@ -69,6 +70,7 @@ const Input = ({
               onBlur={onBlur}
               value={value}
               secureTextEntry={secureTextEntry}
+              placeholderTextColor={"white"}
             />
             <Ionicons
               name="ios-checkmark-circle"
@@ -98,6 +100,7 @@ const Input = ({
               onBlur={onBlur}
               value={value}
               secureTextEntry={secureTextEntry}
+              placeholderTextColor={"white"}
             />
             {fieldType !== "password" && (
               <Ionicons
@@ -151,16 +154,20 @@ const styles = StyleSheet.create({
     height: 68,
   },
   bg: {
-    backgroundColor: "white",
+    // backgroundColor: "white",
+    backgroundColor: "black",
     borderRadius: 10,
     height: 45,
     alignItems: "center",
     justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "white",
   },
   input: {
     width: layout.width * 0.8,
     fontFamily: "inter-semibold",
     fontSize: 16,
+    color: "white",
     // backgroundColor: "pink",
     // paddingLeft: 10,
   },
@@ -169,7 +176,8 @@ const styles = StyleSheet.create({
     // borderBottomColor: colors.green,
     // borderBottomWidth: 2.5,
     // paddingBottom: 5,
-    paddingHorizontal:10
+    paddingHorizontal: 10,
+    // borderWidth: 1,
   },
   infoText: {
     fontFamily: "inter-semibold",

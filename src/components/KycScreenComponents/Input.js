@@ -37,25 +37,26 @@ const Input = ({
             onChangeText={onChangeText}
             onBlur={onBlur}
             value={value}
+            placeholderTextColor={"white"}
             // secureTextEntry={secureTextEntry}
           />
           {fieldType === "name" ? (
             <Ionicons
               name="ios-checkmark-circle"
               size={22}
-              color={formError.name === "error" ? "red" : colors.gray}
+              color={formError.name === "error" ? "red" : 'white'}
             />
           ) : fieldType === "address" ? (
             <Ionicons
               name="ios-checkmark-circle"
               size={22}
-              color={formError.address === "error" ? "red" : colors.gray}
+              color={formError.address === "error" ? "red" : 'white'}
             />
           ) : (
             <Ionicons
               name="ios-checkmark-circle"
               size={22}
-              color={colors.gray}
+              color={'white'}
             />
           )}
         </View>
@@ -74,11 +75,13 @@ const styles = StyleSheet.create({
     height: 68,
   },
   bg: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     borderRadius: 10,
     height: 45,
     alignItems: "center",
     justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "white",
   },
   input: {
     width: layout.width * 0.8,

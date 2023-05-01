@@ -20,9 +20,11 @@ const styles = StyleSheet.create({
     width: layout.widthp / 2,
     height: 46,
     borderRadius: 50,
-    backgroundColor: "#c471ed",
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "white",
   },
   title: {
     fontFamily: "inter-bold",

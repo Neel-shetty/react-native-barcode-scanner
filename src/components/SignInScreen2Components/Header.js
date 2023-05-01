@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <View style={styles.root}>
       <TouchableOpacity onPress={onPress}>
-        <Ionicons name="chevron-back" size={30} color="black" />
+        <Ionicons name="chevron-back" size={30} color="white" />
       </TouchableOpacity>
     </View>
   );

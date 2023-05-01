@@ -30,12 +30,13 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
           setTerms(event);
         }}
         style={{ marginRight: 10 }}
-        color={color ? null : "#c874ec"}
+        color={color ? null : "white"}
       />
       <Text
         style={{
           // width: layout.widthp,
           fontFamily: "poppins-regular",
+          color: "white",
         }}
       >
         I have read and agree to the
@@ -47,14 +48,17 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
           <Text
             style={{
               fontFamily: "poppins-regular",
-              color: color ? "white" : "#c874ec",
+              color: color ? "white" : "white",
             }}
           >
             Terms of Service
           </Text>
         </TouchableOpacity>
         <View>
-          <Text style={{ fontFamily: "poppins-regular" }}> and</Text>
+          <Text style={{ fontFamily: "poppins-regular", color: "white" }}>
+            {" "}
+            and
+          </Text>
         </View>
         <TouchableOpacity
           onPress={() => {
@@ -66,7 +70,7 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
           <Text
             style={{
               fontFamily: "poppins-regular",
-              color: color ? "white" : "#c874ec",
+              color: color ? "white" : "white",
             }}
           >
             {" "}

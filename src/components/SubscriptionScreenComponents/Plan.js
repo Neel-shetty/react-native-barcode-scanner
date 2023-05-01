@@ -17,20 +17,20 @@ const Plan = ({ title, subtitle, icon, image, limit, type }) => {
 
   return (
     <View style={styles.root}>
-      <LinearGradient
+      {/* <LinearGradient
         colors={["#8c52ff", "#c471ed"]}
         style={styles.iconContainer}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
-      >
-        <ImageBackground
-          source={{
-            uri: getImageName(image),
-          }}
-          resizeMode="contain"
-          style={styles.bgImage}
-        ></ImageBackground>
-      </LinearGradient>
+      > */}
+      <ImageBackground
+        source={{
+          uri: getImageName(image),
+        }}
+        resizeMode="contain"
+        style={styles.bgImage}
+      ></ImageBackground>
+      {/* </LinearGradient> */}
       <View style={styles.titleContainer}>
         <View>
           <Text style={styles.title}>{title}</Text>
@@ -73,12 +73,12 @@ const styles = StyleSheet.create({
     height: 80,
     position: "absolute",
     top: 0,
-    transform: [
-      { scale: 1.5 },
-      { rotate: "25deg" },
-      { translateY: 10 },
-      { translateX: 5 },
-    ],
+    // transform: [
+    //   { scale: 1.5 },
+    //   { rotate: "25deg" },
+    //   { translateY: 10 },
+    //   { translateX: 5 },
+    // ],
   },
   titleContainer: {
     alignItems: "center",
@@ -89,9 +89,11 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "poppins-semibold",
     fontSize: 18,
+    color: "white",
   },
   subtitle: {
     fontFamily: "poppins-medium",
     paddingLeft: 10,
+    color: "white",
   },
 });

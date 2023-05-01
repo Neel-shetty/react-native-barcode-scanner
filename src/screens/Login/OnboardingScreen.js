@@ -50,7 +50,7 @@ const OnboardingScreen = ({ navigation }) => {
 
   return (
     <View style={styles.root} onLayout={onLayoutRootView}>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <ImageBackground
         source={require("../../../assets/images/loginBg.png")}
         resizeMode="cover"

@@ -10,12 +10,12 @@ const InputView = ({ title }) => {
       <TouchableOpacity>
         <View style={styles.bg}>
           <View>
-            <Text numberOfLines={1} style={[styles.title, { color: "black" }]}>
+            <Text numberOfLines={1} style={[styles.title, { color: "white" }]}>
               {title}
             </Text>
           </View>
           <View>
-            <Feather name="lock" size={24} color={(colors.gray)} />
+            <Feather name="lock" size={24} color={"white"} />
           </View>
         </View>
       </TouchableOpacity>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     width: layout.widthp,
   },
   bg: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     borderRadius: 10,
     height: 45,
     alignItems: "center",
@@ -42,6 +42,8 @@ const styles = StyleSheet.create({
     width: layout.widthp,
     flexDirection: "row",
     paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: "white",
   },
   title: {
     fontFamily: "inter-semibold",

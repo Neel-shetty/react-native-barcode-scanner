@@ -13,6 +13,7 @@ import SearchBar from "../../components/SubscriptionScreenComponents/SearchBar";
 import CategoryList from "../../components/SubscriptionScreenComponents/CategoryList";
 import PlanView from "../../components/SubscriptionScreenComponents/PlansView";
 import Header from "../../components/KycScreenComponents/Header";
+import { colors } from "../../constants/colors";
 
 const SubscriptionScreen = () => {
   return (
@@ -23,11 +24,11 @@ const SubscriptionScreen = () => {
       enabled={false}
       style={styles.root}
     >
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../assets/images/subscriptionBg.jpeg")}
         resizeMode="cover"
         style={styles.bgImage}
-      />
+      /> */}
       <View style={styles.headerContainer}>
         <Header />
       </View>
@@ -59,6 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: "poppins-semibold",
     fontSize: 20,
+    color: colors.white,
   },
   headerContainer: {
     flex: 1,

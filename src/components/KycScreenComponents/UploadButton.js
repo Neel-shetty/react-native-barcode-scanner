@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     width: layout.widthp,
   },
   bg: {
-    backgroundColor: "white",
+    backgroundColor: "black",
     borderRadius: 10,
     height: 45,
     alignItems: "center",
@@ -130,6 +130,8 @@ const styles = StyleSheet.create({
     width: layout.widthp,
     flexDirection: "row",
     paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: "white",
   },
   title: {
     fontFamily: "inter-semibold",

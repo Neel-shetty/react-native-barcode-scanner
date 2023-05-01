@@ -15,6 +15,7 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "../../constants/colors";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -49,11 +50,11 @@ const KycScreen = () => {
         style={styles.root}
       >
         <SafeAreaView style={styles.root}>
-          <ImageBackground
+          {/* <ImageBackground
             source={require("../../../assets/images/bg2.png")}
             resizeMode="cover"
             style={styles.bgImage}
-          />
+          /> */}
           <StatusBar style="dark" />
           <View onLayout={onLayoutRootView} style={styles.headerContainer}>
             <Header />
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     flex: 1,
+    backgroundColor: colors.blackBg
   },
   bgImage: {
     flex: 1,
