@@ -22,7 +22,7 @@ const ButtonView = () => {
           name="chat"
           size={30}
           color="white"
-          style={{ transform: [{ rotate: "-45deg" }] }}
+          // style={{ transform: [{ rotate: "-45deg" }] }}
         />
       ),
     },
@@ -34,9 +34,9 @@ const ButtonView = () => {
       icon: (
         <AntDesign
           name="scan1"
-          size={28}
+          size={70}
           color="white"
-          style={{ transform: [{ rotate: "-45deg" }] }}
+          // style={{ transform: [{ rotate: "-45deg" }] }}
         />
       ),
     },
@@ -50,7 +50,7 @@ const ButtonView = () => {
           name="info"
           size={30}
           color="white"
-          style={{ transform: [{ rotate: "-45deg" }] }}
+          // style={{ transform: [{ rotate: "-45deg" }] }}
         />
       ),
     },
@@ -66,25 +66,26 @@ const ButtonView = () => {
               <View
                 style={{
                   alignItems: "center",
-                  justifyContent: "center",
+                  // justifyContent: "flex-end",
                   alignSelf: "center",
                   marginTop: 10,
+                  // backgroundColor: "white",
                 }}
               >
-                <LinearGradient
+                {/* <LinearGradient
                   colors={["#8c52ff", "#c471ed"]}
                   style={styles.iconContainer}
                   start={{ x: 0, y: 0 }}
                   end={{ x: 1, y: 0 }}
-                >
-                  {item.icon}
-                  {/* <MaterialCommunityIcons
+                > */}
+                {item.icon}
+                {/* <MaterialCommunityIcons
                     name="account"
                     size={34}
                     color="white"
                     style={{ transform: [{ rotate: "-45deg" }] }}
                   /> */}
-                </LinearGradient>
+                {/* </LinearGradient> */}
                 <View style={{ marginTop: 10 }} />
                 <Text style={styles.subtitle}>{item?.name}</Text>
               </View>
@@ -100,30 +101,32 @@ export default ButtonView;
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "space-between",
     flexDirection: "row",
+    // backgroundColor: "white",
   },
   optionBox: {
     height: 100,
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center",
     width: layout.width * 0.25,
     marginHorizontal: 15,
     borderRadius: 10,
-    elevation: 20,
+    // elevation: 20,
   },
   iconContainer: {
     width: 45,
     height: 45,
     borderRadius: 8,
-    transform: [{ rotate: "45deg" }],
+    // transform: [{ rotate: "45deg" }],
     alignItems: "center",
     justifyContent: "center",
   },
   subtitle: {
     fontFamily: "poppins-medium",
     fontSize: 16,
+    color: "white",
   },
 });

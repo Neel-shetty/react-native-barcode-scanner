@@ -48,12 +48,12 @@ const Header = ({ id }) => {
       </View>
       <View style={styles.profileContainer}>
         <View style={styles.imageContainer}>
-          <Image
+          {/* <Image
             source={{
               uri: "https://randomuser.me/api/portraits/thumb/men/1.jpg",
             }}
             style={styles.image}
-          />
+          /> */}
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.number}>
@@ -145,6 +145,7 @@ const styles = StyleSheet.create({
   },
   number: {
     fontFamily: "poppins-semibold",
+    color: "white",
     fontSize: 14,
   },
   online: {

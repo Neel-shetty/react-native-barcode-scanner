@@ -132,7 +132,7 @@ const Dm = () => {
                 <TextBox
                   text={item.message}
                   read={item.is_read}
-                  textAlign={item.text_side}
+                  // textAlign={item.text_side}
                   date={item.created_at}
                 />
               </View>

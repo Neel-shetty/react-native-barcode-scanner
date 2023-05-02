@@ -13,7 +13,7 @@ const BottomTabBar = ({ state, descriptors, navigation }) => {
   return (
     // <View style={styles.mainContainer}>
     <LinearGradient
-      colors={["#c471ed", "#8c52ff"]}
+      colors={["black", "black"]}
       style={styles.mainContainer}
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
@@ -93,12 +93,14 @@ export default BottomTabBar;
 
 const styles = StyleSheet.create({
   mainContainer: {
-    borderTopRightRadius: 60,
-    borderTopLeftRadius: 60,
+    // borderTopRightRadius: 60,
+    // borderTopLeftRadius: 60,
     height: 85,
     // backgroundColor: "pink",
     flexDirection: "row",
     overflow: "hidden",
+    borderWidth: 1,
+    borderColor: "white",
   },
   mainItemContainer: {
     flex: 1,

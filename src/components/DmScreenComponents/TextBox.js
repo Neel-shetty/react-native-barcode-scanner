@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { layout } from "../../constants/layout";
 import { Ionicons } from "@expo/vector-icons";
+import { colors } from "../../constants/colors";
 
 const TextBox = ({
   text,
@@ -29,7 +30,7 @@ const TextBox = ({
         styles.root,
         textAlign === "left"
           ? {
-              backgroundColor: "#846dca",
+              backgroundColor: "#2e2e2e",
               alignSelf: "flex-start",
               marginLeft: 20,
             }
@@ -40,7 +41,7 @@ const TextBox = ({
         <Text
           style={[
             styles.message,
-            textAlign === "left" ? { color: "white" } : null,
+            textAlign === "left" ? { color: "white" } : { color: "white" },
           ]}
         >
           {text}
@@ -50,7 +51,7 @@ const TextBox = ({
         <Text
           style={[
             styles.time,
-            textAlign === "left" ? { color: "#baa8df" } : null,
+            textAlign === "left" ? { color: "white" } : null,
           ]}
         >
           {time.getHours()}:{time.getMinutes()}
@@ -59,7 +60,7 @@ const TextBox = ({
           <Ionicons
             name={read == "1" ? "checkmark-done" : "checkmark"}
             size={15}
-            color="black"
+            color="white"
             style={{ paddingLeft: 5 }}
           />
         ) : null}
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     maxWidth: layout.width * (2 / 3),
-    backgroundColor: "#e1bcf6",
+    backgroundColor: "black",
     marginVertical: 10,
     alignSelf: "flex-end",
     borderRadius: 10,

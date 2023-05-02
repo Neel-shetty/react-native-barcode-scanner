@@ -12,6 +12,7 @@ import { layout } from "../../constants/layout";
 import Dm from "../../components/DmScreenComponents/Dm";
 import { useKeyboard } from "@react-native-community/hooks";
 import { useNavigation } from "@react-navigation/native";
+import { colors } from "../../constants/colors";
 
 const DmScreen = () => {
   const keyboard = useKeyboard();
@@ -24,11 +25,11 @@ const DmScreen = () => {
   return (
     <View style={styles.root}>
       {/* <KeyboardAvoidingView> */}
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
         style={styles.bgImage}
-      />
+      /> */}
       {/* <View style={{ height: 20 }} /> */}
       <View style={styles.headerContainer}>
         <Header />
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg
   },
   bgImage: {
     flex: 1,

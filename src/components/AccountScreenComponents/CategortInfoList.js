@@ -116,7 +116,9 @@ const CategortInfoList = () => {
       >
         {categories.length === 0 && !loading ? (
           <View style={styles.box}>
-            <Text>Register a user to view details</Text>
+            <Text style={{ color: "white" }}>
+              Register a user to view details 
+            </Text>
           </View>
         ) : (
           <CategoryInfo category={currentCategory} loading={loading} />
@@ -142,10 +144,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: layout.height * 0.17,
-    backgroundColor: "white",
+    // backgroundColor: "white",
+    backgroundColor: "black",
     width: layout.width * 0.8,
     borderRadius: 20,
     elevation: 20,
     shadowColor: "black",
+    borderWidth: 1,
+    borderColor: "white",
   },
 });

@@ -17,6 +17,7 @@ import CustomButton from "../../components/SignInScreen2Components/common/Custom
 import * as SecureStore from "expo-secure-store";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect } from "react";
+import { colors } from "../../constants/colors";
 
 const QrScreen = ({ category }) => {
   const [status, requestPermission] = MediaLibrary.usePermissions();
@@ -67,11 +68,11 @@ const QrScreen = ({ category }) => {
     <ViewShot ref={imageRef} style={styles.root}>
       <SafeAreaView style={styles.root}>
         <>
-          <ImageBackground
+          {/* <ImageBackground
             source={require("../../../assets/images/bg2.png")}
             resizeMode="cover"
             style={styles.bgImage}
-          />
+          /> */}
           <View style={styles.headerContainer}>
             <Text style={styles.myText}>My</Text>
             <Text style={styles.title}>SCANNER</Text>
@@ -109,7 +110,7 @@ const QrScreen = ({ category }) => {
               style={{
                 fontFamily: "poppins-medium",
                 fontSize: 20,
-                color: "#3d3d3d",
+                color: "white",
               }}
             >
               VEHICLE NO
@@ -118,7 +119,7 @@ const QrScreen = ({ category }) => {
               style={{
                 fontFamily: "poppins-medium",
                 fontSize: 30,
-                color: "#3d3d3d",
+                color: "white",
               }}
             >
               DL03AN1123
@@ -145,9 +146,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    width: layout.widthp,
+    width: layout.width,
     alignSelf: "center",
-    backgroundColor: "white",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,
@@ -165,18 +166,18 @@ const styles = StyleSheet.create({
   myText: {
     fontFamily: "poppins-semibold",
     fontSize: 25,
-    color: "#3d3d3d",
+    color: "white",
   },
   title: {
     fontFamily: "poppins-bold",
     fontSize: 50,
-    color: "#3d3d3d",
+    color: "white",
   },
   subtitle: {
     fontFamily: "poppins-medium",
     fontSize: 16,
-    color: "#3d3d3d",
     textAlign: "center",
+    color: "white",
   },
   qrContainer: {
     flex: 2,

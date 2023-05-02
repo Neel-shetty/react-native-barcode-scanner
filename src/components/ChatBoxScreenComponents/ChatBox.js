@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     // justifyContent: "center",
     borderTopWidth: 1,
-    borderColor: "#9784ce",
+    borderColor: "white",
     width:layout.width 
     // backgroundColor: "coral",
   },
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   indicator: {
     width: 30,
     height: 3,
-    backgroundColor: "#004aad",
+    backgroundColor: "white",
     borderBottomRightRadius: 3.5,
     borderBottomLeftRadius: 3.5,
     alignSelf: "center",

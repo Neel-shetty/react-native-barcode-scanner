@@ -98,6 +98,12 @@ const styles = StyleSheet.create({
   bottomContainer: {
     flexDirection: "row",
     width: layout.widthp,
+    backgroundColor: "black",
+    width: layout.width,
+    paddingHorizontal: layout.widthp * 0.1,
+    paddingBottom: 10,
+    borderWidth: 1,
+    borderColor: "white",
   },
   rightContainer: {
     // backgroundColor: "white",
@@ -110,9 +116,11 @@ const styles = StyleSheet.create({
   inboxButton: {
     height: 30,
     width: 80,
-    backgroundColor: "#8c52ff",
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "white",
   },
 });

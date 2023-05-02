@@ -6,7 +6,7 @@ const CategoryInfo = ({ category, loading }) => {
   return (
     <View style={styles.root}>
       {loading ? (
-        <ActivityIndicator color={"purple"} />
+        <ActivityIndicator color={"white"} />
       ) : (
         <>
           <Text style={styles.vehicle}>{category?.category_name}</Text>
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: layout.height * 0.17,
-    backgroundColor: "white",
+    backgroundColor: "black",
     width: layout.width * 0.8,
     borderRadius: 20,
     elevation: 20,
@@ -33,9 +33,11 @@ const styles = StyleSheet.create({
   vehicle: {
     fontFamily: "poppins-semibold",
     fontSize: 18,
+    color: "white",
   },
   number: {
     fontFamily: "poppins-semibold",
     fontSize: 34,
+    color: "white",
   },
 });

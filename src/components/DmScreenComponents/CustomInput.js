@@ -37,7 +37,7 @@ export default CustomInput;
 const styles = StyleSheet.create({
   root: {
     width: layout.widthp,
-    backgroundColor: "rgba(0,0,0,0.2)",
+    backgroundColor: "black",
     height: 40,
     borderRadius: 10,
     alignItems: "center",
@@ -45,6 +45,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingLeft: 20,
     paddingRight: 10,
+    borderWidth: 1,
+    borderColor: "white",
   },
   input: {
     // backgroundColor: "pink",

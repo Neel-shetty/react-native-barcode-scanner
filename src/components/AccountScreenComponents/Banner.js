@@ -81,8 +81,8 @@ const Banner = () => {
                   }}
                 >
                   {/* <View style={styles.bannerTextContainer}> */}
-                  <Text style={styles.bannerText}>{item.title}</Text>
-                  <Text style={styles.bannerText2}>{item.title2}</Text>
+                  {/* <Text style={styles.bannerText}>{item.title}</Text>
+                  <Text style={styles.bannerText2}>{item.title2}</Text> */}
                   {/* </View> */}
                   <Image
                     source={{ uri: item.image }}
@@ -139,7 +139,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: layout.height * 0.2,
     width: layout.widthp,
-    backgroundColor: "white",
+    backgroundColor: "black",
     borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "white",
   },
 });

@@ -14,15 +14,16 @@ import ButtonView from "../../../components/AccountScreenComponents/ButtonView";
 import Banner from "../../../components/AccountScreenComponents/Banner";
 import CategoryInfo from "../../../components/AccountScreenComponents/CategoryInfo";
 import CategortInfoList from "../../../components/AccountScreenComponents/CategortInfoList";
+import { colors } from "../../../constants/colors";
 
 const AccountScreen = () => {
   return (
     <View style={styles.root}>
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../../assets/images/bg2.png")}
         resizeMode="cover"
         style={styles.bgImage}
-      />
+      /> */}
       <StatusBar style="dark" />
       <View style={[styles.headerContainer, { marginTop: 20 }]}>
         <Header showDrawerToggle={false} />
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,
@@ -103,5 +105,6 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: "poppins-semibold",
     fontSize: 18,
+    color: "white",
   },
 });
