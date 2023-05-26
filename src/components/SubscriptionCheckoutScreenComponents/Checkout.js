@@ -187,11 +187,13 @@ const styles = StyleSheet.create({
   },
   titleContainer: {},
   title: {
-    fontSize: 20,
-    fontFamily: "poppins-semibold",
+    fontSize: 14,
+    fontFamily: "poppins-medium",
+    color: "white",
   },
   infoText: {
-    fontSize: 16,
-    fontFamily: "poppins-regular",
+    fontSize: 12,
+    fontFamily: "poppins-medium",
+    color: "white",
   },
 });

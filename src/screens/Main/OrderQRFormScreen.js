@@ -9,6 +9,7 @@ import React from "react";
 import { layout } from "../../constants/layout";
 import Header from "../../components/OrderQRScreenComponents/Header";
 import InputFields from "../../components/OrderQRFormScreen/InputFields";
+import { colors } from "../../constants/colors";
 
 
 const OrderQRFormScreen = () => {
@@ -20,11 +21,11 @@ const OrderQRFormScreen = () => {
       style={styles.root}
     >
       <View style={styles.root}>
-        <ImageBackground
+        {/* <ImageBackground
           source={require("../../../assets/images/bg2.png")}
           resizeMode="cover"
           style={styles.bgImage}
-        />
+        /> */}
         <View style={styles.headerContainer}>
           <Header title={"Order Details"} />
         </View>
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,

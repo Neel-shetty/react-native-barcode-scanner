@@ -4,15 +4,15 @@ import { LinearGradient } from "expo-linear-gradient";
 import { layout } from "../../constants/layout";
 import { Fontisto } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { BASEURL } from "../../constants/apiurl";
 
 const Plan = ({ title, subtitle, icon, image, limit, type }) => {
   function getImageName(link) {
     const temp = link.split("/");
     const editedImage = temp[temp.length - 1];
-    return (
-      "https://codelumina.com/project/scanme/public/uploads/subscription/" +
-      editedImage
-    );
+    const baseUrlWithoutFinalSlash = BASEURL.split("/").slice(0, -1).join('/');
+    console.log("🚀 ~ file: Plan.js:14 ~ getImageName ~ test:", baseUrlWithoutFinalSlash);
+    return `${baseUrlWithoutFinalSlash}/public/uploads/subscription/` + editedImage;
   }
 
   return (
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     flexDirection: "row",
-    marginTop: 20,
+    // marginTop: 20,
   },
   title: {
     fontFamily: "poppins-medium",

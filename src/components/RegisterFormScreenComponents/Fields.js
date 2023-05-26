@@ -285,8 +285,9 @@ const Fields = () => {
                       height: 45,
                     }}
                     buttonTextStyle={{
-                      fontFamily: "inter-semibold",
+                      fontFamily: "inter-medium",
                       color: "#9e9e9e",
+                      fontSize: 12,
                     }}
                     renderDropdownIcon={() => (
                       <View
@@ -302,7 +303,10 @@ const Fields = () => {
                       backgroundColor: "white",
                       borderRadius: 10,
                     }}
-                    rowTextStyle={{ fontFamily: "inter-semibold" }}
+                    rowTextStyle={{
+                      fontFamily: "poppins-medium",
+                      fontSize: 12,
+                    }}
                     selectedRowStyle={{ backgroundColor: "#ba92f3" }}
                     selectedRowTextStyle={{ color: "white" }}
                   />

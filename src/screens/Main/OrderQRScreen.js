@@ -13,6 +13,7 @@ import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import Header from "../../components/OrderQRScreenComponents/Header";
 import OrderItem from "../../components/OrderQRScreenComponents/OrderItem";
+import { colors } from "../../constants/colors";
 
 const OrderQRScreen = () => {
   const { data, isLoading, error } = useQuery("fetch_order_qty", async () =>
@@ -29,11 +30,11 @@ const OrderQRScreen = () => {
 
   return (
     <View style={styles.root}>
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
         style={styles.bgImage}
-      />
+      /> */}
       {isLoading ? (
         <ActivityIndicator />
       ) : (
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,

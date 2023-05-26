@@ -82,7 +82,9 @@ const InputFields = () => {
                 })
                 .catch((error) => {
                   // handle failure
-                  alert(`Error: ${error.code} | ${error.description}`);
+                  alert(
+                    `Error: ${error.code} | ${error.description}`
+                  );
                 });
             })
             .catch((error) => console.log(error.response));

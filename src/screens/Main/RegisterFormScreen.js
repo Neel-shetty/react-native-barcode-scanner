@@ -9,6 +9,7 @@ import React from "react";
 import Fields from "../../components/RegisterFormScreenComponents/Fields";
 import { layout } from "../../constants/layout";
 import Header from "../../components/RegisterScreenComponents/Header";
+import { colors } from "../../constants/colors";
 
 const RegisterFormScreen = () => {
   return (
@@ -18,11 +19,11 @@ const RegisterFormScreen = () => {
       enabled={false}
       style={styles.root}
     >
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../assets/images/subscriptionBg.jpeg")}
         resizeMode="cover"
         style={styles.bgImage}
-      />
+      /> */}
       <View style={styles.root}>
         <View
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,

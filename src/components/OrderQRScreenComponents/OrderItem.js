@@ -44,11 +44,13 @@ const styles = StyleSheet.create({
     height: 150,
     width: layout.widthp,
     // backgroundColor:
-    backgroundColor: "#a16ce6",
+    backgroundColor: "black",
     borderRadius: 20,
     marginBottom: 20,
     flexDirection: "row",
     paddingHorizontal: 20,
+    borderWidth: 1,
+    borderColor: "white",
   },
   text: {
     fontFamily: "poppins-semibold",

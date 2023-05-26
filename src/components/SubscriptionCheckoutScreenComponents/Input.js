@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
   },
   input: {
     width: layout.width * 0.8,
-    fontFamily: "inter-semibold",
-    fontSize: 16,
+    fontFamily: "poppins-medium",
+    fontSize: 12,
     // backgroundColor: "pink",
     // paddingLeft: 10,
   },
