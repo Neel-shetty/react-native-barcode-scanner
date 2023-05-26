@@ -15,7 +15,7 @@ const Organizations = () => {
   async function fetchCategories() {
     setLoading(true);
     axios
-      .post("http://codelumina.com/project/scanme/api/organization/categories")
+      .post("https://codelumina.com/project/scanme/api/organization/categories")
       .then((res) => {
         // console.log(res.data.data);
         setData(res.data.data);

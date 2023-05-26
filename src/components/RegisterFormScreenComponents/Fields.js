@@ -46,7 +46,7 @@ const Fields = () => {
     console.log("fetching categories");
     axios
       .post(
-        `http://codelumina.com/project/scanme/api/dyanmic/form?category_id=${route?.params?.categoryId}`
+        `https://codelumina.com/project/scanme/api/dyanmic/form?category_id=${route?.params?.categoryId}`
       )
       .then((res) => {
         setData(res.data.data);
@@ -110,7 +110,7 @@ const Fields = () => {
 
     axios
       .post(
-        `http://codelumina.com/project/scanme/api/dyanmic/form/insert`,
+        `https://codelumina.com/project/scanme/api/dyanmic/form/insert`,
         formData,
         {
           headers: {

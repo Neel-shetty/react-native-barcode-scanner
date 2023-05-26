@@ -70,7 +70,7 @@ const InputFields = () => {
     token = token.replace(/^"(.+(?="$))"$/, "$1");
     console.log("🚀 ~ file: InputFields.js:55 ~ getDetails ~ token", token);
     axios
-      .post("http://codelumina.com/project/scanme/api/user/profile", {
+      .post("httpsss://codelumina.com/project/scanme/api/user/profile", {
         userid: id,
         token: token,
       })
@@ -135,7 +135,7 @@ const InputFields = () => {
     console.log("🚀 ~ file: InputFields.js:47 ~ sendKyc ~ formData", formData);
     axios
       .post(
-        "http://codelumina.com/project/scanme/api/user/kyc/insert",
+        "https://codelumina.com/project/scanme/api/user/kyc/insert",
         formData,
         {
           headers: {
@@ -173,7 +173,7 @@ const InputFields = () => {
           // console.log(error.response.headers);
         } else if (error.request) {
           // The request was made but no response was received
-          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // `error.request` is an instance of XMLhttpsRequest in the browser and an instance of
           // http.ClientRequest in node.js
           console.log("error request", error.request);
           setLoading(false);

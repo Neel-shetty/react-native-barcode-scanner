@@ -32,7 +32,7 @@ const InputFields = () => {
   function SignUp(values) {
     setLoading(true);
     axios
-      .post("http://codelumina.com/project/scanme/api/user/register", {
+      .post("https://codelumina.com/project/scanme/api/user/register", {
         phone: values.phoneNumber,
         password: values.password,
         name: values.name,

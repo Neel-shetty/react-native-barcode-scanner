@@ -1,1 +1,1 @@
-export const BASEURL = 'http://codelumina.com/project/scanme/api'
+export const BASEURL = 'https://codelumina.com/project/scanme/api'

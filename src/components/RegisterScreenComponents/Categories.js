@@ -24,7 +24,7 @@ const Categories = () => {
   async function fetchCategories() {
     setLoading(true);
     axios
-      .post("http://codelumina.com/project/scanme/api/individual/categories")
+      .post("https://codelumina.com/project/scanme/api/individual/categories")
       .then((res) => {
         // console.log(res.data);
         setData(res.data.data);

@@ -10,7 +10,7 @@ const Plan = ({ title, subtitle, icon, image, limit, type }) => {
     const temp = link.split("/");
     const editedImage = temp[temp.length - 1];
     return (
-      "http://codelumina.com/project/scanme/public/uploads/subscription/" +
+      "https://codelumina.com/project/scanme/public/uploads/subscription/" +
       editedImage
     );
   }

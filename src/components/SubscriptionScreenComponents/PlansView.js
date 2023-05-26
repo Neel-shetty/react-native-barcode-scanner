@@ -157,7 +157,7 @@ const PlanView = () => {
     if (category.title === "All") {
       setLoading(true);
       axios
-        .post("http://codelumina.com/project/scanme/api/subscriptions")
+        .post("https://codelumina.com/project/scanme/api/subscriptions")
         .then((res) => {
           // console.log(res.data.data)
           setPlanData(res.data.data);
@@ -167,7 +167,7 @@ const PlanView = () => {
     } else if (category.title === "Monthly") {
       setLoading(true);
       axios
-        .post("http://codelumina.com/project/scanme/api/subscription/type", {
+        .post("https://codelumina.com/project/scanme/api/subscription/type", {
           plan_type: "Monthly",
         })
         .then((res) => {
@@ -188,7 +188,7 @@ const PlanView = () => {
     } else if (category.title === "Quarterly") {
       setLoading(true);
       axios
-        .post("http://codelumina.com/project/scanme/api/subscription/type", {
+        .post("https://codelumina.com/project/scanme/api/subscription/type", {
           plan_type: "Quarterly",
         })
         .then((res) => {
@@ -209,7 +209,7 @@ const PlanView = () => {
     } else if (category.title === "Half Yearly") {
       setLoading(true);
       axios
-        .post("http://codelumina.com/project/scanme/api/subscription/type", {
+        .post("https://codelumina.com/project/scanme/api/subscription/type", {
           plan_type: "Half Yearly",
         })
         .then((res) => {
@@ -230,7 +230,7 @@ const PlanView = () => {
     } else if (category.title === "Yearly") {
       setLoading(true);
       axios
-        .post("http://codelumina.com/project/scanme/api/subscription/type", {
+        .post("https://codelumina.com/project/scanme/api/subscription/type", {
           plan_type: "Yearly",
         })
         .then((res) => {
@@ -252,7 +252,7 @@ const PlanView = () => {
     } else {
       setLoading(true);
       axios
-        .post("http://codelumina.com/project/scanme/api/subscriptions")
+        .post("https://codelumina.com/project/scanme/api/subscriptions")
         .then((res) => {
           // console.log(res.data.data)
           setPlanData(res.data.data);
