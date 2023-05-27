@@ -43,5 +43,6 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "poppins-medium",
     color: "white",
+    fontSize: 10,
   },
 });

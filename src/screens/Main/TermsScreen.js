@@ -17,6 +17,7 @@ import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import RenderHtml, { defaultSystemFonts } from "react-native-render-html";
 import { useRoute } from "@react-navigation/native";
+import { colors } from "../../constants/colors";
 
 const TermsScreen = () => {
   const [terms, setTerms] = useState();
@@ -61,11 +62,11 @@ const TermsScreen = () => {
       style={styles.root}
     >
       <View style={styles.root}>
-        <ImageBackground
+        {/* <ImageBackground
           source={require("../../../assets/images/bg2.png")}
           resizeMode="cover"
           style={styles.bgImage}
-        />
+        /> */}
         <View style={styles.headerContainer}>
           <Header title={"Terms"} previousScreen={previousScreen} />
         </View>
@@ -118,6 +119,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,

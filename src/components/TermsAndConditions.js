@@ -21,7 +21,8 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
         paddingHorizontal: layout.width * 0.05,
         width: layout.widthp,
         // backgroundColor: "pink",
-        marginBottom: 10,
+        marginBottom: 15,
+        marginTop: 15,
       }}
     >
       <Checkbox
@@ -32,10 +33,17 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
         style={{ marginRight: 10 }}
         color={color ? null : "white"}
       />
-      <Text
+      <TouchableOpacity>
+        <Text
+          style={{ fontFamily: "poppins-medium", color: "white", fontSize: 12 }}
+        >
+          Accept terms and conditions
+        </Text>
+      </TouchableOpacity>
+      {/* <Text
         style={{
           // width: layout.widthp,
-          fontFamily: "poppins-regular",
+          fontFamily: "poppins-medium",
           color: "white",
         }}
       >
@@ -47,7 +55,7 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
         >
           <Text
             style={{
-              fontFamily: "poppins-regular",
+              fontFamily: "poppins-medium",
               color: color ? "white" : "white",
             }}
           >
@@ -55,7 +63,7 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
           </Text>
         </TouchableOpacity>
         <View>
-          <Text style={{ fontFamily: "poppins-regular", color: "white" }}>
+          <Text style={{ fontFamily: "poppins-medium", color: "white" }}>
             {" "}
             and
           </Text>
@@ -69,7 +77,7 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
         >
           <Text
             style={{
-              fontFamily: "poppins-regular",
+              fontFamily: "poppins-medium",
               color: color ? "white" : "white",
             }}
           >
@@ -77,7 +85,7 @@ const TermsAndConditions = ({ terms, setTerms, screen, color }) => {
             Privacy Policy
           </Text>
         </TouchableOpacity>
-      </Text>
+      </Text> */}
     </View>
   );
 };

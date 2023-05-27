@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   title: {
-    fontFamily: "poppins-semibold",
-    fontSize: 18,
+    fontFamily: "poppins-medium",
+    fontSize: 12,
     color: "white",
   },
   listContainer: {

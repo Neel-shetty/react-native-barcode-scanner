@@ -11,6 +11,7 @@ import Profile from "../../components/HomeScreenComponents/Profile";
 import MainContainer from "../../components/HomeScreenComponents/MainContainer";
 import SecondContainer from "../../components/HomeScreenComponents/SecondContainer";
 import { StatusBar } from "expo-status-bar";
+import { colors } from "../../constants/colors";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -48,11 +49,11 @@ const HomeScreen = () => {
   // }
   return (
     <View onLayout={onLayoutRootView} style={styles.root}>
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
         style={styles.bgImage}
-      />
+      /> */}
       <StatusBar style="light" />
       <View style={styles.headerContainer}>
         <Header />
@@ -90,6 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,
@@ -103,6 +105,7 @@ const styles = StyleSheet.create({
   access: {
     fontFamily: "poppins-semibold",
     fontSize: 25,
+    color: "white",
   },
   headerContainer: {
     flex: 1,

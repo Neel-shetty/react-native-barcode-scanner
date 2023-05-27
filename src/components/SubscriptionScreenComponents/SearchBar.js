@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     width: layout.width * 0.6,
     // backgroundColor: "pink",
     fontFamily: "poppins-regular",
-    fontSize: 16,
+    fontSize: 10,
     alignItems: "center",
     color: "white",
   },

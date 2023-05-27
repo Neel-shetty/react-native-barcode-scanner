@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
     top: 0,
   },
   title: {
-    fontFamily: "poppins-semibold",
-    fontSize: 40,
+    fontFamily: "poppins-medium",
+    fontSize: 24,
     color: "white",
   },
   titleContainer: {

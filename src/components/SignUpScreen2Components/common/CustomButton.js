@@ -17,9 +17,9 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   root: {
-    width: layout.widthp / 2,
+    width: layout.widthp / 2.5,
     height: 46,
-    borderRadius: 50,
+    borderRadius: 10,
     backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     borderColor: "white",
   },
   title: {
-    fontFamily: "inter-bold",
-    fontSize: 20,
+    fontFamily: "poppins-medium",
+    fontSize: 12,
     color: "white",
   },
 });

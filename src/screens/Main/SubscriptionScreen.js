@@ -71,8 +71,8 @@ const styles = StyleSheet.create({
     // transform: [{ scale: 2 }],
   },
   headerTitle: {
-    fontFamily: "poppins-semibold",
-    fontSize: 20,
+    fontFamily: "poppins-medium",
+    fontSize: 14,
     color: colors.white,
   },
   headerContainer: {

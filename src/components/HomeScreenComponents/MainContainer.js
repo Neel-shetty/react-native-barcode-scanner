@@ -30,19 +30,19 @@ const MainContainer = () => {
       {/* <TouchableOpacity> */}
       <View style={styles.itemContainer}>
         <View style={{ flex: 1 }}>
-          <LinearGradient
+          {/* <LinearGradient
             colors={["#8c52ff", "#c471ed"]}
             style={styles.iconContainer}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-          >
+          > */}
             <MaterialCommunityIcons
               name="account"
               size={34}
               color="white"
-              style={{ transform: [{ rotate: "-45deg" }] }}
+              // style={{ transform: [{ rotate: "-45deg" }] }}
             />
-          </LinearGradient>
+          {/* </LinearGradient> */}
         </View>
         <View style={{ flex: 2 }}>
           <TouchableOpacity
@@ -57,19 +57,19 @@ const MainContainer = () => {
       {/* </TouchableOpacity> */}
       <View style={styles.itemContainer}>
         <View style={{ flex: 1 }}>
-          <LinearGradient
+          {/* <LinearGradient
             colors={["#8c52ff", "#c471ed"]}
             style={styles.iconContainer}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-          >
+          > */}
             <FontAwesome5
               name="file-signature"
               size={28}
               color="white"
-              style={{ transform: [{ rotate: "-45deg" }, { translateX: 5 }] }}
+              // style={{ transform: [{ rotate: "-45deg" }, { translateX: 5 }] }}
             />
-          </LinearGradient>
+          {/* </LinearGradient> */}
         </View>
         <View style={{ flex: 2 }}>
           <TouchableOpacity onPress={RegisterButton}>
@@ -79,19 +79,19 @@ const MainContainer = () => {
       </View>
       <View style={styles.itemContainer}>
         <View style={{ flex: 1 }}>
-          <LinearGradient
+          {/* <LinearGradient
             colors={["#8c52ff", "#c471ed"]}
             style={styles.iconContainer}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-          >
+          > */}
             <AntDesign
               name="scan1"
               size={30}
               color="white"
-              style={{ transform: [{ rotate: "-45deg" }] }}
+              // style={{ transform: [{ rotate: "-45deg" }] }}
             />
-          </LinearGradient>
+          {/* </LinearGradient> */}
         </View>
         <View style={{ flex: 2 }}>
           <TouchableOpacity
@@ -113,7 +113,7 @@ export default MainContainer;
 const styles = StyleSheet.create({
   scrollView: {
     width: layout.widthp,
-    backgroundColor: "white",
+    backgroundColor: "black",
     height: 200,
     // alignItems: "center",
     // justifyContent: "space-evenly",
@@ -121,6 +121,8 @@ const styles = StyleSheet.create({
     // flexDirection: "row",
     paddingHorizontal: 20,
     alignSelf: "center",
+    borderWidth: 1,
+    borderColor: "white",
   },
   root: {
     // width: layout.widthp,
@@ -140,12 +142,13 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "poppins-regular",
     fontSize: 20,
+    color:'white'
   },
   iconContainer: {
     width: 45,
     height: 45,
     borderRadius: 8,
-    transform: [{ rotate: "45deg" }],
+    // transform: [{ rotate: "45deg" }],
     alignItems: "center",
     justifyContent: "center",
   },

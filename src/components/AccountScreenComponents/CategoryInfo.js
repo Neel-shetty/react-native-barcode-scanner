@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
   vehicle: {
     fontFamily: "poppins-semibold",
-    fontSize: 18,
+    fontSize: 17.5,
     color: "white",
   },
   number: {

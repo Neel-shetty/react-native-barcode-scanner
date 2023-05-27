@@ -15,16 +15,17 @@ const Profile = () => {
       />
       <Text style={styles.name}>Daniel Gallego eas</Text>
       <TouchableOpacity
+        style={styles.buttonContainer}
         onPress={() => navigation.navigate("EditProfileScreen")}
       >
-        <LinearGradient
+        {/* <LinearGradient
           colors={["white", "#c471ed"]}
           style={styles.buttonContainer}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-        >
-          <Text style={styles.edit}>Edit Profile</Text>
-        </LinearGradient>
+        > */}
+        <Text style={styles.edit}>Edit Profile</Text>
+        {/* </LinearGradient> */}
       </TouchableOpacity>
     </View>
   );
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: "poppins-semibold",
     fontSize: 25,
+    color: "white",
   },
   buttonContainer: {
     width: 150,
@@ -53,9 +55,13 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "black",
+    borderWidth: 1,
+    borderColor: "white",
   },
   edit: {
     fontFamily: "poppins-medium",
     fontSize: 16,
+    color: "white",
   },
 });

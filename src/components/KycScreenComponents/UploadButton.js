@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
     borderColor: "white",
   },
   title: {
-    fontFamily: "inter-semibold",
-    fontSize: 16,
+    fontFamily: "inter-medium",
+    fontSize: 10,
     color: "rgba(181,181,181,255)",
     // paddingLeft: 10,
     // color:colors.gray

@@ -37,7 +37,14 @@ const AccountScreen = () => {
       </View>
       <View style={styles.container2}>
         <View style={{ width: layout.widthp, paddingLeft: 5 }}>
-          <Text style={styles.headerTitle}>Promotional Banners</Text>
+          <Text
+            style={[
+              styles.headerTitle,
+              { fontSize: 15, fontFamily: "poppins-medium" },
+            ]}
+          >
+            Promotional Banners
+          </Text>
         </View>
         <Banner />
       </View>

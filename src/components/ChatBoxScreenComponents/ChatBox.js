@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   title: {
     color: "white",
     fontFamily: "poppins-medium",
-    fontSize: 14,
+    fontSize: 10,
   },
   categoryBar: {
     flex: 1,

@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import RenderHtml, { defaultSystemFonts } from "react-native-render-html";
+import { colors } from "../../constants/colors";
 
 const AboutScreen = () => {
   const [terms, setTerms] = useState();
@@ -50,11 +51,11 @@ const AboutScreen = () => {
       style={styles.root}
     >
       <View style={styles.root}>
-        <ImageBackground
+        {/* <ImageBackground
           source={require("../../../assets/images/bg2.png")}
           resizeMode="cover"
           style={styles.bgImage}
-        />
+        /> */}
         <View style={styles.headerContainer}>
           <Header title={"About Us"} />
         </View>
@@ -106,6 +107,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     alignItems: "center",
+    backgroundColor: colors.blackBg,
     justifyContent: "center",
   },
   bgImage: {

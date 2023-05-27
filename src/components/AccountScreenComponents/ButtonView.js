@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontFamily: "poppins-medium",
-    fontSize: 16,
+    fontSize: 14,
     color: "white",
   },
 });

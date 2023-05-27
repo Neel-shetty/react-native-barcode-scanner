@@ -275,11 +275,6 @@ const InputFields = () => {
               )}
             </View>
             <View style={styles.buttonContainer}>
-              <TermsAndConditions
-                screen={"KycScreen"}
-                terms={terms}
-                setTerms={setTerms}
-              />
               <CustomButton
                 title={loading ? "Loading..." : "Next"}
                 onPress={handleSubmit}
@@ -289,6 +284,11 @@ const InputFields = () => {
           </View>
         )}
       </Formik>
+      <TermsAndConditions
+        screen={"KycScreen"}
+        terms={terms}
+        setTerms={setTerms}
+      />
     </View>
   );
 };
@@ -312,11 +312,11 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignItems: "center",
     justifyContent: "flex-end",
-    flex: 1,
+    // flex: 1,
     // backgroundColor: "violet",
   },
   root: {
-    flex: 1,
+    // flex: 1,
     // backgroundColor: "coral",
   },
   inputContainer: {

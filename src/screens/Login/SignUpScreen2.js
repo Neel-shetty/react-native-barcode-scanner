@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
     top: 0,
   },
   title: {
-    fontFamily: "poppins-semibold",
-    fontSize: 40,
+    fontFamily: "poppins-medium",
+    fontSize: 24,
     color: "white",
   },
   titleContainer: {
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   help: {
     fontFamily: "poppins-medium",
-    fontSize: 16,
+    fontSize: 11,
     color: "white",
   },
 });

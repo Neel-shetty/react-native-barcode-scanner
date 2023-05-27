@@ -52,5 +52,6 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "poppins-semibold",
     color: "white",
+    fontSize: 10,
   },
 });

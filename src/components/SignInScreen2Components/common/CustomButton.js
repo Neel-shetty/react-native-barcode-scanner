@@ -9,7 +9,7 @@ import React from "react";
 import { layout } from "../../../constants/layout";
 import { colors } from "../../../constants/colors";
 
-const CustomButton = ({ title, onPress, loading }) => {
+const CustomButton = ({ title, onPress, loading, fontSize }) => {
   return (
     <TouchableOpacity
       onPress={() => {
@@ -21,7 +21,7 @@ const CustomButton = ({ title, onPress, loading }) => {
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <Text style={styles.title}>{title}</Text>
+          <Text style={[styles.title, { fontSize }]}>{title}</Text>
         )}
       </View>
     </TouchableOpacity>
@@ -32,9 +32,9 @@ export default CustomButton;
 
 const styles = StyleSheet.create({
   root: {
-    width: layout.widthp / 2,
+    width: layout.widthp / 2.5,
     height: 46,
-    borderRadius: 50,
+    borderRadius: 10,
     backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
     borderColor: "white",
   },
   title: {
-    fontFamily: "inter-bold",
-    fontSize: 20,
+    fontFamily: "poppins-medium",
+    fontSize: 12,
     color: "white",
   },
 });

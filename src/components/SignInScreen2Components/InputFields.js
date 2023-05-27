@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
   forgotText: {
     fontFamily: "poppins-medium",
     color: "white",
+    fontSize: 12,
   },
   buttonContainer: {
     alignItems: "center",

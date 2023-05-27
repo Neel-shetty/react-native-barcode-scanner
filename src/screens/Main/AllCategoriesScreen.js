@@ -4,15 +4,16 @@ import Header from "../../components/AllCategoriesScreenComponents/Header";
 import { layout } from "../../constants/layout";
 import Categories from "../../components/AllCategoriesScreenComponents/Categories";
 import Organizations from "../../components/AllCategoriesScreenComponents/Organizations";
+import { colors } from "../../constants/colors";
 
 const AllCategoriesScreen = () => {
   return (
     <View style={styles.root}>
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../assets/images/bg2.png")}
         resizeMode="cover"
         style={styles.bgImage}
-      />
+      /> */}
       <View style={styles.headerContainer}>
         <Header />
       </View>
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.blackBg,
   },
   bgImage: {
     flex: 1,

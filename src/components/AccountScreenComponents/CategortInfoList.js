@@ -136,8 +136,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontFamily: "poppins-semibold",
-    fontSize: 28,
+    fontFamily: "poppins-medium",
+    fontSize: 24,
     color: "white",
   },
   box: {

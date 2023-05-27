@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontFamily: "poppins-semibold",
-    fontSize: 18,
+    fontFamily: "poppins-medium",
+    fontSize: 14,
     color: "white",
   },
   listContainer: {

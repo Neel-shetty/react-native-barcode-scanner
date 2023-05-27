@@ -113,7 +113,8 @@ const Navigator = () => {
         screenOptions={{
           headerShown: false,
           drawerActiveTintColor: "white",
-          drawerStyle: { backgroundColor: "#c370ed" },
+          drawerStyle: { backgroundColor: "black" },
+          drawerInactiveTintColor:'white'
         }}
         drawerContent={(props) => {
           return (

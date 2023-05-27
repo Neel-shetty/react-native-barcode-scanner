@@ -51,7 +51,7 @@ const OnboardingScreen = ({ navigation }) => {
   return (
     <View style={styles.root} onLayout={onLayoutRootView}>
       <StatusBar style="light" />
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../../assets/images/loginBg.png")}
         resizeMode="cover"
         style={{
@@ -62,7 +62,7 @@ const OnboardingScreen = ({ navigation }) => {
           position: "absolute",
           top: 0,
         }}
-      />
+      /> */}
       <View style={styles.imageContainer}>
         <Image
           source={require("../../../assets/images/logoBig.png")}
@@ -79,9 +79,10 @@ const OnboardingScreen = ({ navigation }) => {
             <Text style={styles.buttonText1}>Sign In</Text>
           </View>
         </TouchableOpacity>
+
         <TouchableOpacity onPress={SignUpButton}>
-          <View style={styles.buttonView2}>
-            <Text style={styles.buttonText2}>Sign Up</Text>
+          <View style={styles.buttonView1}>
+            <Text style={styles.buttonText1}>Sign Up</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -99,7 +100,7 @@ export default OnboardingScreen;
 const makeStyles = (fontScale) =>
   StyleSheet.create({
     root: {
-      backgroundColor: "white",
+      backgroundColor: colors.blackBg,
       alignItems: "center",
       justifyContent: "center",
       flex: 1,
@@ -143,13 +144,16 @@ const makeStyles = (fontScale) =>
     buttonView1: {
       height: 60,
       width: 200,
-      backgroundColor: "#a777b4",
+      backgroundColor: "black",
       borderRadius: 60,
       alignItems: "center",
       justifyContent: "center",
       // shadowColor: "rgba(0,0,0,0.7)",
       shadowOffset: { width: 5, height: 3 },
       shadowRadius: 40,
+      borderWidth: 1,
+      borderColor: "white",
+      marginBottom: 20,
     },
     buttonView2: {
       height: 60,

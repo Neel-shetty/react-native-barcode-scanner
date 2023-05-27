@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   title: {
-    fontFamily: "poppins-semibold",
-    fontSize: 18,
+    fontFamily: "poppins-medium",
+    fontSize: 12,
     color: "white",
   },
   subtitle: {

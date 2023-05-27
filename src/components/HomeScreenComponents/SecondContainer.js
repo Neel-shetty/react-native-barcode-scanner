@@ -18,19 +18,13 @@ const SecondContainer = () => {
     <View style={styles.root}>
       <View style={styles.itemContainer}>
         <View style={{ flex: 1 }}>
-          <LinearGradient
-            colors={["#8c52ff", "#c471ed"]}
-            style={styles.iconContainer}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-          >
-            <FontAwesome
-              name="id-card"
-              size={27}
-              color="white"
-              style={{ transform: [{ rotate: "-45deg" }] }}
-            />
-          </LinearGradient>
+          <FontAwesome
+            name="id-card"
+            size={27}
+            color="white"
+            // style={{ transform: [{ rotate: "-45deg" }] }}
+          />
+          {/* </LinearGradient> */}
         </View>
         <View style={{ flex: 2 }}>
           <TouchableOpacity onPress={KycButton}>
@@ -40,19 +34,19 @@ const SecondContainer = () => {
       </View>
       <View style={styles.itemContainer}>
         <View style={{ flex: 1 }}>
-          <LinearGradient
+          {/* <LinearGradient
             colors={["#8c52ff", "#c471ed"]}
             style={styles.iconContainer}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
-          >
-            <AntDesign
-              name="star"
-              size={34}
-              color="white"
-              style={{ transform: [{ rotate: "-45deg" }] }}
-            />
-          </LinearGradient>
+          > */}
+          <AntDesign
+            name="star"
+            size={34}
+            color="white"
+            // style={{ transform: [{ rotate: "-45deg" }] }}
+          />
+          {/* </LinearGradient> */}
         </View>
         <View style={{ flex: 2 }}>
           <TouchableOpacity
@@ -73,13 +67,15 @@ export default SecondContainer;
 const styles = StyleSheet.create({
   root: {
     width: layout.widthp,
-    backgroundColor: "white",
+    backgroundColor: "black",
     height: 150,
     alignItems: "center",
     justifyContent: "space-evenly",
     borderRadius: 20,
     // flexDirection: "row",
     paddingHorizontal: 40,
+    borderWidth: 1,
+    borderColor: "white",
   },
   itemContainer: {
     alignItems: "center",
@@ -89,6 +85,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "poppins-regular",
     fontSize: 20,
+    color: "white",
   },
   iconContainer: {
     width: 45,

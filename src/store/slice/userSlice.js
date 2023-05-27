@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loggedIn: false, //TODO: change to false
+  loggedIn: true, //TODO: change to false
   user: null,
   userToken: null,
   adhaarFront: null,
@@ -58,7 +58,7 @@ export const {
   setAdhaarBack,
   setPanCard,
   setKycStatus,
-  setFormSubmitted
+  setFormSubmitted,
 } = userSlice.actions;
 
 export default userSlice.reducer;

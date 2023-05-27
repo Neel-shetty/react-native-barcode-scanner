@@ -52,7 +52,7 @@ const Box = ({ name, barcode, category_id }) => {
             }}
           >
             <View style={styles.inboxButton}>
-              <Text style={styles.location}>Inbox</Text>
+              <Text style={[styles.location, { fontSize: 10 }]}>Inbox</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -74,13 +74,13 @@ const styles = StyleSheet.create({
   },
   name: {
     fontFamily: "poppins-medium",
-    fontSize: 16,
+    fontSize: 14,
     color: "white",
     // fontWeight: "bold",
   },
   location: {
     fontFamily: "poppins-medium",
-    fontSize: 13,
+    fontSize: 12,
     color: "white",
     // fontWeight: "bold",
   },
