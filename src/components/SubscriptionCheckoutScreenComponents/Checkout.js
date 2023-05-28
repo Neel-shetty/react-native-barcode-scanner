@@ -64,7 +64,7 @@ const Checkout = () => {
       })
       .then((res) => {
         console.log("🚀 ~ file: Checkout.js:66 ~ .then ~ res:", res.data.data);
-        let options: CheckoutOptions = {
+        let options = {
           description: "Subscription",
           image: "https://i.imgur.com/3g7nmJC.jpg",
           currency: "INR",
