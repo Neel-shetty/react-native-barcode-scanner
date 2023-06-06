@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "362399787867",
+    "project_id": "scan-me-934fe",
+    "storage_bucket": "scan-me-934fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362399787867:android:5997ebc5fb6947df8f887e",
+        "android_client_info": {
+          "package_name": "com.scanme.scanme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362399787867-h7fargi6nlghq9v59b792m7gc44fpb4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBairXqf25D6i4ukeqHzD-magWF2ZeKvds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362399787867-h7fargi6nlghq9v59b792m7gc44fpb4g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
