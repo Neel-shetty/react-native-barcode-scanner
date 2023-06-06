@@ -142,7 +142,7 @@ const Dm = () => {
         // return Number(user) > Number(route.params?.receiverId)
         //   ? `${route.params.receiverId}-${user}`
         //   : `${user}-${route.params.receiverId}`;
-    }, [astrologer, userID]);
+    }, [ userID]);
     console.log(
         "🚀 ~ file: AstrologerWaitModal.tsx:64 ~ combinedUserId ~ combinedUserId:",
         combinedUserId
