@@ -10,6 +10,7 @@ import { useRoute } from "@react-navigation/native";
 import { useEffect } from "react";
 import { BASEURL } from "../../constants/apiurl";
 import { Formik } from "formik";
+import firestore from "@react-native-firebase/firestore";
 
 const data = [
   {
@@ -54,73 +55,117 @@ const Dm = () => {
 
   const route = useRoute();
   console.log("🚀 ~ file: Dm.js:51 ~ Dm ~ route", route.params.receiverId);
-  async function fetchMessages() {
-    const id = await SecureStore.getItemAsync("id");
-    console.log("🚀 ~ file: Dm.js:59 ~ fetchMessages ~ id:", id);
-    axios
-      .post(`${BASEURL}/my/messages`, {
-        sender_id: id,
-        receiver_id: route.params.receiverId,
-        category_id: route.params.category_id,
-      })
-      .then((res) => {
-        // console.log("response data ---------- ", res.data);
-        setMessages(res.data.data);
-      })
-      .catch((error) => {
-        console.log("error");
-        if (error.response) {
-          console.log(error.response.data);
-          setLoading(false);
-        } else if (error.request) {
-          console.log(error.request);
-          setLoading(false);
-        } else {
-          console.log(error.message);
-          setLoading(false);
-        }
+
+  /**
+   * @description old direct implementation of fetching messages
+   */
+  // async function fetchMessages() {
+  //   const id = await SecureStore.getItemAsync("id");
+  //   console.log("🚀 ~ file: Dm.js:59 ~ fetchMessages ~ id:", id);
+  //   axios
+  //     .post(`${BASEURL}/my/messages`, {
+  //       sender_id: id,
+  //       receiver_id: route.params.receiverId,
+  //       category_id: route.params.category_id,
+  //     })
+  //     .then((res) => {
+  //       // console.log("response data ---------- ", res.data);
+  //       setMessages(res.data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("error");
+  //       if (error.response) {
+  //         console.log(error.response.data);
+  //         setLoading(false);
+  //       } else if (error.request) {
+  //         console.log(error.request);
+  //         setLoading(false);
+  //       } else {
+  //         console.log(error.message);
+  //         setLoading(false);
+  //       }
+  //     });
+  // }
+  // async function sendMessage(message) {
+  //   console.log("🚀 ~ file: Dm.js:84 ~ sendMessage ~ message", message);
+  //   console.log(route.params.receiverId, route.params.category_id);
+  //   const id = await SecureStore.getItemAsync("id");
+  //   console.log("🚀 ~ file: Dm.js:87 ~ sendMessage ~ id", id);
+  //   axios
+  //     .post(`${BASEURL}/send/message`, {
+  //       sender_id: id,
+  //       receiver_id: route.params.receiverId,
+  //       category_id: route.params.category_id,
+  //       message: message,
+  //     })
+  //     .then((res) => {
+  //       console.log("response data sendmessage ---------- ", res.data);
+  //       fetchMessages();
+  //     })
+  //     .catch((error) => {
+  //       console.log("error");
+  //       if (error.response) {
+  //         console.log(error.response.data);
+  //         setLoading(false);
+  //       } else if (error.request) {
+  //         console.log(error.request);
+  //         setLoading(false);
+  //       } else {
+  //         console.log(error.message);
+  //         setLoading(false);
+  //       }
+  //     });
+  // }
+  // useEffect(() => {
+  //   let interval = null;
+  //   interval = setInterval(fetchMessages, 1000);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
+  // useEffect(() => {
+  //   fetchMessages();
+  // }, []);
+
+  /**
+   * @description new implementation of fetching messages using firebase
+   */
+
+  const userID = SecureStore.getItemAsync("id");
+  const combinedUserId = React.useMemo(async () => {
+    const user = await userID;
+    /** @type string[] */
+    const tmpArr = [user, route.params?.receiverId];
+    tmpArr.sort();
+    const cId = tmpArr.join("-");
+    return cId;
+    // return Number(user) > Number(route.params?.receiverId)
+    //   ? `${route.params.receiverId}-${user}`
+    //   : `${user}-${route.params.receiverId}`;
+  }, [astrologer, userID]);
+  console.log(
+    "🚀 ~ file: AstrologerWaitModal.tsx:64 ~ combinedUserId ~ combinedUserId:",
+    combinedUserId
+  );
+
+  async function getMessages() {
+    const docId = await combinedUserId;
+    firestore()
+      .collection("chats")
+      .doc(docId)
+      .collection("messages")
+      .orderBy("createdAt", "asc")
+      // .limitToLast(5)
+      .onSnapshot((doc) => {
+        // console.log('🚀 ~ file: Chat.tsx:58 ~ getMessages ~ doc:', doc);
+        const texts = [];
+        doc.forEach((message) => {
+          texts.push(message.data());
+        });
+        setMessages(texts);
       });
   }
-  async function sendMessage(message) {
-    console.log("🚀 ~ file: Dm.js:84 ~ sendMessage ~ message", message);
-    console.log(route.params.receiverId, route.params.category_id);
-    const id = await SecureStore.getItemAsync("id");
-    console.log("🚀 ~ file: Dm.js:87 ~ sendMessage ~ id", id);
-    axios
-      .post(`${BASEURL}/send/message`, {
-        sender_id: id,
-        receiver_id: route.params.receiverId,
-        category_id: route.params.category_id,
-        message: message,
-      })
-      .then((res) => {
-        console.log("response data sendmessage ---------- ", res.data);
-        fetchMessages();
-      })
-      .catch((error) => {
-        console.log("error");
-        if (error.response) {
-          console.log(error.response.data);
-          setLoading(false);
-        } else if (error.request) {
-          console.log(error.request);
-          setLoading(false);
-        } else {
-          console.log(error.message);
-          setLoading(false);
-        }
-      });
-  }
-  useEffect(() => {
-    let interval = null;
-    interval = setInterval(fetchMessages, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-  useEffect(() => {
-    fetchMessages();
-  }, []);
+
   return (
     <View style={styles.root}>
       <View style={styles.listContainer}>
@@ -130,10 +175,10 @@ const Dm = () => {
             return (
               <View style={{ width: layout.width }}>
                 <TextBox
-                  text={item.message}
-                  read={item.is_read}
+                  text={item?.message}
+                  read={item?.is_read}
                   // textAlign={item.text_side}
-                  date={item.created_at}
+                  date={item?.created_at}
                 />
               </View>
             );

@@ -7,6 +7,8 @@ import { StatusBar } from "expo-status-bar";
 import axios from "axios";
 import { BASEURL } from "../../constants/apiurl";
 import { useNavigation } from "@react-navigation/native";
+import * as SecureStore from "expo-secure-store";
+import firestore from "@react-native-firebase/firestore";
 
 const ScanScreen = () => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -56,16 +58,56 @@ const ScanScreen = () => {
     };
   }, []);
 
-  const handleBarCodeScanned = ({ type, data }) => {
+  /**
+   * @param {string} combinedUid
+   * @param {string} receiverId
+   * @param {string} senderId
+   * @param {string} categoryId
+   */
+  async function createChat(combinedUid, receiverId, senderId, categoryId) {
+    const doc = await firestore().collection("chats").doc(combinedUid).get();
+
+    if (doc.exists) {
+      return;
+    }
+    firestore()
+      .collection("chats")
+      .doc(combinedUid)
+      .set({
+        combinedUid,
+        users: [receiverId, senderId],
+        receiverId,
+        senderId,
+        categoryId,
+      });
+  }
+
+  const handleBarCodeScanned = async ({ type, data }) => {
     console.log(
       "🚀 ~ file: ScanScreen.js:25 ~ handleBarCodeScanned ~ data",
       data
     );
     // fetchQrDetails(data);
+    /**
+     * @type {object}
+     * @property {string} receiver_id
+     * @property {string} category_id
+     */
     const scannedData = JSON.parse(data);
+
+    const id = await SecureStore.getItemAsync("id");
+    const tmpArr = [scannedData?.receiver_id, id];
+    tmpArr.sort();
+    const cId = tmpArr.join("-");
+    await createChat(
+      cId,
+      scannedData?.receiver_id,
+      id,
+      scannedData?.category_id
+    );
     navigation.navigate("DmScreen", {
       receiverId: scannedData?.receiver_id,
-      category_id: scannedData?.category_id,
+      categoryId: scannedData?.category_id,
     });
     setScanned(true);
     alert(`QR code has been scanned!`);

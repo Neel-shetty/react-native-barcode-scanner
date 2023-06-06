@@ -28,6 +28,7 @@
       "package": "com.scanme.scanme",
       "googleServicesFile": "./google-services.json"
     },
+    "plugins": ["@react-native-firebase/app"],
     "web": {
       "favicon": "./assets/favicon.png"
     },
