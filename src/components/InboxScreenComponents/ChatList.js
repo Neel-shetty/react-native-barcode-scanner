@@ -7,11 +7,32 @@ import { BASEURL } from "../../constants/apiurl";
 import { useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import { useEffect } from "react";
+import * as SecureStore from "expo-secure-store";
 
 const ChatList = () => {
   const [users, setUsers] = useState();
   const [loading, setLoading] = useState();
   const route = useRoute();
+  const [chats, setChats] = useState([]);
+
+  async function fetchChats() {
+    const uid = await SecureStore.getItemAsync("id");
+    console.log("🚀 ~ file: ChatList.tsx:10 ~ fetchChats ~ uid:", uid);
+    firestore()
+      .collection("chats")
+      .where("astrologerId", "==", uid )
+      // .orderBy('userId', 'desc')
+      .onSnapshot((querySnapshot) => {
+        const chatsInFb = querySnapshot?.docs.map((doc) => doc.data());
+        console.log(
+          "🚀 ~ file: ChatList.tsx:27 ~ fetchChats ~ chatsInFb:",
+          chatsInFb
+        );
+
+        //@ts-ignore
+        setChats(chatsInFb);
+      });
+  }
 
   async function fetchUsers() {
     axios

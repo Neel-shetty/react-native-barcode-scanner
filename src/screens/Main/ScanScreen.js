@@ -66,6 +66,12 @@ const ScanScreen = () => {
    */
   async function createChat(combinedUid, receiverId, senderId, categoryId) {
     const doc = await firestore().collection("chats").doc(combinedUid).get();
+    const userChat = await firestore()
+      .collection("userChats")
+      .doc(senderId)
+      .set({
+        users: firestore.FieldValue.arrayUnion(receiverId),
+      });
 
     if (doc.exists) {
       return;
