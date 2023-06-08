@@ -63,7 +63,7 @@ const TextBox = ({
             textAlign === "left" ? { color: "white" } : null,
           ]}
         >
-          {date.getHours()}:{date.getMinutes()}
+          {date?.getHours()}:{date?.getMinutes()}
         </Text>
         {textAlign === "right" ? (
           <Ionicons
