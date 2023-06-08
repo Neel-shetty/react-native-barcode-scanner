@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import * as SecureStore from "expo-secure-store";
 
 const ChatItem = ({ name, receiverId, category_id, image }) => {
   const navigation = useNavigation();
@@ -8,10 +9,12 @@ const ChatItem = ({ name, receiverId, category_id, image }) => {
     <View style={styles.root}>
       <TouchableOpacity
         style={styles.root}
-        onPress={() => {
+        onPress={async () => {
+          const userId = await SecureStore.getItemAsync("id");
           navigation.navigate("DmScreen", {
             receiverId: receiverId,
             category_id: category_id,
+            userId: userId,
           });
         }}
       >

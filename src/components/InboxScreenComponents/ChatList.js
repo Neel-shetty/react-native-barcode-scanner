@@ -15,24 +15,24 @@ const ChatList = () => {
   const route = useRoute();
   const [chats, setChats] = useState([]);
 
-  async function fetchChats() {
-    const uid = await SecureStore.getItemAsync("id");
-    console.log("🚀 ~ file: ChatList.tsx:10 ~ fetchChats ~ uid:", uid);
-    firestore()
-      .collection("chats")
-      .where("astrologerId", "==", uid )
-      // .orderBy('userId', 'desc')
-      .onSnapshot((querySnapshot) => {
-        const chatsInFb = querySnapshot?.docs.map((doc) => doc.data());
-        console.log(
-          "🚀 ~ file: ChatList.tsx:27 ~ fetchChats ~ chatsInFb:",
-          chatsInFb
-        );
+  // async function fetchChats() {
+  //   const uid = await SecureStore.getItemAsync("id");
+  //   console.log("🚀 ~ file: ChatList.tsx:10 ~ fetchChats ~ uid:", uid);
+  //   firestore()
+  //     .collection("chats")
+  //     .where("astrologerId", "==", uid )
+  //     // .orderBy('userId', 'desc')
+  //     .onSnapshot((querySnapshot) => {
+  //       const chatsInFb = querySnapshot?.docs.map((doc) => doc.data());
+  //       console.log(
+  //         "🚀 ~ file: ChatList.tsx:27 ~ fetchChats ~ chatsInFb:",
+  //         chatsInFb
+  //       );
 
-        //@ts-ignore
-        setChats(chatsInFb);
-      });
-  }
+  //       //@ts-ignore
+  //       setChats(chatsInFb);
+  //     });
+  // }
 
   async function fetchUsers() {
     axios

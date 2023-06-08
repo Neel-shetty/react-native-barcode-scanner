@@ -69,7 +69,7 @@ const TextBox = ({
   );
 };
 
-export default TextBox;
+export default React.memo(TextBox);
 
 const styles = StyleSheet.create({
   root: {

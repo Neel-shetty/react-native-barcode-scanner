@@ -102,8 +102,9 @@ const ScanScreen = () => {
     const scannedData = JSON.parse(data);
 
     const id = await SecureStore.getItemAsync("id");
-    const tmpArr = [scannedData?.receiver_id, id];
-    tmpArr.sort();
+    const tmpArr = [Number(scannedData?.receiver_id), Number(id)];
+    // tmpArr.sort();
+    tmpArr.sort((a, b) => a > b);
     const cId = tmpArr.join("-");
     await createChat(
       cId,
@@ -114,6 +115,7 @@ const ScanScreen = () => {
     navigation.navigate("DmScreen", {
       receiverId: scannedData?.receiver_id,
       categoryId: scannedData?.category_id,
+      userId: id,
     });
     setScanned(true);
     alert(`QR code has been scanned!`);
