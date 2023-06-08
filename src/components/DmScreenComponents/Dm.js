@@ -221,7 +221,7 @@ const Dm = () => {
                   textAlign={
                     item.uid === route.params?.userId ? "right" : "left"
                   }
-                  date={"10"}
+                  date={item?.createdAt?.nanoseconds}
                 />
               </View>
             );

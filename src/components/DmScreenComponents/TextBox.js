@@ -12,7 +12,14 @@ const TextBox = ({
   date,
 }) => {
   const time = new Date(date);
-  time.getTime();
+  // time.setSeconds(date);
+  // time.getTime();
+  console.log("🚀 ~ file: TextBox.js:17 ~ time:", time);
+  // // function toDateTime(secs) {
+  //   var t = new Date(1970, 0, 1); // Epoch
+  //   t.setSeconds(secs);
+  // return t;
+  // }
   // console.log(
   //   "🚀 ~ file: TextBox.js:9 ~ TextBox ~ time.getTime()",
   //   time.getHours(),

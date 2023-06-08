@@ -11,6 +11,7 @@ import * as SecureStore from "expo-secure-store";
 
 const ChatList = () => {
   const [users, setUsers] = useState();
+  console.log("🚀 ~ file: ChatList.js:14 ~ ChatList ~ users:", users);
   const [loading, setLoading] = useState();
   const route = useRoute();
   const [chats, setChats] = useState([]);
