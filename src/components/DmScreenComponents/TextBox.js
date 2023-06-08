@@ -11,10 +11,12 @@ const TextBox = ({
   read,
   date,
 }) => {
-  const time = new Date(date);
+  console.log("🚀 ~ file: TextBox.js:14 ~ date:", date);
+  // const time = new Date();
+  // time.setUTCMilliseconds(date);
   // time.setSeconds(date);
   // time.getTime();
-  console.log("🚀 ~ file: TextBox.js:17 ~ time:", time);
+  // console.log("🚀 ~ file: TextBox.js:17 ~ time:", time);
   // // function toDateTime(secs) {
   //   var t = new Date(1970, 0, 1); // Epoch
   //   t.setSeconds(secs);
@@ -61,7 +63,7 @@ const TextBox = ({
             textAlign === "left" ? { color: "white" } : null,
           ]}
         >
-          {time.getHours()}:{time.getMinutes()}
+          {date.getHours()}:{date.getMinutes()}
         </Text>
         {textAlign === "right" ? (
           <Ionicons
