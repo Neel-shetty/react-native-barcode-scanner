@@ -135,7 +135,7 @@ const InputFields = () => {
     console.log("🚀 ~ file: InputFields.js:47 ~ sendKyc ~ formData", formData);
     axios
       .post(
-        "https://codelumina.com/project/scanme/api/user/kyc/insert",
+        "https://skanme.in/user/kyc/insert",
         formData,
         {
           headers: {
